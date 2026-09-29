@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiln &amp; Co. — Handmade ceramics for everyday (concept shop)</title>
+<meta name="description" content="Concept e-commerce website by MBDEV for a fictional handmade ceramics brand. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23b4532a'/%3E%3Cpath d='M10 11h12l-1.5 12h-9z' fill='%23f6efe6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="concept">Concept shop designed &amp; built by <a href="../">MBDEV</a> — Kiln &amp; Co. is a fictional brand. Nothing here is for sale.</div>
+<div class="announce">Free UK delivery over £50 · Each piece hand-thrown in our Bristol studio</div>
+
+<header class="header">
+  <div class="wrap header__in">
+    <nav class="nav" aria-label="Main">
+      <a href="#shop">Shop</a>
+      <a href="#story">Our studio</a>
+      <a href="#care">Care</a>
+    </nav>
+    <a class="logo" href="#top">Kiln <i>&amp;</i> Co.</a>
+    <div class="header__tools">
+      <button class="icon-btn" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      <button class="icon-btn cart-btn" id="cartOpen" aria-label="Open basket">
+        <svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero__in">
+      <div class="hero__copy">
+        <p class="kicker">New · The Autumn Glaze collection</p>
+        <h1>Slow-made ceramics for <em>everyday</em> rituals.</h1>
+        <p class="lead">Mugs, bowls and vases thrown by hand in small batches — glazed in warm, earthy tones and made to be used every single day.</p>
+        <div class="hero__cta">
+          <a class="btn btn--dark" href="#shop">Shop the collection</a>
+          <a class="link" href="#story">Meet the makers →</a>
+        </div>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <div class="blob"></div>
+        <div class="hero__pieces" id="heroArt"></div>
+        <div class="hero__tag"><b>Autumn Glaze</b><span>12 new pieces · from £18</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="usp">
+    <div class="wrap usp__in">
+      <div><svg viewBox="0 0 24 24"><path d="M12 3c-2 3-6 5-6 10a6 6 0 0 0 12 0c0-5-4-7-6-10z"/></svg><span><b>Handmade in Bristol</b>Every piece is one of a kind</span></div>
+      <div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg><span><b>Free delivery over £50</b>Plastic-free packaging</span></div>
+      <div><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4"/></svg><span><b>30-day returns</b>Breakage cover in transit</span></div>
+      <div><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 8V6h8v2M4 13h16"/></svg><span><b>Dishwasher safe</b>Food-safe, lead-free glazes</span></div>
+    </div>
+  </section>
+
+  <section class="shop" id="shop">
+    <div class="wrap">
+      <div class="shop__head">
+        <div>
+          <p class="kicker">The shop</p>
+          <h2>Pieces for the table &amp; shelf</h2>
+        </div>
+        <div class="filters" role="tablist" aria-label="Filter products">
+          <button class="chip active" data-f="all">All</button>
+          <button class="chip" data-f="mug">Mugs</button>
+          <button class="chip" data-f="bowl">Bowls</button>
+          <button class="chip" data-f="vase">Vases</button>
+          <button class="chip" data-f="plate">Plates</button>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap story__in">
+      <div class="story__art" aria-hidden="true">
+        <svg viewBox="0 0 400 440">
+          <rect width="400" height="440" rx="24" fill="#e7d6c3"/>
+          <circle cx="200" cy="330" r="150" fill="#d8c2a8"/>
+          <ellipse cx="200" cy="330" rx="130" ry="26" fill="#8a5a3c"/>
+          <ellipse cx="200" cy="322" rx="120" ry="22" fill="#a26a45"/>
+          <path d="M150 322c0-70 10-120 50-150 40 30 50 80 50 150z" fill="#c9774c"/>
+          <path d="M175 172c10-8 40-8 50 0" stroke="#8a5a3c" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M160 250c20 6 60 6 80 0M156 280c24 6 64 6 88 0" stroke="#b0613b" stroke-width="3" fill="none"/>
+          <path d="M110 300c20-30 40-40 60-40M290 300c-20-30-40-40-60-40" stroke="#6f4a33" stroke-width="18" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <p class="kicker">Our studio</p>
+        <h2>Two potters, one wheel, and a lot of clay.</h2>
+        <p>Kiln &amp; Co. started in a shared garage studio with a second-hand wheel and a kiln that took three tries to fire properly. Today we make around 200 pieces a month — still by hand, still in small batches.</p>
+        <p>We glaze in autumn colours because they look even better with coffee stains. Every piece carries tiny marks from the making: that's the point.</p>
+        <div class="stats">
+          <div><b>200</b><span>pieces a month</span></div>
+          <div><b>6</b><span>signature glazes</span></div>
+          <div><b>4.9★</b><span>average review</span></div>
+        </div>
+        <p class="fine">Brand story and figures are fictional, written for this concept.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews">
+    <div class="wrap">
+      <p class="kicker center">Kind words</p>
+      <h2 class="center">Loved on breakfast tables</h2>
+      <p class="fine center">Example reviews written for this concept shop.</p>
+      <div class="reviews__grid">
+        <figure><div class="stars">★★★★★</div><blockquote>"The rust mug is the perfect weight. It's become the one everyone in the house fights over."</blockquote><figcaption>Hannah · verified buyer</figcaption></figure>
+        <figure><div class="stars">★★★★★</div><blockquote>"Arrived beautifully wrapped with a handwritten note. Bought a second set as a wedding gift."</blockquote><figcaption>Tom · verified buyer</figcaption></figure>
+        <figure><div class="stars">★★★★★</div><blockquote>"Gorgeous glaze, even nicer in person. The bud vase sits on my desk and makes me happy daily."</blockquote><figcaption>Aisha · verified buyer</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="care" id="care">
+    <div class="wrap care__in">
+      <div>
+        <h2>Join the studio list</h2>
+        <p>First look at new glazes and seconds sales. One email a month, never more.</p>
+      </div>
+      <form class="signup" id="signup">
+        <input type="email" placeholder="you@example.com" aria-label="Email address" required>
+        <button class="btn btn--dark" type="submit">Sign up</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <div><p class="logo logo--sm">Kiln <i>&amp;</i> Co.</p><p>Small-batch ceramics, Bristol.<br>studio@kilnandco.example.com</p></div>
+    <div><b>Shop</b><a href="#shop">Mugs</a><a href="#shop">Bowls</a><a href="#shop">Vases</a><a href="#shop">Gift cards</a></div>
+    <div><b>Help</b><a href="#care">Delivery</a><a href="#care">Returns</a><a href="#care">Care guide</a><a href="#care">Contact</a></div>
+    <div class="footer__note">This is a <b>concept e-commerce site</b> designed and built by MBDEV to show our work. Kiln &amp; Co. is fictional; products, prices and reviews are illustrative and nothing can be bought.</div>
+  </div>
+</footer>
+
+<!-- Quick view -->
+<div class="modal" id="modal" hidden>
+  <div class="modal__bg" data-close></div>
+  <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="x" data-close aria-label="Close">×</button>
+    <div class="modal__art" id="mArt"></div>
+    <div class="modal__body">
+      <p class="kicker" id="mCat"></p>
+      <h3 id="mTitle"></h3>
+      <p class="modal__price" id="mPrice"></p>
+      <p id="mDesc"></p>
+      <ul class="spec" id="mSpec"></ul>
+      <div class="qty"><button id="qMinus" aria-label="Less">−</button><span id="qVal">1</span><button id="qPlus" aria-label="More">+</button></div>
+      <button class="btn btn--dark btn--block" id="mAdd">Add to basket</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cart drawer -->
+<aside class="drawer" id="drawer" aria-label="Basket" aria-hidden="true">
+  <div class="drawer__bg" data-close-cart></div>
+  <div class="drawer__panel">
+    <div class="drawer__head"><h3>Your basket</h3><button class="x" data-close-cart aria-label="Close basket">×</button></div>
+    <div class="ship" id="ship"><span id="shipText"></span><div class="ship__bar"><i id="shipBar"></i></div></div>
+    <ul class="lines" id="lines"></ul>
+    <div class="drawer__foot">
+      <div class="total"><span>Subtotal</span><b id="subtotal">£0.00</b></div>
+      <button class="btn btn--dark btn--block" id="checkout">Checkout</button>
+      <p class="fine center" id="checkoutNote">Demo shop — checkout is disabled.</p>
+    </div>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="shop.js"></script>
+</body>
+</html>

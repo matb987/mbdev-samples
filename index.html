@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MBDEV — Sample web design work</title>
+<meta name="description" content="Concept websites designed and built by MBDEV: a local trades business, an e-commerce shop and a startup landing page.">
+<style>
+  @font-face { font-family: "Plus Jakarta Sans"; src: url(fonts/PlusJakartaSans.woff2) format("woff2"); font-weight: 400 800; font-display: swap; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.6 "Plus Jakarta Sans", system-ui, sans-serif; color: #15151c; background: #f6f6f3; }
+  .wrap { width: min(1160px, 100% - 40px); margin-inline: auto; }
+  header { padding: 72px 0 40px; }
+  .brand { font-weight: 800; letter-spacing: .08em; font-size: .9rem; }
+  h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.05; letter-spacing: -.035em; margin: 18px 0 14px; max-width: 16em; }
+  header p { color: #5d5d6a; font-size: 1.12rem; max-width: 40em; margin: 0; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-bottom: 60px; }
+  .card { background: #fff; border-radius: 18px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid #e6e6e0; transition: .2s; display: flex; flex-direction: column; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -18px rgba(0,0,0,.25); }
+  .card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; display: block; border-bottom: 1px solid #eee; }
+  .card div { padding: 22px 24px 26px; }
+  .tag { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #6d5efc; }
+  .card h2 { margin: 6px 0 6px; font-size: 1.3rem; letter-spacing: -.02em; }
+  .card p { margin: 0 0 14px; color: #5d5d6a; font-size: .95rem; }
+  .card span.go { font-weight: 700; }
+  footer { border-top: 1px solid #e3e3dc; padding: 28px 0 48px; color: #6b6b76; font-size: .9rem; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; max-width: 520px; } }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="brand">MBDEV</div>
+  <h1>Websites that bring in enquiries and sales.</h1>
+  <p>Three concept projects showing how we approach different kinds of business. Each one is a fictional brand, designed and built from scratch — fast, mobile-first and ready to adapt for a real client.</p>
+</header>
+<main class="wrap grid">
+  <a class="card" href="trades/">
+    <img src="screenshots/trades-desktop.png" alt="Oakline Plumbing & Heating concept homepage">
+    <div><span class="tag">Local business</span><h2>Oakline Plumbing &amp; Heating</h2><p>A lead-generation site for a local trades firm: click-to-call everywhere, a quick quote form, clear pricing and trust signals.</p><span class="go">View concept →</span></div>
+  </a>
+  <a class="card" href="shop/">
+    <img src="screenshots/shop-desktop.png" alt="Kiln & Co. concept online shop">
+    <div><span class="tag">E-commerce</span><h2>Kiln &amp; Co. ceramics shop</h2><p>A boutique online shop with product filtering, quick view, a slide-out basket and a free-delivery progress bar.</p><span class="go">View concept →</span></div>
+  </a>
+  <a class="card" href="saas/">
+    <img src="screenshots/saas-desktop.png" alt="Tallyflow concept startup landing page">
+    <div><span class="tag">Startup / professional services</span><h2>Tallyflow</h2><p>A conversion-focused landing page for a B2B software product: product mockup, feature story, pricing toggle and FAQ.</p><span class="go">View concept →</span></div>
+  </a>
+</main>
+<footer class="wrap">All three are concept/sample projects. The brands, people, reviews, prices and figures are fictional and shown only to demonstrate design and build quality.</footer>
+</body>
+</html>
