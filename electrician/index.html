@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brightwire Electrical — Electricians in South Manchester (concept site)</title>
+<meta name="description" content="Concept launch page by MBDEV for a fictional electrician in Manchester. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ffd21f'/%3E%3Cpath d='M18 3 7 18h7l-2 11 11-16h-7z' fill='%23111'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/Archivo.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Archivo"; src: url(../fonts/Archivo.woff2) format("woff2"); font-weight: 400 900; font-stretch: 62% 125%; font-display: swap; }
+:root { --y: #ffd21f; --k: #111214; --k2: #1d1f23; --g: #9aa0a8; --line: #2c2f35; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font: 17px/1.6 Archivo, system-ui, sans-serif; color: #eceef1; background: var(--k); }
+a { color: inherit; }
+h1, h2, h3 { margin: 0 0 .4em; line-height: .95; font-stretch: 125%; font-weight: 900; text-transform: uppercase; letter-spacing: -.01em; }
+p { margin: 0 0 1em; }
+.wrap { width: min(1180px, 100% - 40px); margin-inline: auto; }
+.concept { background: #000; color: #ccc; font-size: 13px; text-align: center; padding: 7px 12px; border-bottom: 1px solid #222; }
+.concept a { color: #fff; font-weight: 600; }
+
+.top { display: flex; align-items: center; gap: 20px; height: 76px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 900; font-stretch: 125%; font-size: 1.25rem; text-decoration: none; letter-spacing: .02em; }
+.logo svg { flex: none; }
+.top .call { margin-left: auto; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; font: 800 1rem Archivo, sans-serif; font-stretch: 110%; text-decoration: none; border-radius: 4px; border: 2px solid transparent; cursor: pointer; text-transform: uppercase; letter-spacing: .02em; }
+.btn--y { background: var(--y); color: var(--k); }
+.btn--y:hover { background: #fff; }
+.btn--o { border-color: #fff; color: #fff; }
+.btn--o:hover { background: #fff; color: var(--k); }
+
+.hero { position: relative; overflow: hidden; padding: 40px 0 0; }
+.hero::before { content: ""; position: absolute; right: -10%; top: 0; bottom: 0; width: 46%; background: repeating-linear-gradient(-45deg, var(--y) 0 26px, var(--k) 26px 52px); opacity: .9; clip-path: polygon(30% 0, 100% 0, 100% 100%, 0 100%); }
+.hero__in { position: relative; display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: end; }
+.hero h1 { font-size: clamp(3rem, 8.4vw, 7rem); }
+.hero h1 span { color: var(--y); display: block; }
+.lead { font-size: 1.2rem; color: #c5c9cf; max-width: 30em; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 26px 0 32px; }
+.chips li { border: 1px solid var(--line); padding: 7px 12px; font-size: .88rem; border-radius: 999px; background: var(--k2); }
+.chips li::before { content: "✓ "; color: var(--y); font-weight: 800; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; padding-bottom: 60px; }
+.card { background: #fff; color: var(--k); padding: 28px; border-radius: 6px 6px 0 0; box-shadow: 0 -20px 60px rgba(0,0,0,.4); }
+.card h2 { font-size: 1.6rem; }
+.card p { font-size: .92rem; color: #50555c; }
+.card label { display: block; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 12px; }
+.card input, .card select { display: block; width: 100%; margin-top: 5px; padding: 12px; font: 16px Archivo, sans-serif; border: 2px solid #d8dbe0; border-radius: 4px; }
+.card input:focus, .card select:focus { border-color: var(--k); outline: none; }
+.card .btn { width: 100%; justify-content: center; margin-top: 4px; }
+.msg { font-size: .88rem; margin: 10px 0 0; color: #7a5b00; font-weight: 600; }
+
+.strip { background: var(--y); color: var(--k); padding: 18px 0; font-weight: 800; font-stretch: 115%; text-transform: uppercase; }
+.strip ul { list-style: none; margin: 0 auto; padding: 0; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: .95rem; }
+
+.services { padding: 100px 0; }
+.head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 44px; flex-wrap: wrap; }
+.head h2 { font-size: clamp(2.4rem, 5vw, 4rem); max-width: 10em; }
+.head p { color: var(--g); max-width: 26em; margin: 0; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.svc { padding: 32px 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: .2s; }
+.svc:hover { background: var(--k2); }
+.svc svg { width: 40px; height: 40px; margin-bottom: 22px; }
+.svc h3 { font-size: 1.3rem; font-stretch: 110%; }
+.svc p { color: var(--g); font-size: .95rem; margin: 0; }
+.svc b { display: block; color: var(--y); margin-top: 14px; font-size: .9rem; }
+
+.proof { background: #f4f3ee; color: var(--k); padding: 100px 0; }
+.proof__in { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center; }
+.proof h2 { font-size: clamp(2.2rem, 4.4vw, 3.4rem); }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 30px; }
+.stats b { display: block; font-size: 2.8rem; font-weight: 900; font-stretch: 125%; line-height: 1; }
+.stats span { font-size: .9rem; color: #555a61; }
+.quote { background: #fff; border-left: 6px solid var(--y); padding: 26px 28px; margin: 0 0 16px; }
+.quote p { font-size: 1.15rem; margin-bottom: .5em; }
+.quote cite { font-style: normal; font-weight: 700; font-size: .9rem; }
+.fine { font-size: .8rem; color: #666b72; margin: 0; }
+.accred { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.accred span { border: 2px solid var(--k); padding: 6px 12px; font-weight: 800; font-size: .8rem; text-transform: uppercase; }
+
+.final { padding: 100px 0; text-align: center; background: radial-gradient(circle at 50% 120%, rgba(255,210,31,.25), transparent 60%); }
+.final h2 { font-size: clamp(2.6rem, 7vw, 5.6rem); }
+.final h2 span { color: var(--y); }
+.final p { color: var(--g); font-size: 1.1rem; }
+.final .cta { justify-content: center; padding: 16px 0 0; }
+.big { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; font-stretch: 125%; text-decoration: none; color: var(--y); display: inline-block; margin: 10px 0; }
+
+footer { border-top: 1px solid var(--line); padding: 32px 0; color: var(--g); font-size: .88rem; }
+footer .wrap { display: flex; gap: 30px; align-items: center; }
+footer p { margin: 0; flex: 1; }
+footer a { color: #fff; white-space: nowrap; }
+
+@media (max-width: 900px) {
+  .hero::before { width: 70%; right: -40%; opacity: .25; }
+  .hero__in, .proof__in { grid-template-columns: 1fr; }
+  .card { border-radius: 6px; margin-bottom: 40px; }
+  .cta { padding-bottom: 10px; }
+  .grid { grid-template-columns: 1fr 1fr; }
+  footer .wrap { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .top { height: 64px; }
+  .top .call span { display: none; }
+  .top .call { padding: 12px 14px; }
+  .logo { font-size: 1.05rem; }
+  .grid { grid-template-columns: 1fr; }
+  .services, .proof, .final { padding: 64px 0; }
+  .strip ul { font-size: .8rem; justify-content: flex-start; }
+}
+</style>
+</head>
+<body>
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Brightwire is a fictional business. Portfolio sample only.</div>
+
+<header class="wrap top">
+  <a class="logo" href="#top"><svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#ffd21f"/><path d="M18 3 7 18h7l-2 11 11-16h-7z" fill="#111"/></svg>Brightwire</a>
+  <a class="btn btn--y call" href="tel:01614960743" aria-label="Call 0161 496 0743"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span>0161 496 0743</span></a>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero__in">
+      <div>
+        <h1>Electrics sorted. <span>Properly.</span></h1>
+        <p class="lead">Qualified electricians for homes and landlords across Stockport, Didsbury and South Manchester. Fault finding, rewires, EV chargers and safety certificates — with a fixed price before we start.</p>
+        <ul class="chips">
+          <li>Fixed-price quotes</li><li>Same-week appointments</li><li>Part P certified</li><li>Tidy, dust-sheeted work</li>
+        </ul>
+        <div class="cta">
+          <a class="btn btn--y" href="#quote">Get a free quote</a>
+          <a class="btn btn--o" href="tel:01614960743">Call 0161 496 0743</a>
+        </div>
+      </div>
+      <form class="card" id="quote" novalidate>
+        <h2>Quick quote</h2>
+        <p>Tell us the job. We reply the same working day.</p>
+        <label>Job type
+          <select name="job" required><option value="">Choose…</option><option>Fault / tripping power</option><option>EV charger</option><option>Consumer unit upgrade</option><option>Full or part rewire</option><option>Landlord EICR</option><option>Lighting &amp; sockets</option></select>
+        </label>
+        <label>Postcode<input name="pc" autocomplete="postal-code" required></label>
+        <label>Phone<input name="tel" type="tel" autocomplete="tel" required></label>
+        <button class="btn btn--y" type="submit" style="background:#111;color:#ffd21f">Send my request</button>
+        <p class="msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <div class="strip" aria-label="Highlights">
+    <ul class="wrap"><li>⚡ Emergency call-outs</li><li>12-month workmanship guarantee</li><li>Card &amp; bank transfer</li><li>Free, no-obligation quotes</li></ul>
+  </div>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="head">
+        <h2>What we do</h2>
+        <p>Domestic and small commercial work. If it's wired in, we can test it, fix it or replace it.</p>
+      </div>
+      <div class="grid">
+        <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M22 3 9 22h9l-3 15 15-21h-9z" fill="none" stroke="#ffd21f" stroke-width="2.5" stroke-linejoin="round"/></svg><h3>Fault finding</h3><p>Tripping switches, dead sockets, flickering lights. We find the cause, not just the symptom.</p><b>From £75</b></article>
+        <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="8" width="20" height="26" rx="3" fill="none" stroke="#ffd21f" stroke-width="2.5"/><path d="M26 16h4a3 3 0 0 1 3 3v8M12 16l4 5h-4l4 5" fill="none" stroke="#ffd21f" stroke-width="2.5" stroke-linejoin="round"/></svg><h3>EV chargers</h3><p>Home charge points installed neatly, with the right protection and paperwork.</p><b>From £895</b></article>
+        <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="10" width="30" height="20" rx="2" fill="none" stroke="#ffd21f" stroke-width="2.5"/><path d="M11 16v8M17 16v8M23 16v8M29 16v8" stroke="#ffd21f" stroke-width="2.5"/></svg><h3>Consumer units</h3><p>Old fuse box? Upgrade to a modern board with RCBO protection.</p><b>From £480</b></article>
+        <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 34V18L20 7l14 11v16z" fill="none" stroke="#ffd21f" stroke-width="2.5" stroke-linejoin="round"/><path d="M14 34v-6c0-3 2-5 6-5s6 2 6 5v6" fill="none" stroke="#ffd21f" stroke-width="2.5"/></svg><h3>Rewires</h3><p>Full and partial rewires, planned room by room so you can live around the work.</p><b>Free survey</b></article>
+        <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="4" width="24" height="32" rx="3" fill="none" stroke="#ffd21f" stroke-width="2.5"/><path d="M14 14h12M14 20h12M14 26h7" stroke="#ffd21f" stroke-width="2.5"/></svg><h3>Landlord EICRs</h3><p>Electrical safety reports for rentals, with clear reports and quick remedial work.</p><b>From £140</b></article>
+        <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5a10 10 0 0 0-6 18v5h12v-5a10 10 0 0 0-6-18zM15 33h10" fill="none" stroke="#ffd21f" stroke-width="2.5" stroke-linecap="round"/></svg><h3>Lighting &amp; sockets</h3><p>Extra sockets, outdoor lights, downlights and smart switches.</p><b>From £85</b></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="wrap proof__in">
+      <div>
+        <h2>Trusted in 2,000+ homes</h2>
+        <p>Local, family-run and fully insured. We turn up when we say we will and leave the place cleaner than we found it.</p>
+        <div class="stats">
+          <div><b>4.9★</b><span>Average review score</span></div>
+          <div><b>12 yrs</b><span>Wiring South Manchester</span></div>
+        </div>
+        <div class="accred"><span>Part P</span><span>18th Edition</span><span>£2m insured</span></div>
+      </div>
+      <div>
+        <blockquote class="quote"><p>“Found the fault other sparkies missed, fixed it in an hour and charged exactly what he quoted.”</p><cite>Mark — Didsbury</cite></blockquote>
+        <blockquote class="quote"><p>“EV charger fitted in a morning. Cables hidden, driveway spotless.”</p><cite>Leanne — Bramhall</cite></blockquote>
+        <p class="fine">Figures, prices and reviews are illustrative for this concept site.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Power off? <span>Call us.</span></h2>
+      <p>Emergency call-outs 7 days a week across South Manchester.</p>
+      <a class="big" href="tel:01614960743">0161 496 0743</a>
+      <div class="cta"><a class="btn btn--y" href="#quote">Request a quote online</a><a class="btn btn--o" href="mailto:hello@example.com">hello@example.com</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>This is a <b>concept launch page</b> designed and built by MBDEV to demonstrate our work. Brightwire Electrical is fictional; prices, figures and reviews are illustrative. The phone number is from Ofcom's range reserved for fiction.</p>
+    <a href="../">← Back to MBDEV samples</a>
+  </div>
+</footer>
+<script>
+document.getElementById('quote').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, m = f.querySelector('.msg');
+  m.textContent = f.checkValidity() ? 'Thanks! This is a concept site, so nothing was sent. On a live site the request goes straight to the electrician\'s inbox and phone.' : 'Please pick a job type and add your postcode and phone.';
+  if (f.checkValidity()) f.reset();
+});
+</script>
+</body>
+</html>

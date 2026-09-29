@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sparrow Home Cleaning — Regular &amp; deep cleans in Nottingham (concept site)</title>
+<meta name="description" content="Concept launch page by MBDEV for a fictional domestic cleaning company in Nottingham. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%230f766e'/%3E%3Cpath d='M8 19c4-1 7-5 8-10 2 3 5 4 8 4-3 5-9 8-16 6z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/Nunito.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Nunito"; src: url(../fonts/Nunito.woff2) format("woff2"); font-weight: 400 800; font-display: swap; }
+:root { --teal: #0f766e; --teal-d: #0b5c56; --mint: #d7f3ec; --sky: #e8f1fb; --sun: #ffb84d; --ink: #1d2b36; --muted: #566575; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font: 18px/1.6 Nunito, system-ui, sans-serif; color: var(--ink); background: #fff; }
+a { color: inherit; }
+h1, h2, h3 { line-height: 1.12; margin: 0 0 .45em; font-weight: 800; letter-spacing: -.015em; }
+p { margin: 0 0 1em; }
+.wrap { width: min(1100px, 100% - 40px); margin-inline: auto; }
+.concept { background: #111; color: #ddd; font-size: 13px; text-align: center; padding: 7px 12px; }
+.concept a { color: #fff; font-weight: 700; }
+
+.top { display: flex; align-items: center; gap: 24px; height: 78px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.35rem; text-decoration: none; color: var(--teal); }
+.nav { margin-left: auto; display: flex; gap: 24px; align-items: center; }
+.nav a { text-decoration: none; font-weight: 700; color: var(--muted); }
+.nav a:hover { color: var(--teal); }
+.nav a.btn { color: #fff; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font: 800 1rem Nunito, sans-serif; text-decoration: none; border: 0; cursor: pointer; transition: .15s; }
+.btn--teal { background: var(--teal); color: #fff; box-shadow: 0 10px 24px -10px rgba(15,118,110,.7); }
+.btn--teal:hover { background: var(--teal-d); transform: translateY(-1px); }
+.btn--soft { background: var(--mint); color: var(--teal-d); }
+
+.hero { position: relative; padding: 50px 0 90px; background: linear-gradient(180deg, #fff 0%, var(--sky) 100%); overflow: hidden; }
+.bubble { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #fff, rgba(215,243,236,.6) 60%, rgba(15,118,110,.08)); border: 1px solid rgba(15,118,110,.12); }
+.b1 { width: 140px; height: 140px; left: 4%; top: 60px; } .b2 { width: 60px; height: 60px; left: 16%; top: 260px; } .b3 { width: 220px; height: 220px; right: -60px; top: -40px; } .b4 { width: 80px; height: 80px; right: 12%; bottom: 60px; }
+.hero__in { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.pill { display: inline-flex; gap: 8px; align-items: center; background: #fff; border-radius: 999px; padding: 6px 14px 6px 8px; font-weight: 700; font-size: .9rem; box-shadow: 0 4px 16px -8px rgba(0,0,0,.2); margin-bottom: 18px; }
+.pill b { background: var(--sun); color: #3d2600; border-radius: 999px; padding: 2px 10px; }
+.hero h1 { font-size: clamp(2.5rem, 5.4vw, 4rem); }
+.hero h1 em { font-style: normal; color: var(--teal); background: linear-gradient(transparent 62%, var(--mint) 62%); }
+.lead { font-size: 1.15rem; color: var(--muted); }
+.ticks { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 8px; font-weight: 700; }
+.ticks li { display: flex; gap: 10px; align-items: center; }
+.ticks li::before { content: ""; width: 22px; height: 22px; border-radius: 50%; flex: none; background: var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat; }
+
+.calc { background: #fff; border-radius: 28px; padding: 32px; box-shadow: 0 30px 70px -30px rgba(29,43,54,.35); }
+.calc h2 { font-size: 1.6rem; }
+.calc .sub { color: var(--muted); font-size: .95rem; }
+.grp { margin-bottom: 20px; }
+.grp > span { display: block; font-weight: 800; font-size: .95rem; margin-bottom: 8px; }
+.seg { display: flex; background: var(--sky); border-radius: 14px; padding: 4px; gap: 4px; }
+.seg label { flex: 1; }
+.seg input { position: absolute; opacity: 0; }
+.seg label span { display: block; text-align: center; padding: 10px 4px; border-radius: 11px; font-weight: 700; cursor: pointer; font-size: .95rem; }
+.seg input:checked + span { background: #fff; color: var(--teal); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.seg input:focus-visible + span { outline: 2px solid var(--teal); }
+.price { display: flex; align-items: baseline; justify-content: space-between; background: var(--mint); border-radius: 16px; padding: 16px 20px; margin-bottom: 16px; }
+.price span { font-weight: 700; color: var(--teal-d); }
+.price b { font-size: 2.3rem; color: var(--teal-d); }
+.price small { font-size: 1rem; font-weight: 700; }
+.calc .btn { width: 100%; }
+.calc .fine { text-align: center; margin: 12px 0 0; }
+.fine { font-size: .8rem; color: var(--muted); }
+
+.how { padding: 100px 0; }
+.center { text-align: center; max-width: 640px; margin: 0 auto 50px; }
+.center h2, .reviews h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
+.center p { color: var(--muted); }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.cardx { background: var(--sky); border-radius: 26px; padding: 32px 28px; }
+.cardx:nth-child(2) { background: var(--mint); }
+.cardx:nth-child(3) { background: #fff4e3; }
+.ico { width: 64px; height: 64px; border-radius: 20px; background: #fff; display: grid; place-items: center; margin-bottom: 20px; }
+.cardx h3 { font-size: 1.35rem; }
+.cardx ul { padding-left: 1.1em; margin: 0; color: var(--muted); }
+
+.reviews { background: var(--teal); color: #fff; padding: 90px 0; border-radius: 48px 48px 0 0; }
+.reviews__in { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; align-items: center; }
+.reviews .big { font-size: 4.5rem; font-weight: 800; line-height: 1; }
+.stars { color: var(--sun); font-size: 1.6rem; letter-spacing: 3px; }
+.rv { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.rv blockquote { margin: 0; background: rgba(255,255,255,.1); border-radius: 22px; padding: 24px; }
+.rv p { margin-bottom: .6em; }
+.rv cite { font-style: normal; font-weight: 800; color: #b9ebe1; }
+.reviews .fine { color: #b9ebe1; }
+
+.contact { background: var(--teal); padding: 0 0 90px; }
+.contact__box { background: #fff; border-radius: 30px; padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: 1.2fr .8fr; gap: 30px; align-items: center; }
+.contact h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+.contact p { color: var(--muted); margin: 0; }
+.contact__actions { display: grid; gap: 12px; }
+
+footer { background: #0b3d39; color: #b6d1cc; padding: 34px 0; font-size: .88rem; }
+footer .wrap { display: flex; gap: 30px; align-items: center; }
+footer p { margin: 0; flex: 1; }
+footer a { color: #fff; white-space: nowrap; }
+
+@media (max-width: 900px) {
+  .hero__in, .reviews__in, .contact__box { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  footer .wrap { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 400px) { .logo { font-size: .98rem !important; gap: 6px; } .nav .btn { padding: 9px 12px !important; font-size: .82rem !important; } .top { gap: 8px; } }
+@media (max-width: 640px) {
+  .nav a:not(.btn) { display: none; }
+  .nav .btn { padding: 10px 16px; white-space: nowrap; font-size: .9rem; }
+  .logo { font-size: 1.08rem; white-space: nowrap; }
+  .logo svg { width: 30px; height: 30px; }
+  .b1, .b2 { display: none; }
+  .top { height: 66px; }
+  .rv { grid-template-columns: 1fr; }
+  .hero { padding: 30px 0 60px; }
+  .calc { padding: 24px 20px; }
+  .how, .reviews { padding: 64px 0; }
+  .reviews { border-radius: 32px 32px 0 0; }
+}
+</style>
+</head>
+<body>
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Sparrow is a fictional business. Portfolio sample only.</div>
+
+<header class="wrap top">
+  <a class="logo" href="#top"><svg viewBox="0 0 32 32" width="36" height="36" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#0f766e"/><path d="M8 19c4-1 7-5 8-10 2 3 5 4 8 4-3 5-9 8-16 6z" fill="#fff"/><circle cx="21" cy="12" r="1.3" fill="#0f766e"/></svg>Sparrow Home Cleaning</a>
+  <nav class="nav" aria-label="Main">
+    <a href="#how">Services</a><a href="#reviews">Reviews</a>
+    <a class="btn btn--teal" href="#price">Get a price</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span><span class="bubble b4"></span>
+    <div class="wrap hero__in">
+      <div>
+        <p class="pill"><b>New</b> Now covering West Bridgford &amp; Beeston</p>
+        <h1>Come home to a <em>spotless</em> house, every week.</h1>
+        <p class="lead">Friendly, vetted cleaners for homes across Nottingham. The same cleaner each visit, eco-friendly products, and no contracts. Pause or cancel any time.</p>
+        <ul class="ticks">
+          <li>DBS-checked and fully insured team</li>
+          <li>Happiness guarantee: we'll re-clean for free</li>
+          <li>Book in 60 seconds, pay after each clean</li>
+        </ul>
+      </div>
+      <form class="calc" id="price">
+        <h2>Instant price</h2>
+        <p class="sub">Pick your home and how often. No sign-up needed.</p>
+        <div class="grp"><span>Bedrooms</span>
+          <div class="seg">
+            <label><input type="radio" name="bed" value="1"><span>1</span></label>
+            <label><input type="radio" name="bed" value="2" checked><span>2</span></label>
+            <label><input type="radio" name="bed" value="3"><span>3</span></label>
+            <label><input type="radio" name="bed" value="4"><span>4+</span></label>
+          </div>
+        </div>
+        <div class="grp"><span>How often?</span>
+          <div class="seg">
+            <label><input type="radio" name="freq" value="w" checked><span>Weekly</span></label>
+            <label><input type="radio" name="freq" value="f"><span>Fortnightly</span></label>
+            <label><input type="radio" name="freq" value="o"><span>Deep clean</span></label>
+          </div>
+        </div>
+        <div class="price" aria-live="polite"><span id="hrs">3 hours</span><b id="cost">£54<small> /visit</small></b></div>
+        <button class="btn btn--teal" type="submit">Book this clean</button>
+        <p class="fine" id="calcMsg" role="status">Sample prices for this concept site.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <div class="center">
+        <h2>Cleans that fit your week</h2>
+        <p>Every visit follows a room-by-room checklist, so nothing is missed, and you can add extras whenever you like.</p>
+      </div>
+      <div class="cards">
+        <article class="cardx">
+          <div class="ico"><svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><path d="M5 15 16 6l11 9v12H5z" fill="none" stroke="#0f766e" stroke-width="2.5" stroke-linejoin="round"/><path d="M13 27v-7h6v7" fill="none" stroke="#0f766e" stroke-width="2.5"/></svg></div>
+          <h3>Regular home cleans</h3>
+          <ul><li>Kitchens &amp; bathrooms</li><li>Dusting, hoovering, mopping</li><li>Beds changed on request</li></ul>
+        </article>
+        <article class="cardx">
+          <div class="ico"><svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><path d="M16 4l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="none" stroke="#0f766e" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
+          <h3>Deep &amp; one-off cleans</h3>
+          <ul><li>Spring cleans and after parties</li><li>Inside cupboards &amp; appliances</li><li>Limescale and grout</li></ul>
+        </article>
+        <article class="cardx">
+          <div class="ico"><svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect x="6" y="9" width="20" height="17" rx="3" fill="none" stroke="#c77700" stroke-width="2.5"/><path d="M11 9V6h10v3M11 16h10" stroke="#c77700" stroke-width="2.5" fill="none"/></svg></div>
+          <h3>End of tenancy</h3>
+          <ul><li>Letting-agent checklist</li><li>Oven, fridge and windows</li><li>Deposit-back guarantee</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="wrap reviews__in">
+      <div>
+        <p class="big">4.9</p>
+        <p class="stars" aria-label="5 stars">★★★★★</p>
+        <p>From 640 Nottingham households <em>(sample figures)</em></p>
+      </div>
+      <div>
+        <div class="rv">
+          <blockquote><p>“Lovely Jo has cleaned for us every Tuesday for a year. I honestly don't know how we coped before.”</p><cite>Emma, Sherwood</cite></blockquote>
+          <blockquote><p>“Booked an end-of-tenancy clean on a Friday, done on Monday, full deposit back.”</p><cite>Dan, Lenton</cite></blockquote>
+        </div>
+        <p class="fine">Example reviews written for this concept site.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="wrap">
+      <div class="contact__box">
+        <div>
+          <h2>Rather talk it through?</h2>
+          <p>Call or message us Monday to Saturday, 8am–6pm. We're a small local team and we always answer.</p>
+        </div>
+        <div class="contact__actions">
+          <a class="btn btn--teal" href="tel:01154960219">Call 0115 496 0219</a>
+          <a class="btn btn--soft" href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>This is a <b>concept launch page</b> designed and built by MBDEV to demonstrate our work. Sparrow Home Cleaning is fictional; prices, names, figures and reviews are illustrative. The phone number is from Ofcom's range reserved for fiction.</p>
+    <a href="../">← Back to MBDEV samples</a>
+  </div>
+</footer>
+<script>
+const f = document.getElementById('price'), hrsEl = document.getElementById('hrs'), cost = document.getElementById('cost');
+const hours = { 1: 2, 2: 3, 3: 3.5, 4: 4.5 }, rate = { w: 18, f: 19, o: 22 }, deepX = 1.8;
+function calc() {
+  const h = hours[f.bed.value] * (f.freq.value === 'o' ? deepX : 1), p = Math.round(h * rate[f.freq.value]);
+  hrsEl.textContent = (Math.round(h * 2) / 2) + ' hours';
+  cost.innerHTML = '£' + p + '<small>' + (f.freq.value === 'o' ? ' one-off' : ' /visit') + '</small>';
+}
+f.addEventListener('change', calc);
+f.addEventListener('submit', e => { e.preventDefault(); document.getElementById('calcMsg').textContent = 'This is a concept site, so nothing was booked. On a live site this opens the booking calendar.'; });
+</script>
+</body>
+</html>

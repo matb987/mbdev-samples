@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lune Hair &amp; Beauty — Chapel Allerton, Leeds (concept site)</title>
+<meta name="description" content="Concept website by MBDEV for a fictional hair and beauty salon in Leeds. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%233d1f35'/%3E%3Cpath d='M22 5A12 12 0 1 0 27 22A9.5 9.5 0 0 1 22 5z' fill='%23e9c9c4'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/CormorantGaramond.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Lune is a fictional business. Portfolio sample only.</div>
+
+<header class="header">
+  <div class="wrap header__in">
+    <a class="logo" href="#top" aria-label="Lune Hair and Beauty home">
+      <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M22 5A12 12 0 1 0 27 22A9.5 9.5 0 0 1 22 5z" fill="currentColor"/></svg>
+      <span>Lune <em>hair &amp; beauty</em></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#team">Team</a>
+      <a href="#looks">Looks</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="btn btn--dark header__book" href="#book">Book now</a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero__in">
+      <div class="hero__copy">
+        <p class="kicker">Chapel Allerton · Leeds</p>
+        <h1>Hair that feels like <em>you</em>, only lighter.</h1>
+        <p class="lead">Colour, cuts and calm. A small, independent salon where every appointment starts with a proper consultation and a good cup of tea.</p>
+        <div class="hero__cta">
+          <a class="btn btn--dark" href="#book">Book an appointment</a>
+          <a class="link" href="#services">See the price list →</a>
+        </div>
+        <ul class="hero__facts">
+          <li><b>Tue–Sat</b><span>Late nights Thu</span></li>
+          <li><b>Free</b><span>Colour consultations</span></li>
+          <li><b>4.9★</b><span>Sample rating</span></li>
+        </ul>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <svg viewBox="0 0 440 520" class="arch">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9c9c4"/><stop offset="1" stop-color="#c78f98"/></linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a2f4f"/><stop offset="1" stop-color="#2c1426"/></linearGradient>
+          </defs>
+          <path d="M40 520V210a180 180 0 0 1 360 0v310z" fill="url(#g1)"/>
+          <path d="M90 520V230a130 130 0 0 1 260 0v290z" fill="url(#g2)"/>
+          <circle cx="252" cy="200" r="62" fill="#f3dfd9"/>
+          <circle cx="278" cy="186" r="56" fill="url(#g2)"/>
+          <g fill="none" stroke="#e9c9c4" stroke-width="2.4" stroke-linecap="round">
+            <path d="M150 520c10-90 30-150 70-200"/>
+            <path d="M183 410c-24-6-42-22-50-44 24 2 42 18 50 44z" fill="#e9c9c4" stroke="none" opacity=".9"/>
+            <path d="M196 372c20-12 32-30 34-52-20 10-32 28-34 52z" fill="#e9c9c4" stroke="none" opacity=".75"/>
+            <path d="M171 452c-26 0-46-12-58-32 26-4 46 8 58 32z" fill="#e9c9c4" stroke="none" opacity=".6"/>
+          </g>
+          <circle cx="380" cy="90" r="6" fill="#c78f98"/><circle cx="410" cy="130" r="3" fill="#c78f98"/><circle cx="30" cy="160" r="4" fill="#c78f98"/>
+        </svg>
+        <div class="badge"><b>New client offer</b><span>20% off your first colour</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Services &amp; prices</p>
+        <h2>Our menu</h2>
+        <p>Prices depend on hair length and stylist level. We'll always confirm the price at your consultation.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Service categories">
+        <button role="tab" aria-selected="true" aria-controls="p-cut" id="t-cut">Cut &amp; style</button>
+        <button role="tab" aria-selected="false" aria-controls="p-colour" id="t-colour" tabindex="-1">Colour</button>
+        <button role="tab" aria-selected="false" aria-controls="p-beauty" id="t-beauty" tabindex="-1">Beauty</button>
+      </div>
+      <div class="panel" role="tabpanel" id="p-cut" aria-labelledby="t-cut">
+        <dl class="menu-list">
+          <div><dt>Restyle cut &amp; finish <small>Includes wash, consultation and blow-dry</small></dt><dd>from £48</dd></div>
+          <div><dt>Cut &amp; finish</dt><dd>from £40</dd></div>
+          <div><dt>Blow-dry <small>Smooth, bouncy or tousled</small></dt><dd>from £28</dd></div>
+          <div><dt>Short hair &amp; clipper cut</dt><dd>from £24</dd></div>
+          <div><dt>Occasion hair &amp; up-dos</dt><dd>from £45</dd></div>
+          <div><dt>Children's cut <small>Under 12</small></dt><dd>£16</dd></div>
+        </dl>
+      </div>
+      <div class="panel" role="tabpanel" id="p-colour" aria-labelledby="t-colour" hidden>
+        <dl class="menu-list">
+          <div><dt>Balayage &amp; toner <small>Hand-painted, soft grow-out</small></dt><dd>from £120</dd></div>
+          <div><dt>Full head highlights</dt><dd>from £95</dd></div>
+          <div><dt>Half head highlights</dt><dd>from £75</dd></div>
+          <div><dt>Root tint</dt><dd>from £52</dd></div>
+          <div><dt>Gloss &amp; tone</dt><dd>from £30</dd></div>
+          <div><dt>Colour consultation &amp; skin test</dt><dd>Free</dd></div>
+        </dl>
+      </div>
+      <div class="panel" role="tabpanel" id="p-beauty" aria-labelledby="t-beauty" hidden>
+        <dl class="menu-list">
+          <div><dt>Brow shape &amp; tint</dt><dd>£22</dd></div>
+          <div><dt>Brow lamination</dt><dd>£38</dd></div>
+          <div><dt>Lash lift &amp; tint</dt><dd>£45</dd></div>
+          <div><dt>Gel manicure</dt><dd>£28</dd></div>
+          <div><dt>Express facial <small>30 minutes</small></dt><dd>£35</dd></div>
+          <div><dt>Bridal trial <small>Hair and make-up</small></dt><dd>from £85</dd></div>
+        </dl>
+      </div>
+      <p class="fine">Sample prices written for this concept site.</p>
+    </div>
+  </section>
+
+  <section class="team" id="team">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">The team</p>
+        <h2>Small team, big on detail</h2>
+      </div>
+      <div class="team__grid">
+        <article class="person">
+          <div class="avatar a1" aria-hidden="true"><span>AR</span></div>
+          <h3>Amara</h3><p class="role">Owner &amp; senior colourist</p>
+          <p>Specialises in lived-in blondes and colour corrections.</p>
+        </article>
+        <article class="person">
+          <div class="avatar a2" aria-hidden="true"><span>JB</span></div>
+          <h3>Jess</h3><p class="role">Stylist</p>
+          <p>Precision bobs, curtain fringes and curly cuts.</p>
+        </article>
+        <article class="person">
+          <div class="avatar a3" aria-hidden="true"><span>NK</span></div>
+          <h3>Nadia</h3><p class="role">Beauty therapist</p>
+          <p>Brows, lashes and the most relaxing facials in LS7.</p>
+        </article>
+      </div>
+      <p class="fine">Fictional team for this concept site.</p>
+    </div>
+  </section>
+
+  <section class="looks" id="looks">
+    <div class="wrap">
+      <div class="sec-head sec-head--light">
+        <p class="kicker">Recent looks</p>
+        <h2>A little inspiration</h2>
+      </div>
+      <div class="looks__grid">
+        <figure class="look l1"><figcaption>Honey balayage</figcaption></figure>
+        <figure class="look l2"><figcaption>Copper gloss</figcaption></figure>
+        <figure class="look l3"><figcaption>Soft curtain fringe</figcaption></figure>
+        <figure class="look l4"><figcaption>Cool ash blonde</figcaption></figure>
+      </div>
+      <p class="fine fine--light">In a live site these tiles show the salon's own photos. Colour swatches are used for this concept.</p>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="wrap reviews__in">
+      <div>
+        <p class="kicker">Kind words</p>
+        <h2>4.9 out of 5</h2>
+        <p>Based on 210 reviews <em>(sample figures)</em>.</p>
+      </div>
+      <div class="quotes">
+        <blockquote><p>“Amara fixed a box-dye disaster I'd been hiding for a year. I actually cried in a good way.”</p><cite>Sophie, Roundhay</cite></blockquote>
+        <blockquote><p>“Calm, friendly and no hard sell. Best brow lamination I've had.”</p><cite>Priya, Meanwood</cite></blockquote>
+        <blockquote><p>“Jess listened properly and gave me the bob I've wanted for years.”</p><cite>Hannah, Headingley</cite></blockquote>
+      </div>
+      <p class="fine">Example reviews written for this concept site.</p>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap book__in">
+      <div class="book__info" id="visit">
+        <p class="kicker">Book &amp; visit</p>
+        <h2>Come and see us</h2>
+        <address>14 Harrogate Parade<br>Chapel Allerton, Leeds LS7 3AA<br><small>(Fictional address)</small></address>
+        <p><a href="tel:01134960488">0113 496 0488</a><br><a href="mailto:hello@example.com">hello@example.com</a></p>
+        <table class="hours">
+          <caption class="sr">Opening hours</caption>
+          <tr><th>Tue – Wed</th><td>9:00 – 17:30</td></tr>
+          <tr><th>Thursday</th><td>10:00 – 20:00</td></tr>
+          <tr><th>Fri – Sat</th><td>9:00 – 17:00</td></tr>
+          <tr><th>Sun – Mon</th><td>Closed</td></tr>
+        </table>
+      </div>
+      <form class="bookform" id="bookForm" novalidate>
+        <h3>Request an appointment</h3>
+        <label>Service
+          <select name="service" required>
+            <option value="">Choose a service…</option>
+            <option>Cut &amp; finish</option><option>Balayage</option><option>Highlights</option><option>Blow-dry</option><option>Brows / lashes</option><option>Colour consultation</option>
+          </select>
+        </label>
+        <fieldset>
+          <legend>Preferred time</legend>
+          <div class="chips">
+            <label><input type="radio" name="time" value="Morning" checked><span>Morning</span></label>
+            <label><input type="radio" name="time" value="Afternoon"><span>Afternoon</span></label>
+            <label><input type="radio" name="time" value="Evening"><span>Thu evening</span></label>
+          </div>
+        </fieldset>
+        <label>Your name<input name="name" autocomplete="name" required></label>
+        <label>Mobile<input name="phone" type="tel" autocomplete="tel" required></label>
+        <button class="btn btn--dark btn--block" type="submit">Send request</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <span class="logo logo--sm"><svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path d="M22 5A12 12 0 1 0 27 22A9.5 9.5 0 0 1 22 5z" fill="currentColor"/></svg> Lune</span>
+    <p>This is a <b>concept website</b> designed and built by MBDEV to demonstrate our work. Lune Hair &amp; Beauty is fictional; names, reviews, prices and figures are illustrative. The phone number is from Ofcom's range reserved for fiction.</p>
+    <a href="../">← Back to MBDEV samples</a>
+  </div>
+</footer>
+
+<script>
+const btn = document.getElementById('menuBtn'), nav = document.getElementById('nav');
+btn.addEventListener('click', () => { const o = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', o); });
+nav.addEventListener('click', e => { if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
+const tabs = [...document.querySelectorAll('[role=tab]')];
+function show(t) {
+  tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; });
+  t.focus();
+}
+tabs.forEach((t, i) => {
+  t.addEventListener('click', () => show(t));
+  t.addEventListener('keydown', e => { if (e.key === 'ArrowRight') show(tabs[(i + 1) % tabs.length]); if (e.key === 'ArrowLeft') show(tabs[(i + tabs.length - 1) % tabs.length]); });
+});
+document.getElementById('bookForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, msg = f.querySelector('.form-msg');
+  if (!f.checkValidity()) { msg.textContent = 'Please choose a service and add your name and mobile.'; return; }
+  msg.textContent = 'Thanks ' + f.name.value.split(' ')[0] + '! This is a concept site, so nothing was sent. On a live site the salon would text you to confirm.';
+  f.reset();
+});
+</script>
+</body>
+</html>

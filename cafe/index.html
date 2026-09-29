@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crumb &amp; Kettle — Bakery &amp; café, Stokes Croft, Bristol (concept site)</title>
+<meta name="description" content="Concept website by MBDEV for a fictional neighbourhood bakery and café in Bristol. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2324422f'/%3E%3Cpath d='M7 20c0-6 4-10 9-10s9 4 9 10z' fill='%23f2c94c'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/YoungSerif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Crumb &amp; Kettle is a fictional business. Portfolio sample only.</div>
+
+<header class="header">
+  <div class="wrap header__in">
+    <a class="logo" href="#top">Crumb <span>&amp;</span> Kettle</a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#today">Today's bakes</a>
+      <a href="#menu">Menu</a>
+      <a href="#cakes">Cakes to order</a>
+      <a href="#find">Find us</a>
+    </nav>
+    <span class="open-now" id="openNow"><b></b>Open today 7:30 – 16:00</span>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero__in">
+      <div>
+        <p class="hand">baked this morning, round the corner</p>
+        <h1>Sourdough, buns &amp; <span>proper coffee</span> on Stokes Croft.</h1>
+        <p class="lead">A neighbourhood bakery and café. We start the ovens at 4am so the counter is full by the time you're up. Sit in, take away, or order a cake for the weekend.</p>
+        <div class="cta">
+          <a class="btn btn--primary" href="#cakes">Order a cake</a>
+          <a class="btn btn--line" href="#menu">See the menu</a>
+        </div>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <svg viewBox="0 0 460 420">
+          <circle cx="230" cy="210" r="200" fill="#f2c94c"/>
+          <g transform="translate(70 120)">
+            <ellipse cx="160" cy="190" rx="170" ry="26" fill="#24422f" opacity=".18"/>
+            <path d="M10 170c0-80 70-140 150-140s150 60 150 140z" fill="#c9782f"/>
+            <path d="M10 170c0-80 70-140 150-140s150 60 150 140z" fill="none" stroke="#8a4a1b" stroke-width="4"/>
+            <path d="M70 80c30 20 40 50 40 80M140 50c25 30 30 70 25 110M215 60c25 25 35 65 30 100" stroke="#f4d7a2" stroke-width="10" stroke-linecap="round" fill="none"/>
+          </g>
+          <g transform="translate(250 40) rotate(18)">
+            <path d="M0 60c20-50 110-50 130 0-10 20-30 30-65 30S10 80 0 60z" fill="#e0a35a"/>
+            <path d="M22 40l10 40M50 30l6 58M80 30l-4 58M108 40l-10 40" stroke="#b56d2b" stroke-width="5" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(40 40)">
+            <rect x="0" y="30" width="80" height="70" rx="12" fill="#fff"/>
+            <path d="M80 45h10a16 16 0 0 1 0 32H80" fill="none" stroke="#fff" stroke-width="9"/>
+            <rect x="8" y="36" width="64" height="14" rx="7" fill="#6b3f22"/>
+            <path d="M22 18c-6-8 6-12 0-20M40 18c-6-8 6-12 0-20M58 18c-6-8 6-12 0-20" stroke="#24422f" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+        <p class="sticker">Since 2016 <small>(fictional)</small></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="today" id="today">
+    <div class="wrap">
+      <div class="board">
+        <div class="board__head">
+          <h2>On the counter today</h2>
+          <p class="hand hand--light">while stocks last — usually gone by 2pm!</p>
+        </div>
+        <ul class="bakes">
+          <li><span>Country sourdough</span><i></i><b>£4.60</b></li>
+          <li><span>Cardamom knots</span><i></i><b>£3.40</b></li>
+          <li><span>Almond croissant</span><i></i><b>£3.60</b></li>
+          <li><span>Seeded rye loaf</span><i></i><b>£4.80</b></li>
+          <li><span>Rhubarb &amp; custard bun</span><i></i><b>£3.80</b></li>
+          <li><span>Cheese &amp; Marmite swirl</span><i></i><b>£3.20</b></li>
+          <li><span>Brown butter cookie <em>vg</em></span><i></i><b>£2.60</b></li>
+          <li><span>Focaccia slice</span><i></i><b>£3.00</b></li>
+        </ul>
+        <p class="board__note">Sample menu and prices for this concept site. On a live site, staff can update this board from their phone.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-sec" id="menu">
+    <div class="wrap">
+      <h2 class="title">Brunch &amp; coffee</h2>
+      <div class="menu-grid">
+        <article class="item">
+          <div class="item__img i1" aria-hidden="true"></div>
+          <h3>Sourdough toast, cultured butter &amp; jam</h3><p>£5.50</p>
+        </article>
+        <article class="item">
+          <div class="item__img i2" aria-hidden="true"></div>
+          <h3>Smashed beans, feta &amp; chilli on toast</h3><p>£9.00</p>
+        </article>
+        <article class="item">
+          <div class="item__img i3" aria-hidden="true"></div>
+          <h3>Bacon or mushroom bap, house brown sauce</h3><p>£7.50</p>
+        </article>
+        <article class="item">
+          <div class="item__img i4" aria-hidden="true"></div>
+          <h3>Flat white, oat milk at no extra cost</h3><p>£3.20</p>
+        </article>
+      </div>
+      <p class="fine">Vegan and gluten-aware options every day. Ask us about allergens.</p>
+    </div>
+  </section>
+
+  <section class="cakes" id="cakes">
+    <div class="wrap cakes__in">
+      <div>
+        <h2 class="title">Celebration cakes, ready to collect</h2>
+        <p>Order by Wednesday for Saturday collection. Choose a size and flavour and we'll pipe any message on top.</p>
+        <ol class="steps">
+          <li><b>Pick</b> a size and flavour</li>
+          <li><b>Add</b> your message</li>
+          <li><b>Collect</b> from the shop</li>
+        </ol>
+      </div>
+      <form class="cakeform" id="cakeForm">
+        <fieldset>
+          <legend>Size</legend>
+          <div class="opts">
+            <label><input type="radio" name="size" value="28" checked><span><b>6 inch</b>serves 8–10<em>£28</em></span></label>
+            <label><input type="radio" name="size" value="38"><span><b>8 inch</b>serves 12–16<em>£38</em></span></label>
+            <label><input type="radio" name="size" value="52"><span><b>10 inch</b>serves 20+<em>£52</em></span></label>
+          </div>
+        </fieldset>
+        <label class="field">Flavour
+          <select name="flavour">
+            <option>Chocolate &amp; salted caramel</option>
+            <option>Lemon &amp; elderflower</option>
+            <option>Carrot &amp; brown butter</option>
+            <option>Raspberry &amp; pistachio (vegan)</option>
+          </select>
+        </label>
+        <label class="field">Message on top <small>(optional, up to 30 characters)</small>
+          <input name="msg" maxlength="30" placeholder="Happy birthday Mo!">
+        </label>
+        <div class="total">Total <b id="total">£28</b></div>
+        <button class="btn btn--primary btn--block" type="submit">Request this cake</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="wrap story__in">
+      <blockquote>
+        <p>“The cardamom knots are worth crossing the city for. Friendly staff, and they remember your order.”</p>
+        <cite>— Tom, Montpelier</cite>
+      </blockquote>
+      <blockquote>
+        <p>“Ordered a lemon cake for Mum's 70th. It looked beautiful and tasted even better.”</p>
+        <cite>— Grace, Bishopston</cite>
+      </blockquote>
+      <p class="fine">Example reviews written for this concept site.</p>
+    </div>
+  </section>
+
+  <section class="find" id="find">
+    <div class="wrap find__in">
+      <div>
+        <h2 class="title">Find us</h2>
+        <address>92 Stokes Croft, Bristol BS1 3RL <small>(fictional address)</small></address>
+        <p><a href="tel:01174960527">0117 496 0527</a> · <a href="mailto:hello@example.com">hello@example.com</a></p>
+        <dl class="hours">
+          <div><dt>Mon – Fri</dt><dd>7:30 – 16:00</dd></div>
+          <div><dt>Saturday</dt><dd>8:00 – 16:00</dd></div>
+          <div><dt>Sunday</dt><dd>9:00 – 14:00</dd></div>
+        </dl>
+        <p class="perks">Dogs welcome · Step-free entrance · Card only</p>
+      </div>
+      <div class="map" role="img" aria-label="Illustrated map showing the bakery on Stokes Croft">
+        <svg viewBox="0 0 400 300" aria-hidden="true">
+          <rect width="400" height="300" fill="#e9e1cf"/>
+          <path d="M-10 210 410 120" stroke="#fff" stroke-width="26"/>
+          <path d="M150 -10 230 310" stroke="#fff" stroke-width="34"/>
+          <path d="M-10 60 160 90" stroke="#fff" stroke-width="16"/>
+          <path d="M260 300 410 240" stroke="#fff" stroke-width="16"/>
+          <rect x="20" y="220" width="110" height="60" rx="8" fill="#c8d8b8"/>
+          <rect x="280" y="20" width="100" height="80" rx="8" fill="#c8d8b8"/>
+          <text x="244" y="200" font-size="13" fill="#6d6353" transform="rotate(76 244 200)" font-family="sans-serif">STOKES CROFT</text>
+          <g transform="translate(190 128)"><path d="M0 0c-16 0-26 12-26 26 0 20 26 42 26 42s26-22 26-42C26 12 16 0 0 0z" fill="#c2562b"/><circle cy="25" r="9" fill="#fff"/></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <p class="logo logo--foot">Crumb <span>&amp;</span> Kettle</p>
+    <p>This is a <b>concept website</b> designed and built by MBDEV to demonstrate our work. Crumb &amp; Kettle is fictional; menu items, prices, reviews and figures are illustrative. The phone number is from Ofcom's range reserved for fiction.</p>
+    <a href="../">← Back to MBDEV samples</a>
+  </div>
+</footer>
+
+<script>
+const btn = document.getElementById('menuBtn'), nav = document.getElementById('nav');
+btn.addEventListener('click', () => { const o = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', o); });
+nav.addEventListener('click', e => { if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
+// opening hours badge
+const hrs = { 0: [9, 14], 6: [8, 16] }, now = new Date(), d = now.getDay(), [o, c] = hrs[d] || [7.5, 16], h = now.getHours() + now.getMinutes() / 60;
+const fmt = x => Math.floor(x) + ':' + (x % 1 ? '30' : '00');
+const on = document.getElementById('openNow');
+on.innerHTML = (h >= o && h < c ? '<b></b>Open now until ' + fmt(c) : '<b class="shut"></b>Closed · opens ' + fmt(hrs[(d + (h >= c ? 1 : 0)) % 7]?.[0] ?? 7.5));
+// cake builder
+const form = document.getElementById('cakeForm'), total = document.getElementById('total');
+form.addEventListener('change', () => { total.textContent = '£' + form.size.value; });
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  form.querySelector('.form-msg').textContent = 'Thanks! This is a concept site, so no order was placed. On a live site you would get a confirmation email and pay on collection.';
+});
+</script>
+</body>
+</html>
