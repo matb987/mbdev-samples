@@ -56,7 +56,7 @@ p { margin: 0 0 1em; }
 .mock__bar i { width: 11px; height: 11px; border-radius: 50%; background: #333341; }
 .mock__in { display: grid; grid-template-columns: 1.1fr .9fr; gap: 14px; }
 .pane { background: var(--panel); border: 1px solid var(--line); border-radius: 14px 14px 0 0; padding: 18px; min-height: 330px; }
-.pane h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; color: var(--mut); font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.pane .ph { margin: 0 0 .6em; font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; color: var(--mut); font-weight: 600; display: flex; align-items: center; gap: 8px; }
 .rec { width: 8px; height: 8px; border-radius: 50%; background: #ff4d6d; box-shadow: 0 0 0 4px rgba(255,77,109,.2); animation: pulse 1.6s infinite; }
 @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgba(255,77,109,0); } }
 .wave { display: flex; align-items: center; gap: 3px; height: 46px; margin: 8px 0 16px; }
@@ -77,8 +77,8 @@ p { margin: 0 0 1em; }
 @media (prefers-reduced-motion: reduce) { .wave span, .rec, .line.typing::after { animation: none; } }
 
 .logos { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 24px 0; }
-.logos .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; color: #6d6c80; font-weight: 600; letter-spacing: -.02em; font-size: 1.1rem; }
-.logos small { font-weight: 400; font-size: .8rem; color: #6d6c80; letter-spacing: 0; }
+.logos .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; color: #8a899c; font-weight: 600; letter-spacing: -.02em; font-size: 1.1rem; }
+.logos small { font-weight: 400; font-size: .8rem; color: #8a899c; letter-spacing: 0; }
 
 .features { padding: 110px 0; }
 .center { text-align: center; max-width: 640px; margin: 0 auto 56px; }
@@ -148,14 +148,14 @@ footer a { color: #fff; white-space: nowrap; }
       <span class="badge"><b>Beta</b> Now opening to 500 more teams</span>
       <h1>Meeting notes that <em class="s">write themselves.</em></h1>
       <p class="lead">Murmur joins your calls, writes a clean summary, and turns “I'll send that over” into tasks with owners and dates. You just talk.</p>
-      <form class="wl" data-wl novalidate><label class="sr" for="e1">Work email</label><input id="e1" type="email" placeholder="you@company.com" autocomplete="email" required><button class="btn btn--light" type="submit">Get early access</button></form>
+      <form class="wl" data-wl novalidate><label class="sr" for="e1">Work email</label><input id="e1" type="email" placeholder="you@example.com" autocomplete="email" required><button class="btn btn--light" type="submit">Get early access</button></form>
       <p class="wl-msg" role="status" aria-live="polite">Free during beta · No card needed</p>
 
       <div class="mock" aria-label="Illustration of the Murmur app transcribing a meeting">
         <div class="mock__bar" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="mock__in">
           <div class="pane">
-            <h3><span class="rec"></span> Live · Weekly product sync · 14:02</h3>
+            <p class="ph"><span class="rec"></span> Live · Weekly product sync · 14:02</p>
             <div class="wave" aria-hidden="true" id="wave"></div>
             <div class="lines" id="lines">
               <p class="line"><b>Priya</b>Checkout drop-off is down to 18% since the new flow went live.</p>
@@ -164,9 +164,9 @@ footer a { color: #fff; white-space: nowrap; }
             </div>
           </div>
           <div class="pane sum">
-            <h3>✦ Summary</h3>
+            <p class="ph">✦ Summary</p>
             <ul><li>Checkout drop-off fell from 31% to 18%.</li><li>Apple Pay is the priority before the 14th.</li><li>Onboarding emails are paused until copy is reviewed.</li></ul>
-            <h3>Action items</h3>
+            <p class="ph">Action items</p>
             <div class="task"><i></i>Ship Apple Pay button<span>Leo · Fri</span></div>
             <div class="task"><i></i>Review onboarding copy<span>Priya · Wed</span></div>
           </div>
@@ -206,7 +206,7 @@ footer a { color: #fff; white-space: nowrap; }
     <div class="wrap">
       <h2>Be first in <em class="s">the room.</em></h2>
       <p>Join 4,200 people on the waitlist <span class="fine">(sample figure)</span>. We're letting in new teams every Monday.</p>
-      <form class="wl" data-wl novalidate style="margin-top:26px"><label class="sr" for="e2">Work email</label><input id="e2" type="email" placeholder="you@company.com" autocomplete="email" required><button class="btn btn--light" type="submit">Join the waitlist</button></form>
+      <form class="wl" data-wl novalidate style="margin-top:26px"><label class="sr" for="e2">Work email</label><input id="e2" type="email" placeholder="you@example.com" autocomplete="email" required><button class="btn btn--light" type="submit">Join the waitlist</button></form>
       <p class="wl-msg" role="status" aria-live="polite"></p>
       <ul class="perks"><li>Free during beta</li><li>No card needed</li><li>Cancel any time</li></ul>
       <p class="fine" style="margin-top:22px">Questions? <a href="mailto:hello@example.com">hello@example.com</a></p>

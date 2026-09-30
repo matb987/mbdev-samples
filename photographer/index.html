@@ -87,8 +87,9 @@ p { margin: 0 0 1em; }
 .kind cite { font-style: normal; font-size: .78rem; letter-spacing: .24em; text-transform: uppercase; font-weight: 600; color: var(--sage); }
 .kind p.fine { font: .8rem/1.5 Figtree, sans-serif; }
 .dots { display: flex; justify-content: center; gap: 10px; margin-top: 30px; }
-.dots button { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--ink); background: none; padding: 0; cursor: pointer; }
-.dots button[aria-current=true] { background: var(--ink); }
+.dots button { width: 24px; height: 24px; border: 0; background: none; padding: 0; cursor: pointer; display: grid; place-items: center; }
+.dots button::after { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--ink); }
+.dots button[aria-current=true]::after { background: var(--ink); }
 
 .enquire { display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; }
 .enquire__art { background: url(art/dusk.svg) center/cover; }

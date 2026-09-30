@@ -1,6 +1,6 @@
 @font-face { font-family: "Sora"; src: url(../fonts/Sora.woff2) format("woff2"); font-weight: 400 700; font-display: swap; }
 
-:root { --navy: #0b2545; --navy-2: #13315c; --amber: #f4a259; --amber-d: #b8641a; --sky: #8ecae6; --bg: #f7f8fa; --ink: #141b26; --muted: #5a6474; --line: #e2e6ec; }
+:root { --navy: #0b2545; --navy-2: #13315c; --amber: #f4a259; --amber-d: #9a5214; --sky: #8ecae6; --bg: #f7f8fa; --ink: #141b26; --muted: #5a6474; --line: #e2e6ec; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; font: 16px/1.65 Sora, system-ui, sans-serif; color: var(--ink); background: #fff; }
