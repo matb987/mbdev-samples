@@ -45,23 +45,7 @@ p { margin: 0 0 1em; }
 .ticks li { display: flex; gap: 10px; align-items: center; }
 .ticks li::before { content: ""; width: 22px; height: 22px; border-radius: 50%; flex: none; background: var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat; }
 
-.calc { background: #fff; border-radius: 28px; padding: 32px; box-shadow: 0 30px 70px -30px rgba(29,43,54,.35); }
-.calc h2 { font-size: 1.6rem; }
-.calc .sub { color: var(--muted); font-size: .95rem; }
-.grp { margin-bottom: 20px; }
-.grp > span { display: block; font-weight: 800; font-size: .95rem; margin-bottom: 8px; }
-.seg { display: flex; background: var(--sky); border-radius: 14px; padding: 4px; gap: 4px; }
-.seg label { flex: 1; }
-.seg input { position: absolute; opacity: 0; }
-.seg label span { display: block; text-align: center; padding: 10px 4px; border-radius: 11px; font-weight: 700; cursor: pointer; font-size: .95rem; }
-.seg input:checked + span { background: #fff; color: var(--teal); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
-.seg input:focus-visible + span { outline: 2px solid var(--teal); }
-.price { display: flex; align-items: baseline; justify-content: space-between; background: var(--mint); border-radius: 16px; padding: 16px 20px; margin-bottom: 16px; }
-.price span { font-weight: 700; color: var(--teal-d); }
-.price b { font-size: 2.3rem; color: var(--teal-d); }
-.price small { font-size: 1rem; font-weight: 700; }
-.calc .btn { width: 100%; }
-.calc .fine { text-align: center; margin: 12px 0 0; }
+.quote { min-height: 560px; scroll-margin-top: 20px; }
 .fine { font-size: .8rem; color: var(--muted); }
 
 .how { padding: 100px 0; }
@@ -112,14 +96,13 @@ footer a { color: #fff; white-space: nowrap; }
   .top { height: 66px; }
   .rv { grid-template-columns: 1fr; }
   .hero { padding: 30px 0 60px; }
-  .calc { padding: 24px 20px; }
   .how, .reviews { padding: 64px 0; }
   .reviews { border-radius: 32px 32px 0 0; }
 }
 </style>
 </head>
 <body>
-<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Sparrow is a fictional business. Portfolio sample only.</div>
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Sparrow is a fictional business. Portfolio sample only. The price box is a live demo of <a href="../quotekit/">QuoteKit</a> (beta).</div>
 
 <header class="wrap top">
   <a class="logo" href="#top"><svg viewBox="0 0 32 32" width="36" height="36" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#0f766e"/><path d="M8 19c4-1 7-5 8-10 2 3 5 4 8 4-3 5-9 8-16 6z" fill="#fff"/><circle cx="21" cy="12" r="1.3" fill="#0f766e"/></svg>Sparrow Home Cleaning</a>
@@ -143,28 +126,11 @@ footer a { color: #fff; white-space: nowrap; }
           <li>Book in 60 seconds, pay after each clean</li>
         </ul>
       </div>
-      <form class="calc" id="price">
-        <h2>Instant price</h2>
-        <p class="sub">Pick your home and how often. No sign-up needed.</p>
-        <div class="grp"><span>Bedrooms</span>
-          <div class="seg">
-            <label><input type="radio" name="bed" value="1"><span>1</span></label>
-            <label><input type="radio" name="bed" value="2" checked><span>2</span></label>
-            <label><input type="radio" name="bed" value="3"><span>3</span></label>
-            <label><input type="radio" name="bed" value="4"><span>4+</span></label>
-          </div>
-        </div>
-        <div class="grp"><span>How often?</span>
-          <div class="seg">
-            <label><input type="radio" name="freq" value="w" checked><span>Weekly</span></label>
-            <label><input type="radio" name="freq" value="f"><span>Fortnightly</span></label>
-            <label><input type="radio" name="freq" value="o"><span>Deep clean</span></label>
-          </div>
-        </div>
-        <div class="price" aria-live="polite"><span id="hrs">3 hours</span><b id="cost">£54<small> /visit</small></b></div>
-        <button class="btn btn--teal" type="submit">Book this clean</button>
-        <p class="fine" id="calcMsg" role="status">Sample prices for this concept site.</p>
-      </form>
+      <div class="quote" id="price">
+        <!-- QuoteKit: one script tag is the whole install -->
+        <script src="../quotekit/widget.js" data-quotekit="sparrow" async></script>
+        <noscript><p>Call 0115 496 0219 for a price.</p></noscript>
+      </div>
     </div>
   </section>
 
@@ -233,16 +199,5 @@ footer a { color: #fff; white-space: nowrap; }
     <a href="../">← Back to MBDEV samples</a>
   </div>
 </footer>
-<script>
-const f = document.getElementById('price'), hrsEl = document.getElementById('hrs'), cost = document.getElementById('cost');
-const hours = { 1: 2, 2: 3, 3: 3.5, 4: 4.5 }, rate = { w: 18, f: 19, o: 22 }, deepX = 1.8;
-function calc() {
-  const h = hours[f.bed.value] * (f.freq.value === 'o' ? deepX : 1), p = Math.round(h * rate[f.freq.value]);
-  hrsEl.textContent = (Math.round(h * 2) / 2) + ' hours';
-  cost.innerHTML = '£' + p + '<small>' + (f.freq.value === 'o' ? ' one-off' : ' /visit') + '</small>';
-}
-f.addEventListener('change', calc);
-f.addEventListener('submit', e => { e.preventDefault(); document.getElementById('calcMsg').textContent = 'This is a concept site, so nothing was booked. On a live site this opens the booking calendar.'; });
-</script>
 </body>
 </html>

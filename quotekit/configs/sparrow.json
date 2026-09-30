@@ -1,0 +1,37 @@
+{
+  "id": "sparrow",
+  "business": "Sparrow Home Cleaning",
+  "alertEmail": "hello@example.com",
+  "accent": "#0f766e",
+  "title": "Instant price",
+  "intro": "Pick your home and the clean you need. No sign-up needed.",
+  "mode": "hour",
+  "roomLabel": "Bedrooms",
+  "roomMin": 1,
+  "roomMax": 6,
+  "baseHours": 1.25,
+  "hoursPerRoom": 0.8,
+  "baseFee": 20,
+  "services": [
+    { "name": "Weekly clean", "rate": 18, "factor": 1, "suffix": "per visit" },
+    { "name": "Fortnightly clean", "rate": 19, "factor": 1, "suffix": "per visit" },
+    { "name": "Deep clean", "rate": 22, "factor": 1.8, "suffix": "one-off" },
+    { "name": "End of tenancy", "rate": 24, "factor": 2.2, "suffix": "one-off" }
+  ],
+  "addons": [
+    { "name": "Inside oven", "price": 25 },
+    { "name": "Inside fridge", "price": 12 },
+    { "name": "Interior windows", "price": 18 },
+    { "name": "Change beds", "price": 8 },
+    { "name": "Ironing (1 hr)", "price": 18 }
+  ],
+  "minimum": 40,
+  "spread": 10,
+  "rounding": 1,
+  "areas": [
+    { "name": "Nottingham city", "codes": "NG1 NG3 NG5 NG6 NG7 NG8", "surcharge": 0 },
+    { "name": "West Bridgford & Beeston", "codes": "NG2 NG9 NG11 NG12", "surcharge": 5 }
+  ],
+  "acceptOutside": true,
+  "replyPromise": "We usually reply within 2 working hours."
+}

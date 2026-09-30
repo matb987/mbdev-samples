@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MBDEV — Sample web design work</title>
-<meta name="description" content="16 concept websites designed and built by MBDEV for local businesses, professional services, online shops and startups.">
+<meta name="description" content="16 concept websites and a working web-app demo designed and built by MBDEV for local businesses, professional services, online shops and startups.">
 <link rel="preload" href="fonts/PlusJakartaSans.woff2" as="font" type="font/woff2" crossorigin>
 <style>
   @font-face { font-family: "Plus Jakarta Sans"; src: url(fonts/PlusJakartaSans.woff2) format("woff2"); font-weight: 400 800; font-display: swap; }
@@ -32,6 +32,8 @@
   .meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; border-top: 1px solid #efefe9; padding-top: 14px; font-size: .88rem; }
   .pkg { background: #f0eefe; color: #3d2fb3; border-radius: 8px; padding: 4px 10px; font-weight: 600; }
   .go { font-weight: 700; }
+  .card--feature { border-color: #c9c3fb; box-shadow: 0 0 0 3px #efedfe; }
+  .card--feature .tag { color: #4f46e5; }
   footer { border-top: 1px solid #e3e3dc; padding: 28px 0 48px; color: #6b6b76; font-size: .9rem; }
   @media (max-width: 1000px) { .grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } header { padding-top: 40px; } }
@@ -41,7 +43,7 @@
 <header class="wrap">
   <div class="brand">MBDEV</div>
   <h1>Websites that bring in enquiries and sales.</h1>
-  <p>16 sample sites. Each one is a concept project for a fictional business, designed and built from scratch to show how we approach different kinds of business. All are fast, mobile-first and ready to adapt for your project.</p>
+  <p>16 sample sites and a working product demo. Each site is a concept project for a fictional business, designed and built from scratch to show how we approach different kinds of business. All are fast, mobile-first and ready to adapt for your project.</p>
   <p class="nda">Our client projects are covered by non-disclosure agreements, so we can't show them here. These concept sites show the same standard of work.</p>
 </header>
 
@@ -52,8 +54,13 @@
     <button type="button" aria-pressed="false" data-f="pro">Professional services</button>
     <button type="button" aria-pressed="false" data-f="shop">E-commerce</button>
     <button type="button" aria-pressed="false" data-f="startup">Startups</button>
+    <button type="button" aria-pressed="false" data-f="product">Product demos</button>
   </div>
   <div class="grid" id="grid">
+    <a class="card card--feature" data-cat="product" href="quotekit/">
+      <img src="screenshots/thumbs/quotekit.webp" width="720" height="450" alt="QuoteKit leads dashboard with a list of quote requests">
+      <div><span class="tag">Web app · Beta concept</span><h2>QuoteKit: instant-quote widget</h2><p>A working mini web app. The business sets its prices; one line of code adds a quote box to any website; leads land in a live dashboard. Try it on the Sparrow cleaning site.</p><div class="meta"><span class="pkg">Custom web app work</span><span class="go">Try the demo →</span></div></div>
+    </a>
     <a class="card" data-cat="local" href="salon/">
       <img src="screenshots/thumbs/salon.webp" width="720" height="450" alt="Lune Hair &amp; Beauty concept homepage">
       <div><span class="tag">Hair &amp; beauty salon · One page</span><h2>Lune Hair &amp; Beauty</h2><p>An elegant one-page salon site with a tabbed price list, team profiles and an appointment request form.</p><div class="meta"><span class="pkg">Similar package: Starter £295</span><span class="go">View →</span></div></div>
@@ -68,7 +75,7 @@
     </a>
     <a class="card" data-cat="local" href="cleaning/">
       <img src="screenshots/thumbs/cleaning.webp" width="720" height="450" alt="Sparrow Home Cleaning concept homepage" loading="lazy">
-      <div><span class="tag">Domestic cleaning · Launch page</span><h2>Sparrow Home Cleaning</h2><p>A friendly launch page with an instant price calculator that turns visitors into bookings.</p><div class="meta"><span class="pkg">Similar package: Launch Page £95</span><span class="go">View →</span></div></div>
+      <div><span class="tag">Domestic cleaning · Launch page</span><h2>Sparrow Home Cleaning</h2><p>A friendly launch page with a live instant-price widget (QuoteKit) that turns visitors into quote requests.</p><div class="meta"><span class="pkg">Similar package: Launch Page £95</span><span class="go">View →</span></div></div>
     </a>
     <a class="card" data-cat="local" href="gym/">
       <img src="screenshots/thumbs/gym.webp" width="720" height="450" alt="Forge Strength Club concept homepage" loading="lazy">

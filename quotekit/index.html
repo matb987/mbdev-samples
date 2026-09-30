@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leads · QuoteKit (beta concept demo)</title>
+<meta name="description" content="QuoteKit is a beta concept by MBDEV: an instant-quote widget for cleaners and trades, with a price-rule editor and lead list. Demo only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%234f46e5'/%3E%3Cpath d='M9 10h14v9h-7l-4 4v-4H9z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/Geist.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Nunito"; src: url(../fonts/Nunito.woff2) format("woff2"); font-weight: 400 800; font-display: swap; }
+@font-face { font-family: "Geist"; src: url(../fonts/Geist.woff2) format("woff2"); font-weight: 300 800; font-display: swap; }
+:root { --ink: #16171d; --muted: #666a78; --line: #e6e6ec; --bg: #f5f5f8; --brand: #4f46e5; --brand-d: #3f37c9; --brand-soft: #eeedfd; --ok: #0f7a4a; --warn: #a15c00; --bad: #b42318; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; font: 15px/1.5 Geist, system-ui, sans-serif; color: var(--ink); background: var(--bg); }
+a { color: var(--brand); }
+button, input, select, textarea { font: inherit; color: inherit; }
+h1 { font-size: 1.6rem; letter-spacing: -.025em; margin: 0; line-height: 1.2; }
+h2 { font-size: 1rem; margin: 0 0 4px; letter-spacing: -.01em; }
+.betabar { background: #fff7e6; border-bottom: 1px solid #f1dcb2; color: #5b3a00; font-size: .84rem; padding: 8px 20px; text-align: center; }
+.betabar b { background: #16171d; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .68rem; letter-spacing: .06em; margin-right: 6px; }
+.betabar a { color: inherit; font-weight: 700; }
+
+body { height: 100vh; display: flex; flex-direction: column; }
+.app { display: grid; grid-template-columns: 248px 1fr; flex: 1; min-height: 0; }
+.side { background: #16171d; color: #c9cad3; padding: 22px 16px; display: flex; flex-direction: column; gap: 22px; overflow-y: auto; }
+.logo { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; padding: 0 8px; text-decoration: none; }
+.logo small { font-size: .6rem; letter-spacing: .08em; background: #2c2d36; color: #b9b5ff; border-radius: 4px; padding: 2px 6px; font-weight: 700; }
+.acct { background: #22232b; border-radius: 12px; padding: 12px 14px; display: flex; gap: 10px; align-items: center; }
+.acct i { width: 34px; height: 34px; border-radius: 10px; background: #0f766e; display: grid; place-items: center; flex: none; }
+.acct b { color: #fff; display: block; font-size: .9rem; line-height: 1.2; }
+.acct span { font-size: .76rem; }
+.nav { display: grid; gap: 2px; }
+.nav a { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 9px; color: #c9cad3; text-decoration: none; font-weight: 600; }
+.nav a:hover { background: #22232b; color: #fff; }
+.nav a[aria-current=page] { background: #2c2d36; color: #fff; }
+.nav svg { width: 18px; height: 18px; flex: none; }
+.nav .badge { margin-left: auto; background: var(--brand); color: #fff; border-radius: 999px; font-size: .72rem; font-weight: 700; padding: 1px 8px; }
+.try { margin-top: auto; background: linear-gradient(160deg, #2b2a5c, #22232b); border-radius: 14px; padding: 16px; font-size: .84rem; }
+.try b { color: #fff; display: block; margin-bottom: 4px; }
+.try p { margin: 0 0 12px; }
+.try a { display: block; text-align: center; background: #fff; color: var(--ink); border-radius: 9px; padding: 8px; font-weight: 700; text-decoration: none; }
+.back { font-size: .8rem; color: #8d8f9c; padding: 0 8px; }
+.back a { color: #c9cad3; }
+
+main { padding: 28px clamp(18px, 3vw, 40px) 60px; min-width: 0; overflow-y: auto; }
+.head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+.head p { margin: 2px 0 0; color: var(--muted); }
+.head .actions { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--line); background: #fff; font-weight: 600; font-size: .88rem; cursor: pointer; text-decoration: none; color: var(--ink); white-space: nowrap; }
+.btn:hover { border-color: #cfcfd8; background: #fafafc; }
+.btn--pri { background: var(--brand); border-color: var(--brand); color: #fff; }
+.btn--pri:hover { background: var(--brand-d); border-color: var(--brand-d); }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn svg { width: 16px; height: 16px; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+.stat { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.stat span { color: var(--muted); font-size: .82rem; font-weight: 600; }
+.stat b { display: block; font-size: 1.7rem; letter-spacing: -.03em; line-height: 1.2; margin-top: 2px; }
+.stat small { color: var(--muted); font-size: .78rem; }
+
+.panel { background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.tabs { display: flex; gap: 4px; padding: 10px 12px; border-bottom: 1px solid var(--line); flex-wrap: wrap; align-items: center; }
+.tabs button { border: 0; background: none; padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: .86rem; color: var(--muted); cursor: pointer; }
+.tabs button[aria-pressed=true] { background: var(--bg); color: var(--ink); }
+.tabs button span { opacity: .6; margin-left: 3px; }
+.tabs .live { margin-left: auto; display: flex; align-items: center; gap: 7px; font-size: .8rem; color: var(--muted); }
+.tabs .live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 3px #dcfce7; }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; padding: 10px 16px; background: #fbfbfd; border-bottom: 1px solid var(--line); }
+td { padding: 13px 16px; border-bottom: 1px solid #f0f0f4; vertical-align: middle; font-size: .9rem; }
+tbody tr { cursor: pointer; transition: background .15s; }
+tbody tr:hover { background: #fafafe; }
+tbody tr:last-child td { border-bottom: 0; }
+tr.fresh { animation: fresh 2.4s ease-out; }
+@keyframes fresh { 0%, 30% { background: #e9e7ff; } 100% { background: transparent; } }
+td .who b { display: flex; align-items: center; gap: 6px; }
+td .who span, td .sm { color: var(--muted); font-size: .82rem; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); flex: none; }
+.tag { font-size: .66rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; background: #f0f0f4; color: var(--muted); border-radius: 4px; padding: 1px 5px; }
+.tag--warn { background: #fff1db; color: var(--warn); }
+.q { font-weight: 700; white-space: nowrap; }
+.st { border: 1px solid transparent; border-radius: 999px; padding: 3px 26px 3px 10px; font-size: .8rem; font-weight: 700; appearance: none; cursor: pointer; background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='m3 4.5 3 3 3-3' fill='none' stroke='%23666' stroke-width='1.5'/%3E%3C/svg%3E") right 8px center/10px no-repeat; }
+.st[data-v=new] { background-color: var(--brand-soft); color: var(--brand-d); }
+.st[data-v=contacted] { background-color: #fff4e0; color: var(--warn); }
+.st[data-v=won] { background-color: #e3f6ec; color: var(--ok); }
+.st[data-v=lost] { background-color: #f1f1f4; color: #71717a; }
+.empty { padding: 50px 20px; text-align: center; color: var(--muted); }
+
+/* rules editor */
+.rules { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 24px; align-items: start; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; margin-bottom: 16px; }
+.card > p { color: var(--muted); margin: 0 0 16px; font-size: .88rem; }
+.grid2, .grid3 { display: grid; gap: 12px 14px; } .fl { min-width: 0; }
+.grid2 { grid-template-columns: 1fr 1fr; } .grid3 { grid-template-columns: repeat(3, 1fr); }
+.fl label, .lbl { display: block; font-weight: 600; font-size: .82rem; margin-bottom: 5px; }
+.fl small { display: block; color: var(--muted); font-size: .76rem; margin-top: 4px; }
+.in { width: 100%; min-width: 0; height: 38px; border: 1px solid #dcdce3; border-radius: 9px; padding: 0 11px; background: #fff; font-size: .9rem; }
+.in:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px #e0defc; }
+.pre { position: relative; }
+.pre .in { padding-left: 24px; } .pre::before { content: attr(data-pre); position: absolute; left: 11px; top: 9px; color: var(--muted); font-size: .9rem; }
+.suf .in { padding-right: 40px; } .suf { position: relative; } .suf::after { content: attr(data-suf); position: absolute; right: 11px; top: 9px; color: var(--muted); font-size: .85rem; }
+.in[type=color] { padding: 3px; width: 56px; }
+.seg { display: inline-flex; background: var(--bg); border-radius: 10px; padding: 3px; gap: 2px; margin-bottom: 16px; }
+.seg label { position: relative; }
+.seg input { position: absolute; opacity: 0; }
+.seg span { display: block; padding: 7px 14px; border-radius: 8px; font-weight: 600; font-size: .86rem; cursor: pointer; color: var(--muted); }
+.seg input:checked + span { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+.seg input:focus-visible + span { outline: 2px solid var(--brand); }
+.list { display: grid; gap: 8px; }
+.list .hd, .list .it { display: grid; gap: 8px; align-items: center; }
+.list .hd { font-size: .74rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.l-svc .hd, .l-svc .it { grid-template-columns: 1.6fr .8fr .7fr 1fr 34px; }
+.l-add .hd, .l-add .it { grid-template-columns: 2fr 1fr 34px; }
+.l-area .hd, .l-area .it { grid-template-columns: 1.3fr 1.7fr .8fr 34px; }
+.rm { width: 34px; height: 34px; border-radius: 8px; border: 0; background: none; color: #9a9aa6; cursor: pointer; font-size: 1.2rem; }
+.rm:hover { background: #fdecec; color: var(--bad); }
+.add { margin-top: 10px; border: 1px dashed #cfcfd8; background: none; border-radius: 9px; padding: 7px 12px; font-weight: 600; font-size: .85rem; cursor: pointer; color: var(--brand); }
+.add:hover { background: var(--brand-soft); }
+.chk { display: flex; gap: 8px; align-items: center; margin-top: 14px; font-size: .88rem; }
+.chk input { width: 16px; height: 16px; accent-color: var(--brand); }
+.preview { position: sticky; top: 20px; }
+.preview .bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: .82rem; color: var(--muted); }
+.preview .bar b { color: var(--ink); }
+.pv { background: linear-gradient(180deg, #fff, #e8f1fb); border: 1px solid var(--line); border-radius: 18px; padding: 22px; font-family: Nunito, Geist, system-ui, sans-serif; }
+.savebar { position: sticky; bottom: 16px; z-index: 5; display: flex; gap: 10px; align-items: center; background: #16171d; color: #fff; border-radius: 14px; padding: 10px 12px 10px 18px; box-shadow: 0 18px 40px -16px rgba(0,0,0,.5); }
+.savebar span { flex: 1; font-size: .88rem; }
+.savebar .btn:not(.btn--pri) { background: #2c2d36; border-color: #2c2d36; color: #fff; }
+
+/* embed */
+.code { position: relative; background: #16171d; color: #e4e4ea; border-radius: 14px; padding: 18px 20px; font: 13.5px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-x: auto; white-space: pre; }
+.code .t { color: #9b95ff; } .code .a { color: #7dd3fc; } .code .s { color: #bef264; }
+.copy { position: absolute; top: 12px; right: 12px; background: #2c2d36; border-color: #2c2d36; color: #fff; height: 32px; }
+.copy:hover { background: #3a3b46; border-color: #3a3b46; }
+.steps { counter-reset: s; list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 30px 1fr; gap: 12px; }
+.steps li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--brand-soft); color: var(--brand-d); display: grid; place-items: center; font-weight: 700; font-size: .85rem; }
+.steps b { display: block; } .steps span { color: var(--muted); font-size: .9rem; }
+.plats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.plats div { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: .84rem; color: var(--muted); }
+.plats b { display: block; color: var(--ink); font-size: .9rem; margin-bottom: 2px; }
+.embed { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 24px; align-items: start; }
+
+/* detail dialog */
+dialog { border: 0; border-radius: 20px; padding: 0; width: min(760px, calc(100% - 24px)); box-shadow: 0 40px 80px -20px rgba(0,0,0,.4); color: var(--ink); }
+dialog::backdrop { background: rgba(22,23,29,.45); }
+.dlg { display: grid; grid-template-columns: 1fr 1fr; }
+.dlg > div { padding: 24px; }
+.dlg .mail { background: var(--bg); border-left: 1px solid var(--line); }
+.dlg h2 { font-size: 1.3rem; }
+.kv { display: grid; grid-template-columns: 110px 1fr; gap: 6px 10px; font-size: .88rem; margin: 16px 0; }
+.kv dt { color: var(--muted); } .kv dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+.bd { border-top: 1px solid var(--line); padding-top: 12px; font-size: .86rem; }
+.bd div { display: flex; justify-content: space-between; padding: 3px 0; }
+.bd div:last-child { font-weight: 700; border-top: 1px solid var(--line); margin-top: 6px; padding-top: 8px; }
+.mailbox { background: #fff; border: 1px solid var(--line); border-radius: 12px; font-size: .84rem; overflow: hidden; }
+.mailbox header { padding: 12px 14px; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+.mailbox header span { color: var(--muted); }
+.mailbox .body { padding: 14px; white-space: pre-line; }
+.x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: #fff; cursor: pointer; font-size: 1.3rem; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+.dlg-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+
+.toast { position: fixed; right: 20px; bottom: 20px; z-index: 50; background: #16171d; color: #fff; border-radius: 14px; padding: 14px 16px; display: flex; gap: 12px; align-items: center; box-shadow: 0 20px 40px -12px rgba(0,0,0,.45); max-width: min(420px, calc(100% - 40px)); transform: translateY(calc(100% + 40px)); visibility: hidden; transition: transform .35s cubic-bezier(.2,.9,.3,1.2), visibility 0s .35s; }
+.toast.on { transform: none; visibility: visible; transition-delay: 0s; }
+.toast i { width: 36px; height: 36px; border-radius: 10px; background: var(--brand); display: grid; place-items: center; flex: none; }
+.toast b { display: block; font-size: .9rem; } .toast span { font-size: .84rem; color: #c9cad3; }
+.toast button { margin-left: auto; background: #fff; color: var(--ink); border: 0; border-radius: 8px; padding: 6px 12px; font-weight: 700; cursor: pointer; }
+
+@media (max-width: 1180px) { .rules, .embed { grid-template-columns: minmax(0, 1fr); } .preview { position: static; } .plats { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 860px) {
+  body { height: auto; display: block; }
+  .app { grid-template-columns: 1fr; }
+  main { overflow: visible; }
+  .stat { padding: 12px 14px; } .stat b { font-size: 1.4rem; }
+  .side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 12px; padding: 12px 16px; }
+  .acct, .try, .back { display: none; }
+  .nav { grid-auto-flow: column; margin-left: auto; }
+  .nav a { padding: 7px 10px; font-size: .86rem; } .nav a svg { display: none; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .dlg { grid-template-columns: 1fr; } .dlg .mail { border-left: 0; border-top: 1px solid var(--line); }
+  thead { display: none; }
+  table, tbody, tr, td { display: block; }
+  tbody tr { display: grid; grid-template-columns: 1fr auto; padding: 12px 14px; border-bottom: 1px solid #f0f0f4; gap: 4px 10px; }
+  td { padding: 0; border: 0; }
+  td.c-job, td.c-pc { grid-column: 1; font-size: .84rem; color: var(--muted); }
+  td.c-q { grid-column: 2; grid-row: 1; text-align: right; }
+  td.c-st { grid-column: 2; grid-row: 2 / span 2; text-align: right; align-self: center; }
+  td.c-when { display: none; }
+  .grid3 { grid-template-columns: 1fr 1fr; }
+  .l-svc .hd { display: none; } .l-svc .it { grid-template-columns: 1fr 1fr 34px; border-bottom: 1px solid #f0f0f4; padding-bottom: 8px; }
+  .l-svc .it input:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) { .savebar { flex-wrap: wrap; } .savebar span { flex-basis: 100%; } .grid2, .l-area .it { grid-template-columns: 1fr 1fr; } .l-area .hd { display: none; } .l-area .it input:first-child { grid-column: 1 / -1; } .head h1 { font-size: 1.35rem; } .betabar { font-size: .76rem; } }
+</style>
+</head>
+<body>
+<div class="betabar"><b>BETA</b>Concept demo by MBDEV. QuoteKit is a working prototype, not a product on sale. Everything you enter stays in this browser: no emails are sent and no data is collected. <a href="../">Back to samples</a></div>
+
+<div class="app">
+  <aside class="side">
+    <a class="logo" href="#leads"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#4f46e5"/><path d="M9 10h14v9h-7l-4 4v-4H9z" fill="#fff"/><path d="M14.2 16.6h4.4M15 16.6c.6-1 .5-2 .2-2.8-.3-.9.3-1.6 1.2-1.6.6 0 1 .3 1.2.7" fill="none" stroke="#4f46e5" stroke-width="1.2" stroke-linecap="round"/></svg>QuoteKit <small>BETA</small></a>
+    <div class="acct"><i><svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path d="M8 19c4-1 7-5 8-10 2 3 5 4 8 4-3 5-9 8-16 6z" fill="#fff"/></svg></i><div><b>Sparrow Home Cleaning</b><span>Demo account</span></div></div>
+    <nav class="nav" aria-label="QuoteKit">
+      <a href="#leads" data-v="leads"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 5h14v10H3z"/><path d="m3 5 7 6 7-6"/></svg>Leads<span class="badge" id="badge" hidden></span></a>
+      <a href="#rules" data-v="rules"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h8M15 6h1M4 14h2M9 14h7"/><circle cx="13.5" cy="6" r="1.8"/><circle cx="7.5" cy="14" r="1.8"/></svg>Price rules</a>
+      <a href="#embed" data-v="embed"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m7 6-4 4 4 4M13 6l4 4-4 4"/></svg>Embed code</a>
+    </nav>
+    <div class="try"><b>Try it live</b><p>Get a quote on Sparrow's demo site and watch the lead arrive here.</p><a href="../cleaning/#price" target="_blank" rel="noopener">Open Sparrow's site ↗</a></div>
+    <p class="back">Built by <a href="../">MBDEV</a> as a concept.</p>
+  </aside>
+
+  <main>
+    <!-- LEADS -->
+    <section id="v-leads" aria-labelledby="h-leads">
+      <div class="head">
+        <div><h1 id="h-leads">Leads</h1><p>Quote requests from your website, newest first.</p></div>
+        <div class="actions">
+          <button class="btn" id="notifyBtn" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 14V9a5 5 0 0 1 10 0v5l1.5 1.5h-13zM8.5 17.5h3"/></svg><span>Desktop alerts</span></button>
+          <button class="btn" id="csvBtn" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M10 3v10m-4-4 4 4 4-4M4 16h12"/></svg>Export CSV</button>
+          <button class="btn" id="testBtn" type="button">Send a test lead</button>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><span>New, not contacted</span><b id="sNew">0</b><small>Reply fast: speed wins jobs</small></div>
+        <div class="stat"><span>Requests, last 7 days</span><b id="sWeek">0</b><small id="sWeekNote">&nbsp;</small></div>
+        <div class="stat"><span>Quoted value (open)</span><b id="sVal">£0</b><small>Midpoint of each range</small></div>
+        <div class="stat"><span>Won</span><b id="sWon">0</b><small id="sRate">&nbsp;</small></div>
+      </div>
+      <div class="panel">
+        <div class="tabs" role="group" aria-label="Filter by status" id="filters">
+          <button type="button" aria-pressed="true" data-f="all">All</button>
+          <button type="button" aria-pressed="false" data-f="new">New</button>
+          <button type="button" aria-pressed="false" data-f="contacted">Contacted</button>
+          <button type="button" aria-pressed="false" data-f="won">Won</button>
+          <button type="button" aria-pressed="false" data-f="lost">Lost</button>
+          <span class="live">Listening for new requests</span>
+        </div>
+        <table>
+          <thead><tr><th>Customer</th><th>Job</th><th>Postcode</th><th>Quote</th><th>Status</th><th>Received</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div class="empty" id="empty" hidden>No leads here yet. <a href="../cleaning/#price" target="_blank" rel="noopener">Get a quote on Sparrow's site</a> to see one arrive.</div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);margin-top:14px">Leads marked <span class="tag">Sample</span> are made up for the demo. <button class="btn" style="height:28px;font-size:.78rem;margin-left:6px" id="resetLeads" type="button">Reset demo leads</button></p>
+    </section>
+
+    <!-- RULES -->
+    <section id="v-rules" aria-labelledby="h-rules" hidden>
+      <div class="head">
+        <div><h1 id="h-rules">Price rules</h1><p>Set how you charge. The preview updates as you type.</p></div>
+      </div>
+      <div class="rules">
+        <form id="editor" autocomplete="off" onsubmit="return false"></form>
+        <aside class="preview" aria-label="Live preview">
+          <div class="bar"><b>Live preview</b><span>How customers see it</span></div>
+          <div class="pv" id="pv"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- EMBED -->
+    <section id="v-embed" aria-labelledby="h-embed" hidden>
+      <div class="head"><div><h1 id="h-embed">Embed code</h1><p>One line of code adds QuoteKit to any website.</p></div></div>
+      <div class="embed">
+        <div>
+          <div class="card">
+            <h2>Your code</h2>
+            <p>Paste this where you want the price box to appear. It picks up your latest price rules automatically.</p>
+            <div class="code" id="code"></div>
+          </div>
+          <div class="card">
+            <h2>How to add it</h2>
+            <p>Most website builders have a “custom code” or “embed” block.</p>
+            <ol class="steps">
+              <li><div><b>Copy the code above</b><span>It's the same code for every page.</span></div></li>
+              <li><div><b>Add an embed block to your page</b><span>Put it where the price box should go, for example next to your main heading.</span></div></li>
+              <li><div><b>Paste, save and publish</b><span>The widget uses your site's font and your brand colour, so it looks like part of your site.</span></div></li>
+            </ol>
+          </div>
+          <div class="plats">
+            <div><b>WordPress</b>“Custom HTML” block</div>
+            <div><b>Wix</b>Embed → “Embed code”</div>
+            <div><b>Squarespace</b>“Code” block</div>
+            <div><b>Hand-built sites</b>Paste into the HTML</div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>What it does</h2>
+          <ul style="padding-left:1.1em;margin:10px 0 0;color:var(--muted);font-size:.9rem;display:grid;gap:8px">
+            <li>Shows a price range straight away, using your rules</li>
+            <li>Checks the postcode against your areas and adds travel charges</li>
+            <li>Collects name, email and best time, then sends you the lead</li>
+            <li>Styles are sealed off, so it can't clash with your theme</li>
+            <li>Lightweight (about 7 KB compressed), no cookies, no tracking</li>
+          </ul>
+          <p style="font-size:.8rem;color:var(--muted);margin:16px 0 0;padding-top:12px;border-top:1px solid var(--line)"><b>Beta note:</b> in this demo, price rules and leads are saved in your browser. A live version would store them in your account.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<dialog id="dlg" aria-labelledby="dName"></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="widget.js"></script>
+<script>
+(async function () {
+  const Q = window.QuoteKit, ID = 'sparrow', $ = s => document.querySelector(s), esc = Q.esc, money = Q.money;
+  const clone = o => JSON.parse(JSON.stringify(o));
+  const defaults = await fetch('configs/' + ID + '.json').then(r => r.json());
+  let saved = Q.store.config(ID) || clone(defaults), draft = clone(saved), preview;
+
+  // ---------- views ----------
+  const views = ['leads', 'rules', 'embed'];
+  function route() {
+    const v = views.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'leads';
+    views.forEach(k => { $('#v-' + k).hidden = k !== v; });
+    document.querySelectorAll('.nav a').forEach(a => a.dataset.v === v ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+    setTitle();
+  }
+  window.addEventListener('hashchange', route);
+
+  // ---------- leads ----------
+  const KEY = 'quotekit:leads:' + ID;
+  const ago = (h) => new Date(Date.now() - h * 3600e3).toISOString();
+  function seed() {
+    const mk = (h, o) => Object.assign({ id: 'sample' + h, at: ago(h), sample: true, phone: '', notes: '', day: 'Any time', addons: [], surcharge: 0, roomLabel: 'Bedrooms', source: 'cleaning', outside: false, minApplied: false }, o);
+    Q.store.saveLeads(ID, [
+      mk(0.6, { status: 'new', name: 'Priya Example', email: 'priya@example.com', phone: '07700 900111', service: 'Deep clean', suffix: 'one-off', rooms: 3, hours: 6.6, addons: [{ name: 'Inside oven', price: 25 }, { name: 'Inside fridge', price: 12 }], postcode: 'NG2 6AB', area: 'West Bridgford & Beeston', surcharge: 5, low: 162, high: 199, day: 'Weekends', notes: 'Moving in next month, would like it before then.' }),
+      mk(5, { status: 'new', name: 'Tom Sample', email: 'tom@example.com', service: 'Weekly clean', suffix: 'per visit', rooms: 2, hours: 2.85, postcode: 'NG5 1AA', area: 'Nottingham city', low: 46, high: 57, day: 'Weekday mornings' }),
+      mk(27, { status: 'contacted', name: 'Grace Placeholder', email: 'grace@example.com', phone: '07700 900222', service: 'End of tenancy', suffix: 'one-off', rooms: 2, hours: 6.27, addons: [{ name: 'Interior windows', price: 18 }], postcode: 'NG7 2RD', area: 'Nottingham city', low: 151, high: 185, notes: 'Keys from the letting agent on Friday.' }),
+      mk(51, { status: 'won', name: 'Ben Fictional', email: 'ben@example.com', service: 'Fortnightly clean', suffix: 'per visit', rooms: 4, hours: 4.45, addons: [{ name: 'Change beds', price: 8 }], postcode: 'NG9 3HB', area: 'West Bridgford & Beeston', surcharge: 5, low: 88, high: 108 }),
+      mk(98, { status: 'lost', name: 'Chloe Madeup', email: 'chloe@example.com', service: 'Weekly clean', suffix: 'per visit', rooms: 1, hours: 2.05, postcode: 'DE1 1AA', area: 'Outside our area', outside: true, low: 40, high: 41, minApplied: false, notes: 'Is Derby too far?' }),
+      mk(140, { status: 'won', name: 'Dev Example', email: 'dev@example.com', phone: '07700 900333', service: 'Deep clean', suffix: 'one-off', rooms: 2, hours: 5.13, addons: [{ name: 'Inside oven', price: 25 }], postcode: 'NG3 4EF', area: 'Nottingham city', low: 124, high: 152 })
+    ]);
+  }
+  if (localStorage.getItem(KEY) === null) seed();
+
+  let filter = 'all', known = new Set(Q.store.leads(ID).map(l => l.id)), fresh = new Set();
+  const leads = () => Q.store.leads(ID);
+  const rel = iso => { const m = Math.round((Date.now() - new Date(iso)) / 60000); return m < 1 ? 'Just now' : m < 60 ? m + ' min ago' : m < 1440 ? Math.round(m / 60) + ' hr ago' : Math.round(m / 1440) === 1 ? 'Yesterday' : Math.round(m / 1440) + ' days ago'; };
+  const rng = l => l.low === l.high ? money(l.low) : money(l.low) + '–' + money(l.high);
+  const statuses = { new: 'New', contacted: 'Contacted', won: 'Won', lost: 'Lost' };
+
+  function renderLeads() {
+    const all = leads(), list = all.filter(l => filter === 'all' || l.status === filter);
+    $('#rows').innerHTML = list.map(l => `
+      <tr data-id="${esc(l.id)}" class="${fresh.has(l.id) ? 'fresh' : ''}" tabindex="0" aria-label="Open lead from ${esc(l.name)}">
+        <td><div class="who"><b>${l.status === 'new' ? '<i class="dot" aria-label="New"></i>' : ''}${esc(l.name)} ${l.sample ? '<span class="tag">Sample</span>' : ''}</b><span>${esc(l.email)}</span></div></td>
+        <td class="c-job">${esc(l.service)} · ${esc(Q.unit(l.rooms, l.roomLabel))}${l.addons.length ? `<div class="sm">+ ${esc(l.addons.map(a => a.name).join(', '))}</div>` : ''}</td>
+        <td class="c-pc">${esc(l.postcode || '—')} ${l.outside ? '<span class="tag tag--warn">Outside area</span>' : ''}</td>
+        <td class="c-q"><span class="q">${rng(l)}</span><div class="sm">${esc(l.suffix)}</div></td>
+        <td class="c-st"><select class="st" data-v="${esc(l.status)}" aria-label="Status for ${esc(l.name)}">${Object.entries(statuses).map(([k, v]) => `<option value="${k}"${k === l.status ? ' selected' : ''}>${v}</option>`).join('')}</select></td>
+        <td class="c-when sm">${rel(l.at)}</td>
+      </tr>`).join('');
+    $('#empty').hidden = list.length > 0;
+    document.querySelectorAll('#filters button').forEach(b => {
+      const n = b.dataset.f === 'all' ? all.length : all.filter(l => l.status === b.dataset.f).length;
+      b.innerHTML = b.textContent.replace(/\d+$/, '') + `<span>${n}</span>`;
+    });
+    const week = all.filter(l => Date.now() - new Date(l.at) < 7 * 864e5), nw = all.filter(l => l.status === 'new').length;
+    const won = all.filter(l => l.status === 'won').length, closed = won + all.filter(l => l.status === 'lost').length;
+    $('#sNew').textContent = nw;
+    $('#sWeek').textContent = week.length;
+    $('#sWeekNote').textContent = week.filter(l => !l.sample).length ? week.filter(l => !l.sample).length + ' from your tests' : 'Includes sample leads';
+    $('#sVal').textContent = money(Math.round(all.filter(l => l.status === 'new' || l.status === 'contacted').reduce((t, l) => t + (l.low + l.high) / 2, 0)));
+    $('#sWon').textContent = won;
+    $('#sRate').textContent = closed ? Math.round(won / closed * 100) + '% of closed leads' : ' ';
+    $('#badge').hidden = !nw; $('#badge').textContent = nw;
+    setTitle();
+  }
+  function setTitle() {
+    const nw = leads().filter(l => l.status === 'new').length, v = location.hash.slice(1) || 'leads';
+    document.title = (nw ? `(${nw}) ` : '') + ({ leads: 'Leads', rules: 'Price rules', embed: 'Embed code' }[v] || 'Leads') + ' · QuoteKit (beta concept demo)';
+  }
+  function setStatus(id, st) { const all = leads(); const l = all.find(x => x.id === id); if (l) { l.status = st; Q.store.saveLeads(ID, all); } renderLeads(); }
+
+  $('#rows').addEventListener('change', e => { if (e.target.matches('.st')) setStatus(e.target.closest('tr').dataset.id, e.target.value); });
+  $('#rows').addEventListener('click', e => { const tr = e.target.closest('tr'); if (tr && !e.target.closest('select')) openLead(tr.dataset.id); });
+  $('#rows').addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('tr')) { e.preventDefault(); openLead(e.target.dataset.id); } });
+  $('#filters').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; filter = b.dataset.f; document.querySelectorAll('#filters button').forEach(x => x.setAttribute('aria-pressed', x === b)); renderLeads(); });
+  $('#resetLeads').addEventListener('click', () => { if (confirm('Delete all leads in this demo and restore the sample leads?')) { seed(); known = new Set(leads().map(l => l.id)); renderLeads(); } });
+
+  function emailText(l) {
+    const first = l.name.split(' ')[0];
+    return `${l.name} asked for a quote on your website.
+
+Job: ${l.service}, ${Q.unit(l.rooms, l.roomLabel)}${l.addons.length ? '\nExtras: ' + l.addons.map(a => a.name).join(', ') : ''}
+Postcode: ${l.postcode || 'not given'}${l.outside ? ' (outside your areas)' : ''}
+Quoted: ${rng(l)} ${l.suffix}
+Best time: ${l.day}${l.notes ? '\nNotes: "' + l.notes + '"' : ''}
+
+Reply to ${first} at ${l.email}${l.phone ? ' or call ' + l.phone : ''}.
+Tip: leads that get a reply within an hour are far more likely to book.`;
+  }
+  function openLead(id) {
+    const l = leads().find(x => x.id === id); if (!l) return;
+    const lines = [[l.service + ' · ' + Q.unit(l.rooms, l.roomLabel) + (l.hours ? ' (~' + (Math.round(l.hours * 2) / 2) + ' hrs)' : ''), '']]
+      .concat(l.addons.map(a => [a.name, '+' + money(a.price)]))
+      .concat(l.surcharge ? [['Travel (' + l.area + ')', '+' + money(l.surcharge)]] : []);
+    const d = $('#dlg');
+    d.innerHTML = `<button class="x" type="button" aria-label="Close">×</button><div class="dlg">
+      <div>
+        <p class="sm" style="margin:0 0 4px;color:var(--muted);font-size:.8rem">${new Date(l.at).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })} · from ${esc(l.source)} ${l.sample ? '<span class="tag">Sample</span>' : ''}</p>
+        <h2 id="dName">${esc(l.name)}</h2>
+        <dl class="kv"><dt>Email</dt><dd>${esc(l.email)}</dd><dt>Phone</dt><dd>${esc(l.phone || '—')}</dd><dt>Postcode</dt><dd>${esc(l.postcode || '—')}${l.area ? ' · ' + esc(l.area) : ''}</dd><dt>Best time</dt><dd>${esc(l.day)}</dd>${l.notes ? `<dt>Notes</dt><dd>“${esc(l.notes)}”</dd>` : ''}</dl>
+        <div class="bd">${lines.map(([a, b]) => `<div><span>${esc(a)}</span><span>${b}</span></div>`).join('')}<div><span>Quoted range</span><span>${rng(l)} ${esc(l.suffix)}</span></div></div>
+        <div class="dlg-actions"><label class="lbl" style="margin:0" for="dSt">Status</label><select class="st" id="dSt" data-v="${esc(l.status)}">${Object.entries(statuses).map(([k, v]) => `<option value="${k}"${k === l.status ? ' selected' : ''}>${v}</option>`).join('')}</select>
+          <a class="btn btn--pri" href="mailto:${encodeURIComponent(l.email)}?subject=${encodeURIComponent('Your ' + l.service.toLowerCase() + ' quote')}">Reply by email</a></div>
+      </div>
+      <div class="mail">
+        <p class="lbl" style="margin:0 0 8px">Lead alert email</p>
+        <div class="mailbox"><header><b>New quote request: ${esc(l.service)}, ${rng(l)}</b><span>From QuoteKit alerts · to ${esc(saved.alertEmail || 'you')}</span></header><div class="body">${esc(emailText(l))}</div></div>
+        <p style="font-size:.76rem;color:var(--muted);margin:10px 0 0">Demo: this is a preview of the alert. No email was sent.</p>
+      </div></div>`;
+    d.querySelector('.x').onclick = () => d.close();
+    d.querySelector('#dSt').onchange = e => { e.target.dataset.v = e.target.value; setStatus(l.id, e.target.value); };
+    d.addEventListener('click', e => { if (e.target === d) d.close(); }, { once: true });
+    d.showModal();
+  }
+
+  // ---------- notifications ----------
+  let toastTimer;
+  function notify(l) {
+    fresh.add(l.id);
+    renderLeads();
+    const t = $('#toast');
+    t.innerHTML = `<i><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 5h14v10H3z"/><path d="m3 5 7 6 7-6"/></svg></i><div><b>New lead: ${esc(l.name)}</b><span>${esc(l.service)} · ${rng(l)}</span></div><button type="button">View</button>`;
+    t.querySelector('button').onclick = () => { t.classList.remove('on'); location.hash = 'leads'; openLead(l.id); };
+    t.classList.add('on'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('on'), 7000);
+    if ('Notification' in window && Notification.permission === 'granted' && document.hidden) {
+      const n = new Notification('New lead: ' + l.name, { body: l.service + ' · ' + rng(l), tag: l.id });
+      n.onclick = () => { window.focus(); location.hash = 'leads'; openLead(l.id); };
+    }
+  }
+  function checkNew() {
+    leads().forEach(l => { if (!known.has(l.id)) { known.add(l.id); notify(l); } });
+    renderLeads();
+  }
+  window.addEventListener('storage', e => { if (e.key === KEY) checkNew(); });
+  window.addEventListener('quotekit:lead', checkNew);
+  setInterval(() => renderLeads(), 60000);
+
+  function syncNotifyBtn() {
+    const b = $('#notifyBtn'), s = b.querySelector('span');
+    if (!('Notification' in window)) { b.hidden = true; return; }
+    s.textContent = Notification.permission === 'granted' ? 'Desktop alerts on' : Notification.permission === 'denied' ? 'Alerts blocked' : 'Turn on desktop alerts';
+    b.disabled = Notification.permission !== 'default';
+  }
+  $('#notifyBtn').onclick = () => Notification.requestPermission().then(syncNotifyBtn);
+  syncNotifyBtn();
+
+  $('#testBtn').onclick = () => {
+    const c = saved, s = { service: Math.floor(Math.random() * c.services.length), rooms: 1 + Math.floor(Math.random() * 4), addons: [0, 1].filter(() => Math.random() > .5), postcode: ['NG1 5DT', 'NG2 7QR', 'NG9 2LP', 'NG7 1AB'][Math.floor(Math.random() * 4)] };
+    const q = Q.quote(c, s), names = ['Test Customer', 'Riley Testing', 'Morgan Trial', 'Casey Check'];
+    const n = names[Math.floor(Math.random() * names.length)];
+    Q.store.addLead(ID, { id: 'test' + Date.now().toString(36), at: new Date().toISOString(), status: 'new', name: n, email: n.split(' ')[0].toLowerCase() + '@example.com', phone: '', day: 'Any time', notes: '',
+      service: q.service.name, suffix: q.service.suffix, rooms: s.rooms, roomLabel: c.roomLabel, addons: q.extras.map(x => ({ name: x.name, price: +x.price })), postcode: s.postcode, area: q.area ? q.area.name : '', outside: !!(q.area && q.area.outside),
+      hours: q.hours, surcharge: q.surcharge, low: q.low, high: q.high, minApplied: q.minApplied, source: 'Test button' });
+  };
+
+  $('#csvBtn').onclick = () => {
+    const cols = ['at', 'status', 'name', 'email', 'phone', 'postcode', 'area', 'service', 'rooms', 'addons', 'low', 'high', 'day', 'notes'];
+    const cell = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+    const csv = [cols.join(',')].concat(leads().map(l => cols.map(k => cell(k === 'addons' ? l.addons.map(a => a.name).join('; ') : l[k])).join(','))).join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = 'quotekit-leads.csv'; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  };
+
+  // ---------- price-rule editor ----------
+  const ed = $('#editor');
+  const f = (label, path, type = 'text', o = {}) => {
+    const v = path.split('.').reduce((x, k) => x == null ? x : x[k], draft);
+    const inp = `<input class="in" id="f-${path}" data-k="${path}" type="${type}" value="${esc(v)}"${type === 'number' ? ` step="${o.step || 1}" min="${o.min ?? 0}"` : ''}${o.aria ? ` aria-label="${esc(o.aria)}"` : ''}>`;
+    const wrapped = o.pre ? `<div class="pre" data-pre="${o.pre}">${inp}</div>` : o.suf ? `<div class="suf" data-suf="${o.suf}">${inp}</div>` : inp;
+    return label == null ? wrapped : `<div class="fl"><label for="f-${path}">${label}</label>${wrapped}${o.hint ? `<small>${o.hint}</small>` : ''}</div>`;
+  };
+  function renderEditor() {
+    const hour = draft.mode === 'hour';
+    ed.innerHTML = `
+      <div class="card"><h2>How you charge</h2><p>Price by the hour (we estimate hours from the number of rooms) or a fixed price per room.</p>
+        <div class="seg" role="radiogroup" aria-label="Charging method">
+          <label><input type="radio" name="mode" value="hour"${hour ? ' checked' : ''}><span>Per hour</span></label>
+          <label><input type="radio" name="mode" value="room"${!hour ? ' checked' : ''}><span>Per room</span></label>
+        </div>
+        <div class="grid3">
+          ${f('What customers count', 'roomLabel', 'text', { hint: 'e.g. Bedrooms, Rooms, Windows' })}
+          ${f('Fewest', 'roomMin', 'number')}
+          ${f('Most', 'roomMax', 'number')}
+          ${hour ? f('Base time', 'baseHours', 'number', { step: .25, suf: 'hrs', hint: 'Kitchen, hall, bathroom' }) + f('Time per ' + esc(String(draft.roomLabel || 'room').replace(/s$/i, '').toLowerCase()), 'hoursPerRoom', 'number', { step: .05, suf: 'hrs' })
+                 : f('Call-out fee', 'baseFee', 'number', { pre: '£', hint: 'Added to every job' })}
+        </div>
+      </div>
+      <div class="card"><h2>Services</h2><p>${hour ? 'Hourly rate for each service. “Time ×” makes some jobs take longer, e.g. a deep clean takes 1.8× a regular one.' : 'Price per room for each service. “Size ×” scales the whole job.'}</p>
+        <div class="list l-svc"><div class="hd"><span>Name</span><span>${hour ? '£ / hour' : '£ / room'}</span><span>${hour ? 'Time ×' : 'Size ×'}</span><span>Shown as</span><span></span></div>
+          ${draft.services.map((s, i) => `<div class="it">${f(null, `services.${i}.name`, 'text', { aria: 'Service name' })}${f(null, `services.${i}.rate`, 'number', { pre: '£', step: .5, aria: 'Rate' })}${f(null, `services.${i}.factor`, 'number', { step: .1, aria: 'Multiplier' })}${f(null, `services.${i}.suffix`, 'text', { aria: 'Price label' })}<button class="rm" type="button" data-rm="services.${i}" aria-label="Remove ${esc(s.name)}"${draft.services.length < 2 ? ' disabled' : ''}>×</button></div>`).join('')}
+        </div><button class="add" type="button" data-addto="services">+ Add service</button>
+      </div>
+      <div class="card"><h2>Add-ons</h2><p>Fixed-price extras customers can tick.</p>
+        <div class="list l-add"><div class="hd"><span>Extra</span><span>Price</span><span></span></div>
+          ${draft.addons.map((a, i) => `<div class="it">${f(null, `addons.${i}.name`, 'text', { aria: 'Add-on name' })}${f(null, `addons.${i}.price`, 'number', { pre: '£', aria: 'Add-on price' })}<button class="rm" type="button" data-rm="addons.${i}" aria-label="Remove ${esc(a.name)}">×</button></div>`).join('')}
+        </div><button class="add" type="button" data-addto="addons">+ Add extra</button>
+      </div>
+      <div class="card"><h2>Minimum charge and range</h2><p>Customers see a range, not an exact price, so you have room to adjust after you see the job.</p>
+        <div class="grid3">
+          ${f('Minimum charge', 'minimum', 'number', { pre: '£' })}
+          ${f('Range either side', 'spread', 'number', { suf: '%', hint: '10% turns £50 into £45–£55' })}
+          <div class="fl"><label for="f-rounding">Round prices to</label><select class="in" id="f-rounding" data-k="rounding">${[1, 5, 10].map(n => `<option value="${n}"${+draft.rounding === n ? ' selected' : ''}>Nearest £${n}</option>`).join('')}</select></div>
+        </div>
+      </div>
+      <div class="card"><h2>Areas you cover</h2><p>List postcode districts (the first half of a postcode). Add a travel charge for areas further away.</p>
+        <div class="list l-area"><div class="hd"><span>Area name</span><span>Postcode districts</span><span>Travel</span><span></span></div>
+          ${draft.areas.map((a, i) => `<div class="it">${f(null, `areas.${i}.name`, 'text', { aria: 'Area name' })}${f(null, `areas.${i}.codes`, 'text', { aria: 'Postcode districts, separated by spaces' })}${f(null, `areas.${i}.surcharge`, 'number', { pre: '£', aria: 'Travel charge' })}<button class="rm" type="button" data-rm="areas.${i}" aria-label="Remove ${esc(a.name)}">×</button></div>`).join('')}
+        </div><button class="add" type="button" data-addto="areas">+ Add area</button>
+        <label class="chk"><input type="checkbox" data-k="acceptOutside"${draft.acceptOutside ? ' checked' : ''}> Still accept requests from outside these areas (marked in your lead list)</label>
+      </div>
+      <div class="card"><h2>Widget text and alerts</h2><p>Match the widget to the website it sits on.</p>
+        <div class="grid2">
+          ${f('Business name', 'business')}
+          ${f('Send lead alerts to', 'alertEmail', 'email', { hint: 'Demo: no emails are sent' })}
+          ${f('Heading', 'title')}
+          <div class="fl"><label for="f-accent">Brand colour</label><input class="in" id="f-accent" data-k="accent" type="color" value="${esc(draft.accent)}"></div>
+        </div>
+        <div class="grid2" style="margin-top:12px">${f('Intro line', 'intro')}${f('After a request, tell customers', 'replyPromise')}</div>
+      </div>
+      <div class="savebar"><span id="dirty">All changes saved</span><button class="btn" type="button" id="resetCfg">Reset to demo prices</button><button class="btn btn--pri" type="button" id="saveCfg">Save changes</button></div>`;
+    syncDirty();
+  }
+  const setPath = (obj, path, v) => { const ks = path.split('.'), last = ks.pop(); ks.reduce((x, k) => x[k], obj)[last] = v; };
+  function syncDirty() {
+    const dirty = JSON.stringify(draft) !== JSON.stringify(saved);
+    $('#dirty').textContent = dirty ? 'Unsaved changes. The preview shows them already.' : 'All changes saved. Sparrow’s site uses these prices (in this browser).';
+    $('#saveCfg').disabled = !dirty;
+  }
+  function refreshPreview() { preview && preview.setConfig(clone(draft)); syncDirty(); }
+  ed.addEventListener('input', e => {
+    const k = e.target.dataset.k;
+    if (k) { setPath(draft, k, e.target.type === 'checkbox' ? e.target.checked : e.target.type === 'number' || k === 'rounding' ? (e.target.value === '' ? 0 : +e.target.value) : e.target.value); refreshPreview(); }
+    if (k === 'roomLabel') { const lab = ed.querySelector('[for="f-hoursPerRoom"]'); if (lab) lab.textContent = 'Time per ' + String(draft.roomLabel || 'room').replace(/s$/i, '').toLowerCase(); }
+  });
+  ed.addEventListener('change', e => { if (e.target.name === 'mode') { draft.mode = e.target.value; renderEditor(); refreshPreview(); } });
+  ed.addEventListener('click', e => {
+    const rm = e.target.closest('[data-rm]'), add = e.target.closest('[data-addto]');
+    if (rm) { const [list, i] = rm.dataset.rm.split('.'); draft[list].splice(+i, 1); renderEditor(); refreshPreview(); }
+    if (add) {
+      const list = add.dataset.addto;
+      draft[list].push({ services: { name: 'New service', rate: draft.services[0] ? draft.services[0].rate : 20, factor: 1, suffix: 'per visit' }, addons: { name: 'New extra', price: 10 }, areas: { name: 'New area', codes: '', surcharge: 0 } }[list]);
+      renderEditor(); refreshPreview();
+      const first = ed.querySelector('.l-' + { services: 'svc', addons: 'add', areas: 'area' }[list] + ' .it:last-child input'); first && (first.focus(), first.select());
+    }
+    if (e.target.id === 'saveCfg') { saved = clone(draft); Q.store.saveConfig(ID, saved); syncDirty(); toast('Saved', 'Sparrow’s site now uses these prices in this browser.'); }
+    if (e.target.id === 'resetCfg' && confirm('Put back the original demo prices? Your changes will be lost.')) { Q.store.clearConfig(ID); saved = clone(defaults); draft = clone(defaults); renderEditor(); refreshPreview(); }
+  });
+  function toast(title, text) {
+    const t = $('#toast');
+    t.innerHTML = `<i><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><path d="m5 10.5 3 3 7-7"/></svg></i><div><b>${esc(title)}</b><span>${esc(text)}</span></div>`;
+    t.classList.add('on'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('on'), 4000);
+  }
+
+  // ---------- embed code ----------
+  const src = new URL('widget.js', location.href).href;
+  $('#code').innerHTML = `<button class="btn copy" type="button">Copy</button><span class="t">&lt;script</span> <span class="a">src</span>=<span class="s">"${esc(src)}"</span>\n        <span class="a">data-quotekit</span>=<span class="s">"${ID}"</span> <span class="a">async</span><span class="t">&gt;&lt;/script&gt;</span>`;
+  $('#code .copy').onclick = e => {
+    navigator.clipboard.writeText(`<script src="${src}" data-quotekit="${ID}" async><\/script>`).then(() => { e.target.textContent = 'Copied'; setTimeout(() => e.target.textContent = 'Copy', 1600); }, () => { e.target.textContent = 'Select and copy'; });
+  };
+
+  // ---------- start ----------
+  renderEditor();
+  preview = await Q.mount($('#pv'), ID, { config: clone(draft), source: 'Dashboard preview' });
+  renderLeads();
+  route();
+})();
+</script>
+</body>
+</html>
