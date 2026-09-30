@@ -1,0 +1,35 @@
+{
+  "id": "crumb-kettle",
+  "business": "Crumb & Kettle",
+  "place": "Stokes Croft, Bristol",
+  "tz": "Europe/London",
+  "accent": "#24422f",
+  "itemsTitle": "On the counter today",
+  "notice": "Soup of the day: leek & potato with sourdough, £6.50",
+  "hours": [
+    { "open": "07:30", "close": "16:00" },
+    { "open": "07:30", "close": "16:00" },
+    { "open": "07:30", "close": "16:00" },
+    { "open": "07:30", "close": "16:00" },
+    { "open": "07:30", "close": "16:00" },
+    { "open": "08:00", "close": "16:00" },
+    { "open": "09:00", "close": "14:00" }
+  ],
+  "exceptions": [
+    { "id": "xmas-eve", "date": "2000-12-24", "repeat": "yearly", "open": "08:00", "close": "13:00", "label": "Christmas Eve" },
+    { "id": "xmas", "date": "2000-12-25", "repeat": "yearly", "closed": true, "label": "Christmas Day" },
+    { "id": "boxing", "date": "2000-12-26", "repeat": "yearly", "closed": true, "label": "Boxing Day" },
+    { "id": "nyd", "date": "2000-01-01", "repeat": "yearly", "closed": true, "label": "New Year's Day" }
+  ],
+  "items": [
+    { "id": "i1", "name": "Country sourdough", "price": "4.60" },
+    { "id": "i2", "name": "Cardamom knots", "price": "3.40", "tag": "special" },
+    { "id": "i3", "name": "Almond croissant", "price": "3.60" },
+    { "id": "i4", "name": "Seeded rye loaf", "price": "4.80" },
+    { "id": "i5", "name": "Rhubarb & custard bun", "price": "3.80" },
+    { "id": "i6", "name": "Cheese & Marmite swirl", "price": "3.20" },
+    { "id": "i7", "name": "Brown butter cookie", "price": "2.60", "tag": "vg" },
+    { "id": "i8", "name": "Focaccia slice", "price": "3.00" }
+  ],
+  "updatedAt": null
+}

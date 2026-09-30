@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today at Crumb &amp; Kettle · Today Board (beta concept demo)</title>
+<meta name="description" content="Opening hours and what's on the counter today. A Today Board public page (beta concept demo by MBDEV). Crumb & Kettle is a fictional business.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#24422f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2324422f'/%3E%3Cpath d='M7 20c0-6 4-10 9-10s9 4 9 10z' fill='%23f2c94c'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/YoungSerif.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Young Serif"; src: url(../fonts/YoungSerif.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Work Sans"; src: url(../fonts/WorkSans.woff2) format("woff2"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "Caveat"; src: url(../fonts/Caveat.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+:root { --accent: #24422f; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; font: 16px/1.5 "Work Sans", system-ui, sans-serif; color: #2b241d; background: var(--accent); }
+.betabar { background: #fff7e6; color: #5b3a00; font-size: .78rem; padding: 7px 14px; text-align: center; }
+.betabar b { background: #16171d; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .64rem; letter-spacing: .06em; margin-right: 6px; }
+.betabar a { color: inherit; font-weight: 700; }
+.wrap { width: min(560px, 100% - 24px); margin: 0 auto; padding: 22px 0 40px; }
+.head { color: #fff; text-align: center; padding: 10px 0 22px; }
+.head .av { width: 64px; height: 64px; border-radius: 50%; background: #f2c94c; display: grid; place-items: center; margin: 0 auto 10px; box-shadow: 0 0 0 4px rgba(255,255,255,.15); }
+.head h1 { font: 400 2rem/1.1 "Young Serif", Georgia, serif; margin: 0; }
+.head h1 span { color: #f2c94c; }
+.head p { margin: 4px 0 0; color: #c8d6cb; font-size: .9rem; }
+.card { background: #fbf5ea; border-radius: 24px; padding: clamp(20px, 5vw, 30px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.6);
+  --tb-ink: #2b241d; --tb-muted: #6a5d4f; --tb-line: #e6dcc6; --tb-accent: #b04a22; --tb-price: #b04a22; --tb-leader: #d9ccb3;
+  --tb-list-font: "Caveat", cursive; --tb-list-size: 1.6rem; --tb-tag-font: "Work Sans", sans-serif; --tb-hours-width: 100%; --tb-hol-bg: #f3ead8; --tb-notice-bg: #f2c94c; --tb-notice-ink: #2b241d; }
+.actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin: 14px 0 0; }
+.actions a { display: grid; justify-items: center; gap: 4px; background: rgba(255,255,255,.1); color: #fff; text-decoration: none; border-radius: 14px; padding: 12px 6px; font-size: .84rem; font-weight: 600; }
+.actions a:hover { background: rgba(255,255,255,.16); }
+.actions svg { width: 20px; height: 20px; }
+.foot { text-align: center; color: #c8d6cb; font-size: .78rem; margin: 20px 0 0; }
+.foot a { color: #fff; }
+</style>
+</head>
+<body>
+<div class="betabar"><b>BETA</b>Today Board concept demo by MBDEV. Crumb &amp; Kettle is a fictional café. <a href="./">Open the editor</a></div>
+<div class="wrap">
+  <header class="head">
+    <div class="av" aria-hidden="true"><svg viewBox="0 0 32 32" width="36" height="36"><path d="M5 22c0-7 5-12 11-12s11 5 11 12z" fill="#c9782f"/><path d="M11 15c2 2 3 4 3 7M17 12c2 3 2 6 2 10M22 14c2 2 2 5 2 8" stroke="#f4d7a2" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+    <h1 id="biz">Crumb <span>&amp;</span> Kettle</h1>
+    <p id="place">Bakery &amp; café · Stokes Croft, Bristol</p>
+  </header>
+  <main class="card" id="board" data-todayboard="crumb-kettle" data-view="page"></main>
+  <nav class="actions" aria-label="Contact">
+    <a href="tel:01174960527"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 3h3l1.5 4-2 1.2a9 9 0 0 0 5.3 5.3l1.2-2 4 1.5v3a1.5 1.5 0 0 1-1.6 1.5A14 14 0 0 1 2.5 4.6 1.5 1.5 0 0 1 4 3z"/></svg>Call</a>
+    <a href="../cafe/#find"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M10 18s6-5.3 6-10a6 6 0 0 0-12 0c0 4.7 6 10 6 10z"/><circle cx="10" cy="8" r="2.2"/></svg>Directions</a>
+    <a href="../cafe/"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M2.5 10h15M10 2.5c2.2 2.3 3 4.8 3 7.5s-.8 5.2-3 7.5c-2.2-2.3-3-4.8-3-7.5s.8-5.2 3-7.5z"/></svg>Website</a>
+  </nav>
+  <p class="foot">Phone number is from Ofcom's range reserved for fiction. <a href="../">MBDEV samples</a></p>
+</div>
+<script src="widget.js"></script>
+<script>
+// the public page works for any board id: board.html?b=<id>
+(function () {
+  var id = new URLSearchParams(location.search).get('b');
+  if (id && /^[a-z0-9-]{1,40}$/.test(id)) document.getElementById('board').setAttribute('data-todayboard', id);
+})();
+</script>
+</body>
+</html>

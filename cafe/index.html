@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Crumb &amp; Kettle is a fictional business. Portfolio sample only.</div>
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Crumb &amp; Kettle is a fictional business. Portfolio sample only. The hours and today's bakes are a live demo of <a href="../todayboard/">Today Board</a> (beta).</div>
 
 <header class="header">
   <div class="wrap header__in">
@@ -23,7 +23,7 @@
       <a href="#cakes">Cakes to order</a>
       <a href="#find">Find us</a>
     </nav>
-    <span class="open-now" id="openNow"><b></b>Open today 7:30 – 16:00</span>
+    <div class="open-now" data-todayboard="crumb-kettle" data-view="badge">Open today 7:30 – 16:00</div>
     <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -72,17 +72,20 @@
           <h2>On the counter today</h2>
           <p class="hand hand--light">while stocks last — usually gone by 2pm!</p>
         </div>
-        <ul class="bakes">
-          <li><span>Country sourdough</span><i></i><b>£4.60</b></li>
-          <li><span>Cardamom knots</span><i></i><b>£3.40</b></li>
-          <li><span>Almond croissant</span><i></i><b>£3.60</b></li>
-          <li><span>Seeded rye loaf</span><i></i><b>£4.80</b></li>
-          <li><span>Rhubarb &amp; custard bun</span><i></i><b>£3.80</b></li>
-          <li><span>Cheese &amp; Marmite swirl</span><i></i><b>£3.20</b></li>
-          <li><span>Brown butter cookie <em>vg</em></span><i></i><b>£2.60</b></li>
-          <li><span>Focaccia slice</span><i></i><b>£3.00</b></li>
-        </ul>
-        <p class="board__note">Sample menu and prices for this concept site. On a live site, staff can update this board from their phone.</p>
+        <!-- Today Board: staff update this list from their phone -->
+        <div class="bakes" data-todayboard="crumb-kettle" data-view="board">
+        <ul>
+            <li><span>Country sourdough</span><i></i><b>£4.60</b></li>
+            <li><span>Cardamom knots</span><i></i><b>£3.40</b></li>
+            <li><span>Almond croissant</span><i></i><b>£3.60</b></li>
+            <li><span>Seeded rye loaf</span><i></i><b>£4.80</b></li>
+            <li><span>Rhubarb &amp; custard bun</span><i></i><b>£3.80</b></li>
+            <li><span>Cheese &amp; Marmite swirl</span><i></i><b>£3.20</b></li>
+            <li><span>Brown butter cookie <em>vg</em></span><i></i><b>£2.60</b></li>
+            <li><span>Focaccia slice</span><i></i><b>£3.00</b></li>
+          </ul>
+        </div>
+        <p class="board__note">Sample menu and prices. This board is a live <a href="../todayboard/">Today Board</a> demo: <a href="../todayboard/">open the phone editor</a>, mark something sold out, and watch it change here.</p>
       </div>
     </div>
   </section>
@@ -170,11 +173,13 @@
         <h2 class="title">Find us</h2>
         <address>92 Stokes Croft, Bristol BS1 3RL <small>(fictional address)</small></address>
         <p><a href="tel:01174960527">0117 496 0527</a> · <a href="mailto:hello@example.com">hello@example.com</a></p>
-        <dl class="hours">
-          <div><dt>Mon – Fri</dt><dd>7:30 – 16:00</dd></div>
-          <div><dt>Saturday</dt><dd>8:00 – 16:00</dd></div>
-          <div><dt>Sunday</dt><dd>9:00 – 14:00</dd></div>
-        </dl>
+        <div class="hours" data-todayboard="crumb-kettle" data-view="hours">
+        <dl>
+            <div><dt>Mon – Fri</dt><dd>7:30 – 16:00</dd></div>
+            <div><dt>Saturday</dt><dd>8:00 – 16:00</dd></div>
+            <div><dt>Sunday</dt><dd>9:00 – 14:00</dd></div>
+          </dl>
+        </div>
         <p class="perks">Dogs welcome · Step-free entrance · Card only</p>
       </div>
       <div class="map" role="img" aria-label="Illustrated map showing the bakery on Stokes Croft">
@@ -206,11 +211,6 @@
 const btn = document.getElementById('menuBtn'), nav = document.getElementById('nav');
 btn.addEventListener('click', () => { const o = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', o); });
 nav.addEventListener('click', e => { if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
-// opening hours badge
-const hrs = { 0: [9, 14], 6: [8, 16] }, now = new Date(), d = now.getDay(), [o, c] = hrs[d] || [7.5, 16], h = now.getHours() + now.getMinutes() / 60;
-const fmt = x => Math.floor(x) + ':' + (x % 1 ? '30' : '00');
-const on = document.getElementById('openNow');
-on.innerHTML = (h >= o && h < c ? '<b></b>Open now until ' + fmt(c) : '<b class="shut"></b>Closed · opens ' + fmt(hrs[(d + (h >= c ? 1 : 0)) % 7]?.[0] ?? 7.5));
 // cake builder
 const form = document.getElementById('cakeForm'), total = document.getElementById('total');
 form.addEventListener('change', () => { total.textContent = '£' + form.size.value; });
@@ -219,5 +219,6 @@ form.addEventListener('submit', e => {
   form.querySelector('.form-msg').textContent = 'Thanks! This is a concept site, so no order was placed. On a live site you would get a confirmation email and pay on collection.';
 });
 </script>
+<script src="../todayboard/widget.js" async></script>
 </body>
 </html>

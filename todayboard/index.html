@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Today · Today Board (beta concept demo)</title>
+<meta name="description" content="Today Board is a beta concept by MBDEV: update opening hours, 'closed today' and today's specials from your phone, and your website updates straight away. Demo only.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#16171d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23c2410c'/%3E%3Ccircle cx='16' cy='17' r='6' fill='%23fff'/%3E%3Cpath d='M16 5v3M6 17H3M29 17h-3M8.5 9.5l2 2M23.5 9.5l-2 2' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/Geist.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Geist"; src: url(../fonts/Geist.woff2) format("woff2"); font-weight: 300 800; font-display: swap; }
+:root { --ink: #16171d; --muted: #656a76; --line: #e7e5e2; --bg: #f6f4f1; --brand: #c2410c; --brand-d: #9a3412; --brand-soft: #fff1e8; --ok: #15803d; --ok-soft: #e3f6ea; --bad: #b42318; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: 16px/1.5 Geist, system-ui, sans-serif; color: var(--ink); background: var(--bg); }
+a { color: var(--brand-d); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.betabar { background: #fff7e6; border-bottom: 1px solid #f1dcb2; color: #5b3a00; font-size: .82rem; padding: 8px 16px; text-align: center; }
+.betabar b { background: #16171d; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .66rem; letter-spacing: .06em; margin-right: 6px; }
+.betabar a { color: inherit; font-weight: 700; }
+
+.shell { display: grid; grid-template-columns: 440px minmax(0, 1fr); height: calc(100vh - 37px); }
+.ed { background: #fff; border-right: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; }
+.top { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.logo { display: flex; align-items: center; gap: 9px; font-weight: 800; letter-spacing: -.02em; font-size: 1.05rem; text-decoration: none; color: var(--ink); }
+.logo small { font-size: .58rem; letter-spacing: .08em; background: var(--brand-soft); color: var(--brand-d); border-radius: 4px; padding: 2px 5px; }
+.acct { margin-left: auto; text-align: right; font-size: .78rem; color: var(--muted); line-height: 1.25; }
+.acct b { display: block; color: var(--ink); font-size: .86rem; }
+.scroll { flex: 1; overflow-y: auto; padding: 18px 18px 30px; }
+
+.tabbar { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: #fff; padding-bottom: env(safe-area-inset-bottom); }
+.tabbar a { display: grid; justify-items: center; gap: 2px; padding: 9px 4px 10px; font-size: .74rem; font-weight: 600; color: var(--muted); text-decoration: none; }
+.tabbar svg { width: 22px; height: 22px; }
+.tabbar a[aria-current=page] { color: var(--brand); }
+
+h1 { font-size: 1.45rem; letter-spacing: -.03em; margin: 0 0 2px; line-height: 1.2; }
+h2 { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 26px 0 10px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+h2 .cnt { margin-left: auto; text-transform: none; letter-spacing: 0; font-weight: 600; }
+.lead { color: var(--muted); margin: 0 0 16px; font-size: .92rem; }
+
+/* status card */
+.status { border-radius: 20px; padding: 18px; background: var(--ok-soft); color: #0f3d22; }
+.status.shut { background: #fdeee6; color: #6d240a; }
+.status .now { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.12rem; line-height: 1.25; }
+.status .now i { width: 12px; height: 12px; border-radius: 50%; background: #22a55b; box-shadow: 0 0 0 4px #bfe9cf; flex: none; }
+.status.shut .now i { background: #e0703c; box-shadow: 0 0 0 4px #f8cdb8; }
+.status .sub { font-size: .84rem; opacity: .8; margin: 4px 0 14px 22px; }
+.qa { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.qa button { min-height: 48px; border-radius: 14px; border: 1.5px solid rgba(0,0,0,.1); background: #fff; font-weight: 700; font-size: .92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 10px; line-height: 1.2; }
+.qa button[aria-pressed=true] { background: #16171d; border-color: #16171d; color: #fff; }
+.qa .wide { grid-column: 1 / -1; }
+.qa svg { width: 18px; height: 18px; flex: none; }
+.today-hrs { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: end; margin-top: 10px; background: rgba(255,255,255,.7); border-radius: 14px; padding: 12px; }
+.today-hrs label { font-size: .76rem; font-weight: 700; display: grid; gap: 4px; }
+
+/* inputs */
+.in { width: 100%; min-width: 0; height: 46px; border: 1.5px solid #dcd9d4; border-radius: 12px; padding: 0 12px; background: #fff; font-size: 1rem; }
+textarea.in { height: 76px; padding: 10px 12px; resize: vertical; line-height: 1.4; }
+.in:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px #fcd9c5; }
+.in[type=time] { padding: 0 8px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 46px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--line); background: #fff; font-weight: 700; font-size: .92rem; cursor: pointer; text-decoration: none; color: var(--ink); white-space: nowrap; }
+.btn--pri { background: var(--brand); border-color: var(--brand); color: #fff; }
+.btn--pri:hover { background: var(--brand-d); }
+.btn--sm { min-height: 36px; padding: 0 12px; font-size: .84rem; border-radius: 10px; }
+.btn:disabled { opacity: .45; cursor: default; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chips button { border: 1.5px solid var(--line); background: #fff; border-radius: 999px; padding: 6px 12px; font-size: .82rem; font-weight: 600; cursor: pointer; }
+.chips button:hover { border-color: var(--brand); color: var(--brand-d); }
+.hint { font-size: .78rem; color: var(--muted); margin: 6px 0 0; display: flex; justify-content: space-between; gap: 8px; }
+
+/* sold-out list */
+.stock { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.stock li { display: flex; align-items: center; gap: 12px; padding: 10px 12px 10px 16px; border-bottom: 1px solid #f0eeea; min-height: 60px; }
+.stock li:last-child { border-bottom: 0; }
+.stock .nm { flex: 1; min-width: 0; font-weight: 600; line-height: 1.25; }
+.stock .nm small { display: block; color: var(--muted); font-weight: 500; font-size: .8rem; }
+.stock li.out .nm > span { text-decoration: line-through; color: var(--muted); }
+.sw { display: flex; align-items: center; gap: 8px; border: 0; background: none; cursor: pointer; font-size: .78rem; font-weight: 700; color: var(--ok); padding: 6px 0; min-width: 104px; justify-content: flex-end; }
+.sw i { width: 46px; height: 28px; border-radius: 999px; background: #22a55b; position: relative; transition: background .15s; flex: none; }
+.sw i::after { content: ""; position: absolute; top: 3px; left: 21px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: left .15s; }
+.sw[aria-checked=false] { color: var(--bad); }
+.sw[aria-checked=false] i { background: #d4d0ca; }
+.sw[aria-checked=false] i::after { left: 3px; }
+
+/* menu editor */
+.edit { display: grid; gap: 10px; }
+.it { border: 1px solid var(--line); border-radius: 16px; padding: 12px; display: grid; grid-template-columns: 1fr 96px; gap: 8px; }
+.it .nm { grid-column: 1 / -1; }
+.it .row { grid-column: 1 / -1; display: flex; gap: 6px; align-items: center; }
+.it select.in { height: 38px; width: auto; font-size: .86rem; padding: 0 8px; }
+.ic { width: 38px; height: 38px; border-radius: 10px; border: 1.5px solid var(--line); background: #fff; cursor: pointer; display: grid; place-items: center; flex: none; }
+.ic:disabled { opacity: .35; cursor: default; }
+.ic.del { margin-left: auto; color: var(--bad); }
+.ic svg { width: 16px; height: 16px; }
+.pre { position: relative; } .pre .in { padding-left: 26px; } .pre::before { content: "£"; position: absolute; left: 12px; top: 12px; color: var(--muted); }
+.add { width: 100%; margin-top: 10px; border: 1.5px dashed #cfcac3; background: none; border-radius: 14px; min-height: 50px; font-weight: 700; cursor: pointer; color: var(--brand-d); }
+.add:disabled { color: var(--muted); cursor: default; }
+
+/* hours */
+.week { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.day { display: grid; grid-template-columns: 1fr auto; gap: 8px 10px; padding: 10px 12px 10px 16px; border-bottom: 1px solid #f0eeea; align-items: center; }
+.day:last-child { border-bottom: 0; }
+.day b { font-weight: 700; }
+.day .times { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; color: var(--muted); font-size: .84rem; }
+.day.off .times { display: none; }
+.day.today { background: #fffaf6; }
+.day.today b::after { content: "Today"; margin-left: 8px; font-size: .68rem; font-weight: 700; background: var(--brand-soft); color: var(--brand-d); padding: 2px 6px; border-radius: 5px; vertical-align: 2px; }
+.ex { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ex li { display: flex; gap: 12px; align-items: center; border: 1px solid var(--line); border-radius: 14px; padding: 10px 10px 10px 14px; }
+.ex .d { flex: none; width: 46px; text-align: center; background: var(--bg); border-radius: 10px; padding: 4px 0; line-height: 1.1; }
+.ex .d b { display: block; font-size: 1.15rem; } .ex .d span { font-size: .68rem; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.ex .t { flex: 1; min-width: 0; line-height: 1.3; }
+.ex .t small { display: block; color: var(--muted); font-size: .8rem; }
+.ex .none { color: var(--muted); font-size: .9rem; border-style: dashed; justify-content: center; }
+.newex { border: 1px solid var(--line); border-radius: 16px; padding: 14px; display: grid; gap: 10px; margin-top: 10px; background: #fcfbfa; }
+.newex .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.newex label.f { display: grid; gap: 4px; font-size: .78rem; font-weight: 700; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; background: var(--bg); border-radius: 12px; padding: 3px; gap: 3px; }
+.seg label { position: relative; }
+.seg input { position: absolute; opacity: 0; }
+.seg span { display: block; text-align: center; padding: 9px; border-radius: 9px; font-weight: 700; font-size: .88rem; cursor: pointer; color: var(--muted); }
+.seg input:checked + span { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.seg input:focus-visible + span { outline: 2px solid var(--brand); }
+.chk { display: flex; gap: 8px; align-items: center; font-size: .88rem; }
+.chk input { width: 18px; height: 18px; accent-color: var(--brand); }
+
+/* share */
+.link { display: flex; gap: 8px; align-items: center; border: 1.5px solid var(--line); border-radius: 14px; padding: 6px 6px 6px 14px; background: #fff; }
+.link code { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .84rem; }
+.share-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+.code { position: relative; background: #16171d; color: #e4e4ea; border-radius: 14px; padding: 14px 16px; font: 12.5px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-x: auto; white-space: pre; margin: 0 0 8px; }
+.code .t { color: #fdba74; } .code .a { color: #7dd3fc; } .code .s { color: #bef264; } .code .c { color: #8b8d98; }
+.snip { margin-bottom: 14px; }
+.snip-h { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; font-weight: 700; font-size: .9rem; }
+.snip-h small { display: block; font-weight: 500; color: var(--muted); font-size: .78rem; }
+.plats { display: flex; flex-wrap: wrap; gap: 6px; }
+.plats span { border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; font-size: .8rem; color: var(--muted); }
+.reset { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--line); font-size: .84rem; color: var(--muted); }
+.reset button { background: none; border: 0; padding: 0; color: var(--bad); font-weight: 700; cursor: pointer; text-decoration: underline; }
+
+/* saved pill */
+.saved { position: fixed; left: 50%; bottom: 84px; transform: translate(-50%, 20px); opacity: 0; z-index: 30; background: #16171d; color: #fff; border-radius: 999px; padding: 10px 16px; font-size: .86rem; font-weight: 600; display: flex; gap: 8px; align-items: center; transition: .25s; pointer-events: none; white-space: nowrap; box-shadow: 0 12px 30px -10px rgba(0,0,0,.5); }
+.saved.on { opacity: 1; transform: translate(-50%, 0); }
+.saved i { width: 18px; height: 18px; border-radius: 50%; background: #22a55b; display: grid; place-items: center; }
+
+/* preview */
+.pv { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.pv-bar { display: flex; align-items: center; gap: 12px; padding: 12px 18px; flex-wrap: wrap; }
+.pv-bar .t { font-size: .84rem; color: var(--muted); }
+.pv-bar .t b { color: var(--ink); }
+.pv-seg { display: inline-flex; background: #e9e6e1; border-radius: 10px; padding: 3px; gap: 2px; margin-left: auto; }
+.pv-seg button { border: 0; background: none; padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: .84rem; cursor: pointer; color: var(--muted); }
+.pv-seg button[aria-pressed=true] { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+.frame { flex: 1; margin: 0 18px 18px; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 30px 60px -30px rgba(0,0,0,.3); display: flex; flex-direction: column; min-height: 0; }
+.frame .chrome { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #f1efec; border-bottom: 1px solid var(--line); }
+.frame .chrome i { width: 10px; height: 10px; border-radius: 50%; background: #dcd8d2; }
+.frame .chrome span { margin-left: 10px; flex: 1; background: #fff; border-radius: 7px; padding: 3px 10px; font-size: .76rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.frame iframe { flex: 1; width: 100%; border: 0; }
+
+.mob-pv { display: none; }
+@media (max-width: 900px) {
+  .shell { display: block; height: auto; }
+  .ed { border-right: 0; min-height: calc(100vh - 37px); }
+  .top { position: sticky; top: 0; z-index: 10; background: #fff; }
+  .scroll { overflow: visible; padding-bottom: 100px; }
+  .tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; }
+  .pv { display: none; }
+  .mob-pv { display: flex; gap: 8px; margin-top: 14px; }
+  .mob-pv a { flex: 1; }
+  .saved { bottom: calc(80px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 360px) { .qa { grid-template-columns: 1fr; } .acct { display: none; } }
+</style>
+</head>
+<body>
+<div class="betabar"><b>BETA</b>Concept demo by MBDEV, not a product on sale. Edits are saved in this browser only. <a href="../">Back to samples</a></div>
+
+<div class="shell">
+  <section class="ed" aria-label="Today Board editor">
+    <header class="top">
+      <a class="logo" href="#today"><svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#c2410c"/><circle cx="16" cy="17" r="6" fill="#fff"/><path d="M16 5v3M6 17H3M29 17h-3M8.5 9.5l2 2M23.5 9.5l-2 2" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>Today Board <small>BETA</small></a>
+      <div class="acct"><b id="bizName">Crumb &amp; Kettle</b>Demo account</div>
+    </header>
+
+    <div class="scroll" id="scroll">
+      <!-- TODAY -->
+      <div id="v-today">
+        <h1 id="hello">Morning!</h1>
+        <p class="lead">Tap to update. Your website changes straight away.</p>
+        <div class="status" id="status">
+          <p class="now" style="margin:0"><i></i><span id="stText"></span></p>
+          <p class="sub" id="stSub"></p>
+          <div class="qa">
+            <button type="button" id="qaClosed" aria-pressed="false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="m5 15 10-10"/></svg>Closed today</button>
+            <button type="button" id="qaHours" aria-expanded="false" aria-controls="todayHrs"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M10 5.5V10l3 2"/></svg>Change hours</button>
+            <button type="button" class="wide" id="qaNormal" hidden>Back to normal hours today</button>
+          </div>
+          <div class="today-hrs" id="todayHrs" hidden>
+            <label>Open <input class="in" type="time" id="tOpen" step="900"></label>
+            <label>Close <input class="in" type="time" id="tClose" step="900"></label>
+            <button type="button" class="btn btn--pri" id="tSave">Save</button>
+          </div>
+        </div>
+
+        <h2>Notice on your site</h2>
+        <textarea class="in" id="notice" maxlength="120" placeholder="e.g. Soup today: leek &amp; potato" aria-label="Notice on your site"></textarea>
+        <p class="hint"><span id="noticeHelp">Shown at the top of your board. Leave empty to hide it.</span><span id="noticeCount"></span></p>
+        <div class="chips" id="presets" aria-label="Quick notices">
+          <button type="button">Soup today: </button>
+          <button type="button">Fresh sourdough out at 11am</button>
+          <button type="button">Card only today, sorry!</button>
+          <button type="button">Back tomorrow as normal</button>
+          <button type="button" data-clear>Clear notice</button>
+        </div>
+
+        <h2>What's left? <span class="cnt" id="leftCnt"></span></h2>
+        <ul class="stock" id="stock"></ul>
+        <p class="hint"><span>Tap when something sells out. It stays on the board, crossed out.</span></p>
+        <button type="button" class="btn btn--sm" id="restock" style="margin-top:8px">Everything back in stock</button>
+
+        <div class="mob-pv"><a class="btn" href="../cafe/#today" target="_blank" rel="noopener">See your website ↗</a><a class="btn" href="board.html?b=crumb-kettle" target="_blank" rel="noopener">Share page ↗</a></div>
+      </div>
+
+      <!-- MENU -->
+      <div id="v-menu" hidden>
+        <h1>Today's items</h1>
+        <p class="lead">Up to 10 items or specials. Prices update everywhere as you type.</p>
+        <label class="lbl" for="itemsTitle" style="display:block;font-weight:700;font-size:.84rem;margin-bottom:5px">Board heading</label>
+        <input class="in" id="itemsTitle" maxlength="40">
+        <h2>Items <span class="cnt" id="itemCnt"></span></h2>
+        <div class="edit" id="edit"></div>
+        <button type="button" class="add" id="addItem">+ Add an item</button>
+      </div>
+
+      <!-- HOURS -->
+      <div id="v-hours" hidden>
+        <h1>Opening hours</h1>
+        <p class="lead">Your usual week. Your site shows "Open now" or "Closed" by itself, in UK time.</p>
+        <div class="week" id="week"></div>
+        <h2>Holidays &amp; changes</h2>
+        <ul class="ex" id="exList"></ul>
+        <form class="newex" id="newEx" novalidate>
+          <b style="font-size:.95rem">Add a change</b>
+          <div class="g2">
+            <label class="f">Date <input class="in" type="date" name="date" required></label>
+            <label class="f">Name <i style="font-weight:500;font-style:normal;color:var(--muted)">(optional)</i><input class="in" name="label" maxlength="30" placeholder="e.g. Bank holiday"></label>
+          </div>
+          <div class="seg" role="radiogroup" aria-label="Closed or different hours">
+            <label><input type="radio" name="kind" value="closed" checked><span>Closed all day</span></label>
+            <label><input type="radio" name="kind" value="hours"><span>Different hours</span></label>
+          </div>
+          <div class="g2" id="exTimes" hidden>
+            <label class="f">Open <input class="in" type="time" name="open" value="09:00" step="900"></label>
+            <label class="f">Close <input class="in" type="time" name="close" value="14:00" step="900"></label>
+          </div>
+          <label class="chk"><input type="checkbox" name="yearly"> Every year on this date</label>
+          <p class="hint" id="exErr" role="alert" style="color:var(--bad);margin:0"></p>
+          <button class="btn btn--pri" type="submit">Add change</button>
+        </form>
+      </div>
+
+      <!-- SHARE -->
+      <div id="v-share" hidden>
+        <h1>Share &amp; embed</h1>
+        <p class="lead">A public page for Instagram and Google, plus code for your website.</p>
+        <h2>Your public page</h2>
+        <div class="link"><code id="pubUrl"></code><button type="button" class="btn btn--sm" id="copyUrl">Copy</button></div>
+        <div class="share-btns"><a class="btn" id="openPub" target="_blank" rel="noopener">Open ↗</a><button type="button" class="btn" id="sharePub">Share…</button></div>
+        <p class="hint"><span>Put it in your Instagram bio or Google profile so customers always see today's hours.</span></p>
+
+        <h2>Add it to your website</h2>
+        <p class="lead" style="margin-bottom:12px">Paste one line of code where you want each part to show. It works on Wix, Squarespace, WordPress and hand-built sites.</p>
+        <div id="snips"></div>
+        <div class="plats"><span>Wix</span><span>Squarespace</span><span>WordPress</span><span>Shopify</span><span>Any HTML site</span></div>
+        <p class="reset">Demo tools: <button type="button" id="reset">Reset the demo board</button></p>
+      </div>
+    </div>
+
+    <nav class="tabbar" aria-label="Today Board">
+      <a href="#today" data-v="today"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></svg>Today</a>
+      <a href="#menu" data-v="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Items</a>
+      <a href="#hours" data-v="hours"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>Hours</a>
+      <a href="#share" data-v="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="17" cy="5.5" r="2.5"/><circle cx="7" cy="12" r="2.5"/><circle cx="17" cy="18.5" r="2.5"/><path d="m9.2 10.8 5.6-3.6M9.2 13.2l5.6 3.6"/></svg>Share</a>
+    </nav>
+  </section>
+
+  <section class="pv" aria-label="Live preview">
+    <div class="pv-bar">
+      <p class="t" style="margin:0"><b>Live preview.</b> Edit on the left and watch the site update.</p>
+      <div class="pv-seg" role="group" aria-label="Preview">
+        <button type="button" aria-pressed="true" data-src="../cafe/#today" data-url="crumbandkettle.example/#today">Café website</button>
+        <button type="button" aria-pressed="false" data-src="board.html?b=crumb-kettle" data-url="todayboard.example/crumb-kettle">Share page</button>
+      </div>
+    </div>
+    <div class="frame"><div class="chrome"><i></i><i></i><i></i><span id="pvUrl">crumbandkettle.example/#today</span></div><iframe id="pv" title="Live preview of the Crumb &amp; Kettle website" src="about:blank" loading="lazy"></iframe></div>
+  </section>
+</div>
+
+<div class="saved" id="saved" role="status" aria-live="polite"><i><svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="m2.5 6.2 2.2 2.2 4.8-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></i><span>Saved · live on your site</span></div>
+
+<script src="widget.js"></script>
+<script>
+(async function () {
+  const T = window.TodayBoard, ID = 'crumb-kettle', $ = s => document.querySelector(s), esc = T.esc;
+  const MAX = 10;
+  let b = await T.load(ID);
+  b = JSON.parse(JSON.stringify(b));
+  const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  (b.items || []).forEach(it => { if (!it.id) it.id = uid(); });
+  (b.exceptions || []).forEach(e => { if (!e.id) e.id = uid(); });
+
+  // ---------- saving ----------
+  let pillTimer, saveTimer;
+  function save(quiet) {
+    T.store.save(ID, b);
+    renderStatus();
+    if (!quiet) { const p = $('#saved'); p.classList.add('on'); clearTimeout(pillTimer); pillTimer = setTimeout(() => p.classList.remove('on'), 1600); }
+  }
+  const saveSoon = () => { clearTimeout(saveTimer); saveTimer = setTimeout(save, 450); };
+  // pick up edits made in another tab
+  window.addEventListener('storage', e => { if (e.key === 'todayboard:board:' + ID && e.newValue) { b = JSON.parse(e.newValue); renderAll(); } });
+
+  // ---------- views ----------
+  const views = ['today', 'menu', 'hours', 'share'];
+  function route() {
+    const v = views.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'today';
+    views.forEach(k => { $('#v-' + k).hidden = k !== v; });
+    document.querySelectorAll('.tabbar a').forEach(a => a.dataset.v === v ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+    document.title = { today: 'Today', menu: 'Items', hours: 'Hours', share: 'Share' }[v] + ' · Today Board (beta concept demo)';
+    $('#scroll').scrollTop = 0;
+  }
+  window.addEventListener('hashchange', route);
+
+  // ---------- today ----------
+  const todayDate = () => T.now(b.tz).date;
+  const todayEx = () => (b.exceptions || []).find(e => e.date === todayDate() && !e.repeat);
+  function renderStatus() {
+    const s = T.status(b), n = T.now(b.tz), h = T.dayHours(b, n.date), ex = todayEx();
+    $('#status').classList.toggle('shut', !s.open);
+    $('#stText').textContent = s.text;
+    const usual = b.hours[T.dow(n.date)];
+    $('#stSub').textContent = ex ? (ex.closed ? 'You marked today as closed.' : 'Today only: ' + T.hm(ex.open) + ' – ' + T.hm(ex.close) + '.') + ' Usual hours come back tomorrow.'
+      : h.exception ? (h.label || 'Holiday hours') + ' today.' : 'Usual hours today: ' + (usual && !usual.closed ? T.hm(usual.open) + ' – ' + T.hm(usual.close) : 'closed') + '.';
+    $('#qaClosed').setAttribute('aria-pressed', !!(ex && ex.closed));
+    $('#qaNormal').hidden = !ex;
+    $('#tOpen').value = h.open || '09:00'; $('#tClose').value = h.close || '16:00';
+    const hr = n.mins / 60;
+    $('#hello').textContent = hr < 12 ? 'Morning!' : hr < 17 ? 'Afternoon!' : 'Evening!';
+  }
+  function setTodayEx(ex) {
+    b.exceptions = (b.exceptions || []).filter(e => !(e.date === todayDate() && !e.repeat));
+    if (ex) b.exceptions.push(Object.assign({ id: uid(), date: todayDate() }, ex));
+    save(); renderExceptions();
+  }
+  $('#qaClosed').onclick = () => { const ex = todayEx(); setTodayEx(ex && ex.closed ? null : { closed: true, label: 'Closed today' }); };
+  $('#qaHours').onclick = e => { const p = $('#todayHrs'); p.hidden = !p.hidden; e.currentTarget.setAttribute('aria-expanded', !p.hidden); if (!p.hidden) $('#tOpen').focus(); };
+  $('#qaNormal').onclick = () => setTodayEx(null);
+  $('#tSave').onclick = () => {
+    const o = $('#tOpen').value, c = $('#tClose').value;
+    if (!o || !c || o >= c) { $('#tClose').setCustomValidity('Close must be after open'); $('#tClose').reportValidity(); return; }
+    $('#tClose').setCustomValidity('');
+    setTodayEx({ open: o, close: c, label: 'Hours changed today' });
+    $('#todayHrs').hidden = true; $('#qaHours').setAttribute('aria-expanded', false);
+  };
+
+  const notice = $('#notice');
+  function renderNotice() { notice.value = b.notice || ''; $('#noticeCount').textContent = notice.value.length + '/120'; }
+  notice.addEventListener('input', () => { b.notice = notice.value.trim(); $('#noticeCount').textContent = notice.value.length + '/120'; saveSoon(); });
+  $('#presets').addEventListener('click', e => {
+    const btn = e.target.closest('button'); if (!btn) return;
+    notice.value = btn.hasAttribute('data-clear') ? '' : btn.textContent;
+    b.notice = notice.value.trim(); $('#noticeCount').textContent = notice.value.length + '/120'; save();
+    if (!btn.hasAttribute('data-clear')) { notice.focus(); notice.setSelectionRange(notice.value.length, notice.value.length); }
+  });
+
+  function renderStock() {
+    const items = b.items || [];
+    $('#stock').innerHTML = items.length ? items.map(it => `<li class="${it.soldOut ? 'out' : ''}"><span class="nm"><span>${esc(it.name || 'Untitled')}</span><small>${esc(T.price(it.price))}</small></span>
+      <button type="button" class="sw" role="switch" aria-checked="${!it.soldOut}" data-id="${esc(it.id)}" aria-label="${esc(it.name)} in stock"><span>${it.soldOut ? 'Sold out' : 'In stock'}</span><i></i></button></li>`).join('')
+      : '<li style="color:var(--muted)">No items yet. Add some on the Items tab.</li>';
+    const left = items.filter(i => !i.soldOut).length;
+    $('#leftCnt').textContent = items.length ? left + ' of ' + items.length + ' in stock' : '';
+    $('#restock').disabled = left === items.length;
+  }
+  $('#stock').addEventListener('click', e => {
+    const sw = e.target.closest('.sw'); if (!sw) return;
+    const it = b.items.find(i => i.id === sw.dataset.id); it.soldOut = !it.soldOut;
+    save(); renderStock();
+    $(`.sw[data-id="${CSS.escape(it.id)}"]`).focus();
+  });
+  $('#restock').onclick = () => { b.items.forEach(i => { i.soldOut = false; }); save(); renderStock(); };
+
+  // ---------- items ----------
+  const TAGS = [['', 'No tag'], ['special', 'Special'], ['new', 'New'], ['vg', 'Vegan (vg)'], ['v', 'Veggie (v)'], ['gf', 'Gluten-free (gf)']];
+  const I = n => ({ up: '<path d="m4 10 4-4 4 4"/>', down: '<path d="m4 6 4 4 4-4"/>', del: '<path d="M3 4.5h10M6.5 4.5V3h3v1.5M4.5 4.5l.7 8.5h5.6l.7-8.5"/>' })[n];
+  const svg = n => `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I(n)}</svg>`;
+  function renderEdit() {
+    const items = b.items || [];
+    $('#itemsTitle').value = b.itemsTitle || '';
+    $('#edit').innerHTML = items.map((it, i) => `<div class="it" data-id="${esc(it.id)}">
+      <input class="in nm" data-k="name" maxlength="40" value="${esc(it.name)}" placeholder="Item name" aria-label="Item ${i + 1} name">
+      <select class="in" data-k="tag" aria-label="Tag for ${esc(it.name)}">${TAGS.map(([v, l]) => `<option value="${v}"${(it.tag || '') === v ? ' selected' : ''}>${l}</option>`).join('')}</select>
+      <div class="pre"><input class="in" data-k="price" inputmode="decimal" maxlength="8" value="${esc(it.price)}" placeholder="0.00" aria-label="Price for ${esc(it.name)}"></div>
+      <div class="row">
+        <button type="button" class="ic" data-a="up" aria-label="Move ${esc(it.name)} up"${i === 0 ? ' disabled' : ''}>${svg('up')}</button>
+        <button type="button" class="ic" data-a="down" aria-label="Move ${esc(it.name)} down"${i === items.length - 1 ? ' disabled' : ''}>${svg('down')}</button>
+        <button type="button" class="ic del" data-a="del" aria-label="Delete ${esc(it.name)}">${svg('del')}</button>
+      </div></div>`).join('');
+    $('#itemCnt').textContent = items.length + ' of ' + MAX;
+    $('#addItem').disabled = items.length >= MAX;
+    $('#addItem').textContent = items.length >= MAX ? 'Board is full (10 items)' : '+ Add an item';
+  }
+  $('#itemsTitle').addEventListener('input', e => { b.itemsTitle = e.target.value.trim(); saveSoon(); });
+  $('#edit').addEventListener('input', e => {
+    const k = e.target.dataset.k; if (!k) return;
+    const it = b.items.find(i => i.id === e.target.closest('.it').dataset.id);
+    it[k] = k === 'price' ? e.target.value.replace(/[^\d.]/g, '') : e.target.value;
+    if (k === 'price' && e.target.value !== it[k]) e.target.value = it[k];
+    k === 'tag' ? save() : saveSoon();
+    renderStock();
+  });
+  $('#edit').addEventListener('click', e => {
+    const btn = e.target.closest('[data-a]'); if (!btn) return;
+    const id = btn.closest('.it').dataset.id, i = b.items.findIndex(x => x.id === id), a = btn.dataset.a;
+    if (a === 'del') { if (!confirm('Delete "' + (b.items[i].name || 'this item') + '"?')) return; b.items.splice(i, 1); }
+    else { const j = a === 'up' ? i - 1 : i + 1; [b.items[i], b.items[j]] = [b.items[j], b.items[i]]; }
+    save(); renderEdit(); renderStock();
+    const again = $(`.it[data-id="${CSS.escape(id)}"] [data-a="${a}"]`); if (again && !again.disabled) again.focus();
+  });
+  $('#addItem').onclick = () => {
+    if ((b.items || []).length >= MAX) return;
+    b.items = b.items || []; b.items.push({ id: uid(), name: '', price: '' });
+    renderEdit(); renderStock();
+    $('#edit .it:last-child .nm').focus();
+  };
+
+  // ---------- hours ----------
+  function renderWeek() {
+    const t = T.dow(todayDate());
+    $('#week').innerHTML = T.DAYS.map((d, i) => { const h = b.hours[i] || { closed: true }; return `<div class="day${h.closed ? ' off' : ''}${i === t ? ' today' : ''}" data-i="${i}">
+      <b>${d}</b><button type="button" class="sw" role="switch" aria-checked="${!h.closed}" aria-label="Open on ${d}"><span>${h.closed ? 'Closed' : 'Open'}</span><i></i></button>
+      <div class="times"><input class="in" type="time" step="900" data-k="open" value="${esc(h.open || '09:00')}" aria-label="${d} opening time"><span>to</span><input class="in" type="time" step="900" data-k="close" value="${esc(h.close || '17:00')}" aria-label="${d} closing time"></div></div>`; }).join('');
+  }
+  $('#week').addEventListener('click', e => {
+    const sw = e.target.closest('.sw'); if (!sw) return;
+    const i = +sw.closest('.day').dataset.i, h = b.hours[i] = b.hours[i] || {};
+    h.closed = !h.closed; if (!h.open) { h.open = '09:00'; h.close = '17:00'; }
+    save(); renderWeek(); $(`.day[data-i="${i}"] .sw`).focus();
+  });
+  $('#week').addEventListener('change', e => {
+    const k = e.target.dataset.k; if (!k || !e.target.value) return;
+    const i = +e.target.closest('.day').dataset.i; b.hours[i][k] = e.target.value; save();
+  });
+
+  function renderExceptions() {
+    const today = todayDate();
+    // show one-off changes from today on, and yearly ones in date order from today
+    const next = e => { if (!e.repeat) return e.date; const y = +today.slice(0, 4); const d = y + e.date.slice(4); return d >= today ? d : (y + 1) + e.date.slice(4); };
+    const list = (b.exceptions || []).filter(e => e.repeat || e.date >= today).map(e => ({ e, d: next(e) })).sort((x, y) => x.d < y.d ? -1 : 1);
+    $('#exList').innerHTML = list.length ? list.map(({ e, d }) => { const dt = new Date(d + 'T12:00:00Z'); return `<li><span class="d"><b>${dt.getUTCDate()}</b><span>${dt.toLocaleString('en-GB', { month: 'short', timeZone: 'UTC' })}</span></span>
+      <span class="t"><b>${esc(e.label || (d === today ? 'Today' : T.niceDate(d)))}</b><small>${d === today ? 'Today · ' : T.DAYS[T.dow(d)] + ' · '}${e.closed ? 'Closed all day' : T.hm(e.open) + ' – ' + T.hm(e.close)}${e.repeat ? ' · every year' : ''}</small></span>
+      <button type="button" class="ic del" data-id="${esc(e.id)}" aria-label="Remove ${esc(e.label || T.niceDate(d))}">${svg('del')}</button></li>`; }).join('')
+      : '<li class="none">No holidays or changes coming up.</li>';
+  }
+  $('#exList').addEventListener('click', e => {
+    const btn = e.target.closest('.del'); if (!btn) return;
+    b.exceptions = b.exceptions.filter(x => x.id !== btn.dataset.id); save(); renderExceptions();
+  });
+  const nf = $('#newEx');
+  nf.date.min = todayDate();
+  nf.addEventListener('change', () => { $('#exTimes').hidden = nf.kind.value !== 'hours'; });
+  nf.addEventListener('submit', e => {
+    e.preventDefault();
+    const err = $('#exErr'), date = nf.date.value, hrs = nf.kind.value === 'hours';
+    if (!date) { err.textContent = 'Pick a date.'; nf.date.focus(); return; }
+    if (hrs && (!nf.open.value || !nf.close.value || nf.open.value >= nf.close.value)) { err.textContent = 'Closing time must be after opening time.'; nf.close.focus(); return; }
+    err.textContent = '';
+    const ex = { id: uid(), date, label: nf.label.value.trim() };
+    if (hrs) { ex.open = nf.open.value; ex.close = nf.close.value; } else ex.closed = true;
+    if (nf.yearly.checked) ex.repeat = 'yearly';
+    b.exceptions = (b.exceptions || []).filter(x => !(x.date === date && !x.repeat)); b.exceptions.push(ex);
+    save(); renderExceptions(); nf.reset(); $('#exTimes').hidden = true;
+  });
+
+  // ---------- share ----------
+  const pub = new URL('board.html?b=' + ID, location.href).href, src = new URL('widget.js', location.href).href;
+  $('#pubUrl').textContent = pub.replace(/^https?:\/\//, ''); $('#openPub').href = pub;
+  const copy = (txt, btn) => navigator.clipboard.writeText(txt).then(() => { const o = btn.textContent; btn.textContent = 'Copied'; setTimeout(() => btn.textContent = o, 1600); }, () => { btn.textContent = 'Select and copy'; });
+  $('#copyUrl').onclick = e => copy(pub, e.currentTarget);
+  $('#sharePub').onclick = e => navigator.share ? navigator.share({ title: b.business + ' · today', url: pub }).catch(() => {}) : copy(pub, e.currentTarget);
+  const snips = [
+    ['board', "Today's board", 'Items, sold-out and your notice'],
+    ['badge', 'Open / closed badge', 'Small pill for your header'],
+    ['hours', 'Opening hours', 'Your week, plus holiday changes']
+  ];
+  const code = v => `<div data-todayboard="${ID}" data-view="${v}"></div>\n<script src="${src}" async><\/script>`;
+  const hl = v => `<span class="t">&lt;div</span> <span class="a">data-todayboard</span>=<span class="s">"${ID}"</span> <span class="a">data-view</span>=<span class="s">"${v}"</span><span class="t">&gt;&lt;/div&gt;</span>\n<span class="t">&lt;script</span> <span class="a">src</span>=<span class="s">"${esc(src)}"</span> <span class="a">async</span><span class="t">&gt;&lt;/script&gt;</span>`;
+  $('#snips').innerHTML = snips.map(([v, t, s]) => `<div class="snip"><div class="snip-h"><span>${t}<small>${s}</small></span><button type="button" class="btn btn--sm" data-v="${v}">Copy code</button></div><pre class="code">${hl(v)}</pre></div>`).join('');
+  $('#snips').addEventListener('click', e => { const btn = e.target.closest('[data-v]'); if (btn) copy(code(btn.dataset.v), btn); });
+  $('#reset').onclick = async () => {
+    if (!confirm('Reset the demo board to the sample hours and items?')) return;
+    T.store.clear(ID); b = JSON.parse(JSON.stringify(await T.load(ID))); save(true); renderAll();
+  };
+
+  // ---------- live preview ----------
+  const pv = $('#pv'), mq = matchMedia('(max-width: 900px)');
+  // keep a demo clock (?tbnow=2026-10-01T10:00) in the preview too
+  const clock = /tbnow=[\dT:-]+/.exec(location.search), withClock = u => { if (!clock) return u; const [p, h] = u.split('#'); return p + (p.includes('?') ? '&' : '?') + clock[0] + (h ? '#' + h : ''); };
+  function loadPv() { if (!mq.matches && pv.getAttribute('src') === 'about:blank') pv.src = withClock(document.querySelector('.pv-seg [aria-pressed=true]').dataset.src); }
+  mq.addEventListener('change', loadPv);
+  document.querySelector('.pv-seg').addEventListener('click', e => {
+    const btn = e.target.closest('button'); if (!btn) return;
+    document.querySelectorAll('.pv-seg button').forEach(x => x.setAttribute('aria-pressed', x === btn));
+    pv.src = withClock(btn.dataset.src); $('#pvUrl').textContent = btn.dataset.url;
+  });
+
+  function renderAll() { $('#bizName').textContent = b.business; renderStatus(); renderNotice(); renderStock(); renderEdit(); renderWeek(); renderExceptions(); }
+  renderAll(); route(); loadPv();
+  setInterval(renderStatus, 30000);
+})();
+</script>
+</body>
+</html>
