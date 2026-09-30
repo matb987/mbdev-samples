@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services &amp; fees — Harlow Pryce Solicitors, Cardiff (concept site)</title>
+<meta name="description" content="Legal services and fixed fees. Concept website by MBDEV for a fictional law firm. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%235b1a24'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='16' fill='%23e6c98f' text-anchor='middle'%3EHP%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Harlow Pryce is a fictional firm. Portfolio sample only.</div>
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><b>Harlow Pryce</b><small>Solicitors · Cardiff</small></a>
+    <nav class="nav" id="nav" aria-label="Main"><a href="index.html">Home</a><a href="services.html" aria-current=page>Services &amp; fees</a><a href="people.html">Our people</a><a href="contact.html">Contact</a></nav>
+    <a class="tel" href="tel:02920180647">029 2018 0647</a>
+    <a class="btn btn--ox" href="contact.html">Free enquiry</a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main>
+
+<section class="page-head"><div class="wrap"><p class="crumbs"><a href="index.html">Home</a> / Services &amp; fees</p><h1>Services &amp; fees</h1><p>We publish our prices so you can plan ahead. All fees are fixed unless we tell you otherwise in writing before we start.</p></div></section>
+<section class="section">
+  <div class="wrap svc-layout">
+    <nav class="toc" aria-label="On this page"><a href="#conveyancing">Residential property</a><a href="#wills">Wills &amp; probate</a><a href="#family">Family law</a><a href="#business">Business &amp; commercial</a><a href="#employment">Employment</a><a href="#disputes">Disputes</a></nav>
+    <div>
+      <article class="svc-block" id="conveyancing">
+        <span class="over">Residential property</span>
+        <h2>Buying &amp; selling a home</h2>
+        <p>Your named conveyancer handles searches, the mortgage offer, contracts and the Land Transaction Tax return, and keeps you updated every week.</p>
+        <form class="calc" id="calc" onsubmit="return false">
+          <h3>Instant conveyancing quote</h3>
+          <div>
+            <label>I am…<select name="type"><option value="buy">Buying</option><option value="sell">Selling</option><option value="both">Buying &amp; selling</option><option value="remo">Remortgaging</option></select></label>
+            <label>Property price (£)<input name="price" type="number" inputmode="numeric" min="0" step="1000" value="250000"></label>
+            <label><input type="checkbox" name="lease" style="display:inline;width:auto;margin-right:8px">Leasehold property</label>
+          </div>
+          <output name="out" for="type price lease" aria-live="polite">
+            <dl>
+              <div><dt>Legal fee</dt><dd id="qFee">£850</dd></div>
+              <div><dt>VAT</dt><dd id="qVat">£170</dd></div>
+              <div><dt>Searches &amp; registry (est.)</dt><dd id="qDis">£395</dd></div>
+              <div class="tot"><dt>Total</dt><dd id="qTot">£1,415</dd></div>
+            </dl>
+          </output>
+          <p class="fine" style="grid-column:1/-1;margin:0">Sample figures for this concept site. Excludes Land Transaction Tax.</p>
+        </form>
+      </article>
+      <article class="svc-block" id="wills">
+        <span class="over">Wills &amp; probate</span>
+        <h2>Wills, LPAs &amp; estates</h2>
+        <table class="fees"><thead><tr><th>Service</th><th>Fixed fee (+VAT)</th></tr></thead><tbody>
+          <tr><td>Single will</td><td>£195</td></tr><tr><td>Mirror wills (couple)</td><td>£295</td></tr><tr><td>Lasting power of attorney (each)</td><td>£350</td></tr><tr><td>Grant of probate only</td><td>£1,150</td></tr></tbody></table>
+        <p class="fine">Sample fees for this concept site.</p>
+      </article>
+      <article class="svc-block" id="family">
+        <span class="over">Family law</span>
+        <h2>Divorce &amp; children</h2>
+        <p>We aim to keep things calm and out of court. Our family team offers a fixed-fee first meeting (£150 + VAT) to explain your options.</p>
+        <ul><li>No-fault divorce</li><li>Financial settlements</li><li>Child arrangements</li><li>Cohabitation agreements</li><li>Pre-nuptial agreements</li><li>Mediation referrals</li></ul>
+      </article>
+      <article class="svc-block" id="business">
+        <span class="over">Business &amp; commercial</span>
+        <h2>For small businesses</h2>
+        <ul><li>Company formation</li><li>Shareholder agreements</li><li>Terms &amp; conditions</li><li>Commercial leases</li><li>Buying or selling a business</li><li>GDPR policies</li></ul>
+      </article>
+      <article class="svc-block" id="employment">
+        <span class="over">Employment</span>
+        <h2>Employers &amp; employees</h2>
+        <p>Settlement agreement advice is often paid for by your employer. We'll confirm this before we start.</p>
+      </article>
+      <article class="svc-block" id="disputes">
+        <span class="over">Disputes</span>
+        <h2>Resolving disputes</h2>
+        <p>We start with a clear letter and a sensible offer. Most disputes settle without going to court.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div><a class="logo" href="index.html"><b>Harlow Pryce</b><small>Solicitors · Cardiff</small></a><p style="margin-top:18px">Plain-English legal advice for people and small businesses in Cardiff and across South Wales.</p></div>
+      <div><h3>Visit us</h3><p>3 Windsor Place, Cardiff CF10 3BX<br><em>(fictional address)</em><br><a href="tel:02920180647">029 2018 0647</a><br><a href="mailto:enquiries@example.com">enquiries@example.com</a></p></div>
+      <div><h3>Pages</h3><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services &amp; fees</a></li><li><a href="people.html">Our people</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="disclaimer"><p>This is a <b>concept website</b> designed and built by MBDEV to demonstrate our work. Harlow Pryce Solicitors is fictional. It is not a real law firm and is not regulated. Names, fees, reviews and figures are illustrative and nothing here is legal advice. The phone number is from Ofcom's range reserved for fiction.</p><a href="../">← Back to MBDEV samples</a></div>
+  </div>
+</footer>
+<script>
+const mb = document.getElementById('menuBtn'), nv = document.getElementById('nav');
+mb.addEventListener('click', () => { const o = nv.classList.toggle('open'); mb.setAttribute('aria-expanded', o); });
+
+const c = document.getElementById('calc'), gbp = n => '£' + Math.round(n).toLocaleString('en-GB');
+function q() {
+  const p = +c.price.value || 0, t = c.type.value, lease = c.lease.checked;
+  const base = p <= 150000 ? 750 : p <= 300000 ? 850 : p <= 500000 ? 995 : 1250;
+  let fee = t === 'both' ? base * 1.8 : t === 'remo' ? 450 : base;
+  if (lease && t !== 'remo') fee += 250;
+  const dis = t === 'sell' ? 45 : t === 'remo' ? 120 : 395;
+  document.getElementById('qFee').textContent = gbp(fee);
+  document.getElementById('qVat').textContent = gbp(fee * .2);
+  document.getElementById('qDis').textContent = gbp(dis);
+  document.getElementById('qTot').textContent = gbp(fee * 1.2 + dis);
+}
+c.addEventListener('input', q); q();
+
+</script>
+</body>
+</html>

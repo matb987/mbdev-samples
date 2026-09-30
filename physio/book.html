@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book online — Meadows Physio, Edinburgh (concept site)</title>
+<meta name="description" content="Book a physiotherapy appointment online. Concept website by MBDEV for a fictional clinic. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%230e3b4f'/%3E%3Ccircle cx='23' cy='12' r='4' fill='%23ef7a5d'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/Outfit.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Meadows Physio is a fictional clinic. Portfolio sample only.</div>
+<div class="top"><div class="wrap"><span>Physiotherapy · Sports injury · Pilates — Marchmont, Edinburgh</span><span>Call <a href="tel:01314960582">0131 496 0582</a></span></div></div>
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#0e3b4f"/><path d="M11 27c4-9 9-13 18-15" stroke="#ef7a5d" stroke-width="3.2" fill="none" stroke-linecap="round"/><circle cx="23" cy="12" r="3.4" fill="#fff"/><path d="M11 30h18" stroke="#bfe5de" stroke-width="3" stroke-linecap="round"/></svg><span>Meadows Physio<small>&amp; Sports Clinic</small></span></a>
+    <nav class="nav" id="nav" aria-label="Main"><a href="index.html">Home</a><a href="treatments.html">Treatments & prices</a><a href="team.html">Our team</a></nav>
+    <a class="btn btn--navy" href="book.html">Book online</a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main>
+
+<section class="page-head"><div class="wrap"><p class="crumbs"><a href="index.html">Home</a> / Book online</p><h1>Book an appointment</h1><p>Choose what you need, pick a time, and we'll confirm by text.</p></div></section>
+<section class="section">
+  <form class="wrap booking" id="bk" novalidate>
+    <div>
+      <fieldset class="step"><legend class="sr">Appointment type</legend><h2><span>1</span>Appointment type</h2>
+        <div class="choices">
+          <label><input type="radio" name="type" value="Initial assessment|£65" checked><span><b>Initial assessment</b><small>45 min · £65</small></span></label>
+          <label><input type="radio" name="type" value="Follow-up|£55"><span><b>Follow-up</b><small>30 min · £55</small></span></label>
+          <label><input type="radio" name="type" value="Sports massage|£50"><span><b>Sports massage</b><small>45 min · £50</small></span></label>
+          <label><input type="radio" name="type" value="Video consultation|£45"><span><b>Video consultation</b><small>30 min · £45</small></span></label>
+        </div>
+      </fieldset>
+      <fieldset class="step"><legend class="sr">Clinician</legend><h2><span>2</span>Clinician</h2>
+        <div class="choices">
+          <label><input type="radio" name="who" value="First available" checked><span><b>First available</b><small>Quickest appointment</small></span></label>
+          <label><input type="radio" name="who" value="Kirsty Fraser"><span><b>Kirsty Fraser</b><small>Knees &amp; running</small></span></label>
+          <label><input type="radio" name="who" value="Rahul Singh"><span><b>Rahul Singh</b><small>Back &amp; neck</small></span></label>
+          <label><input type="radio" name="who" value="Eilidh MacLeod"><span><b>Eilidh MacLeod</b><small>Women's health</small></span></label>
+        </div>
+      </fieldset>
+      <fieldset class="step"><legend class="sr">Date and time</legend><h2><span>3</span>Date &amp; time</h2>
+        <div class="days" id="days" role="group" aria-label="Choose a day"></div>
+        <div class="slots" id="slots"></div>
+      </fieldset>
+      <fieldset class="step"><legend class="sr">Your details</legend><h2><span>4</span>Your details</h2>
+        <label class="field">Full name<input name="name" autocomplete="name" required></label>
+        <label class="field">Mobile<input name="tel" type="tel" autocomplete="tel" required></label>
+      </fieldset>
+    </div>
+    <aside class="summary" aria-live="polite">
+      <h3>Your booking</h3>
+      <dl>
+        <div><dt>Appointment</dt><dd id="sType">Initial assessment</dd></div>
+        <div><dt>With</dt><dd id="sWho">First available</dd></div>
+        <div><dt>When</dt><dd id="sWhen">Choose a time</dd></div>
+        <div><dt>Price</dt><dd id="sPrice">£65</dd></div>
+      </dl>
+      <button class="btn btn--navy" type="submit">Confirm booking</button>
+      <p class="msg" id="msg" role="status"></p>
+      <p class="fine">Pay at the clinic. Free cancellation up to 24 hours before. Sample booking flow for this concept site.</p>
+    </aside>
+  </form>
+</section>
+<style>.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } fieldset.step { min-width: 0; }</style>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div><h3>Meadows Physio &amp; Sports Clinic</h3><p>21 Warrender Park Road, Edinburgh EH9 1EU <em>(fictional address)</em><br><a href="tel:01314960582">0131 496 0582</a> · <a href="mailto:clinic@example.com">clinic@example.com</a></p></div>
+      <div><h3>Opening hours</h3><ul><li>Mon–Thu 7:30–20:00</li><li>Fri 7:30–17:00</li><li>Sat 8:30–13:00</li></ul></div>
+      <div><h3>Pages</h3><ul><li><a href="index.html">Home</a></li><li><a href="treatments.html">Treatments & prices</a></li><li><a href="team.html">Our team</a></li><li><a href="book.html">Book online</a></li></ul></div>
+    </div>
+    <div class="disclaimer"><p>This is a <b>concept website</b> designed and built by MBDEV to demonstrate our work. Meadows Physio is fictional; clinicians, prices, reviews and figures are illustrative, and nothing here is medical advice. The phone number is from Ofcom's range reserved for fiction.</p><a href="../">← Back to MBDEV samples</a></div>
+  </div>
+</footer>
+<script>
+const mb = document.getElementById('menuBtn'), nv = document.getElementById('nav');
+mb.addEventListener('click', () => { const o = nv.classList.toggle('open'); mb.setAttribute('aria-expanded', o); });
+
+const f = document.getElementById('bk'), days = document.getElementById('days'), slots = document.getElementById('slots');
+const $ = id => document.getElementById(id);
+const times = ['07:30', '08:15', '09:00', '11:30', '13:00', '15:45', '17:30', '18:15', '19:00'];
+let when = '';
+function renderSlots(i, label) {
+  [...days.children].forEach((b, j) => b.setAttribute('aria-pressed', i === j));
+  slots.innerHTML = times.filter((_, k) => (k + i) % 3).map(t => `<label><input type="radio" name="slot" value="${label} ${t}"><span>${t}</span></label>`).join('');
+}
+const d0 = new Date();
+for (let i = 0, n = 0; n < 7; i++) {
+  const d = new Date(d0); d.setDate(d0.getDate() + i + 1);
+  if (d.getDay() === 0) continue;
+  const label = d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+  const b = document.createElement('button'); b.type = 'button';
+  b.innerHTML = d.toLocaleDateString('en-GB', { weekday: 'short' }) + '<b>' + d.getDate() + '</b>';
+  const idx = n; b.onclick = () => renderSlots(idx, label); days.append(b); n++;
+  if (idx === 0) renderSlots(0, label);
+}
+f.addEventListener('change', () => {
+  const [t, p] = f.type.value.split('|');
+  $('sType').textContent = t; $('sPrice').textContent = p; $('sWho').textContent = f.who.value;
+  const s = f.querySelector('[name=slot]:checked'); $('sWhen').textContent = s ? s.value : 'Choose a time';
+});
+f.addEventListener('submit', e => {
+  e.preventDefault();
+  if (!f.querySelector('[name=slot]:checked')) return $('msg').textContent = 'Please choose a time.';
+  if (!f.elements['name'].value || !f.tel.value) return $('msg').textContent = 'Please add your name and mobile.';
+  $('msg').textContent = 'Thanks! This is a concept site, so nothing was booked. On a live site this would sync with the clinic diary and text a confirmation.';
+});
+
+</script>
+</body>
+</html>

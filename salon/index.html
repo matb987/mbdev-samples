@@ -242,7 +242,7 @@ document.getElementById('bookForm').addEventListener('submit', e => {
   e.preventDefault();
   const f = e.target, msg = f.querySelector('.form-msg');
   if (!f.checkValidity()) { msg.textContent = 'Please choose a service and add your name and mobile.'; return; }
-  msg.textContent = 'Thanks ' + f.name.value.split(' ')[0] + '! This is a concept site, so nothing was sent. On a live site the salon would text you to confirm.';
+  msg.textContent = 'Thanks ' + f.elements['name'].value.split(' ')[0] + '! This is a concept site, so nothing was sent. On a live site the salon would text you to confirm.';
   f.reset();
 });
 </script>

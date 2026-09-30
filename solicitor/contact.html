@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Harlow Pryce Solicitors, Cardiff (concept site)</title>
+<meta name="description" content="Make an enquiry. Concept website by MBDEV for a fictional law firm. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%235b1a24'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='16' fill='%23e6c98f' text-anchor='middle'%3EHP%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Harlow Pryce is a fictional firm. Portfolio sample only.</div>
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><b>Harlow Pryce</b><small>Solicitors · Cardiff</small></a>
+    <nav class="nav" id="nav" aria-label="Main"><a href="index.html">Home</a><a href="services.html">Services &amp; fees</a><a href="people.html">Our people</a><a href="contact.html" aria-current=page>Contact</a></nav>
+    <a class="tel" href="tel:02920180647">029 2018 0647</a>
+    <a class="btn btn--ox" href="contact.html">Free enquiry</a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main>
+
+<section class="page-head"><div class="wrap"><p class="crumbs"><a href="index.html">Home</a> / Contact</p><h1>Make an enquiry</h1><p>Tell us briefly what you need. A solicitor will call you back within one working day for a free 15-minute chat.</p></div></section>
+<section class="section">
+  <div class="wrap contact-grid">
+    <form class="enq" id="enq" novalidate>
+      <div class="row"><label>Full name<input name="fullname" autocomplete="name" required></label><label>Phone<input name="phone" type="tel" autocomplete="tel" required></label></div>
+      <label>Email<input name="email" type="email" autocomplete="email"></label>
+      <label>What is it about?<select name="area"><option>Buying or selling a home</option><option>Wills, LPAs or probate</option><option>Family matter</option><option>Business matter</option><option>Employment</option><option>A dispute</option></select></label>
+      <label>A few details <textarea name="details" rows="5"></textarea></label>
+      <label class="check"><input type="checkbox" name="cy"> I'd prefer to speak in Welsh</label>
+      <button class="btn btn--ox" type="submit">Send enquiry</button>
+      <p class="msg" role="status" aria-live="polite"></p>
+    </form>
+    <aside class="office">
+      <h2>Our office</h2>
+      <p>3 Windsor Place, Cardiff CF10 3BX <em>(fictional)</em><br><a href="tel:02920180647">029 2018 0647</a><br><a href="mailto:enquiries@example.com">enquiries@example.com</a></p>
+      <dl><div><dt>Mon – Thu</dt><dd>9:00 – 17:30</dd></div><div><dt>Friday</dt><dd>9:00 – 17:00</dd></div><div><dt>Evenings</dt><dd>By appointment</dd></div></dl>
+      <div class="map" role="img" aria-label="Illustrated map of the office location near Queen Street">
+        <svg viewBox="0 0 400 240" aria-hidden="true"><rect width="400" height="240" fill="#efe6d6"/><path d="M0 70h400M0 170h400M120 0v240M290 0v240" stroke="#fff" stroke-width="18"/><rect x="140" y="90" width="130" height="60" fill="#dfe7cf"/><text x="10" y="64" font-size="11" fill="#7d6232" font-family="sans-serif">QUEEN STREET</text><g transform="translate(205 70)"><path d="M0-40c-12 0-20 9-20 20 0 15 20 32 20 32s20-17 20-32c0-11-8-20-20-20z" fill="#5b1a24"/><circle cy="-20" r="7" fill="#fff"/></g></svg>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div><a class="logo" href="index.html"><b>Harlow Pryce</b><small>Solicitors · Cardiff</small></a><p style="margin-top:18px">Plain-English legal advice for people and small businesses in Cardiff and across South Wales.</p></div>
+      <div><h3>Visit us</h3><p>3 Windsor Place, Cardiff CF10 3BX<br><em>(fictional address)</em><br><a href="tel:02920180647">029 2018 0647</a><br><a href="mailto:enquiries@example.com">enquiries@example.com</a></p></div>
+      <div><h3>Pages</h3><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services &amp; fees</a></li><li><a href="people.html">Our people</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="disclaimer"><p>This is a <b>concept website</b> designed and built by MBDEV to demonstrate our work. Harlow Pryce Solicitors is fictional. It is not a real law firm and is not regulated. Names, fees, reviews and figures are illustrative and nothing here is legal advice. The phone number is from Ofcom's range reserved for fiction.</p><a href="../">← Back to MBDEV samples</a></div>
+  </div>
+</footer>
+<script>
+const mb = document.getElementById('menuBtn'), nv = document.getElementById('nav');
+mb.addEventListener('click', () => { const o = nv.classList.toggle('open'); mb.setAttribute('aria-expanded', o); });
+
+document.getElementById('enq').addEventListener('submit', e => {
+  e.preventDefault(); const f = e.target, m = f.querySelector('.msg');
+  m.textContent = f.checkValidity() ? 'Thank you. This is a concept site, so nothing was sent. On a live site a solicitor would call you back within one working day.' : 'Please add your name and phone number.';
+});
+
+</script>
+</body>
+</html>
