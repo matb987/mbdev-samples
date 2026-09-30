@@ -151,3 +151,4 @@ legend { font-size: .85rem; letter-spacing: .06em; font-weight: 500; margin-bott
   .services, .team, .looks, .reviews, .book { padding: 64px 0; }
   .bookform { padding: 24px; }
 }
+[hidden] { display: none !important; }

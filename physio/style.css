@@ -188,3 +188,5 @@ p { margin: 0 0 1em; }
   .choices { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) { .cond-grid { grid-template-columns: 1fr; } }
+.booking > *, .aside > * { min-width: 0; }
+[hidden] { display: none !important; }

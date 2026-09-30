@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business accounts — Relay Couriers, Birmingham (concept site)</title>
+<meta name="description" content="Concept website by MBDEV for a fictional same-day courier and logistics firm in Birmingham. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233a2bd8'/%3E%3Cpath d='M8 20h10l6-8' stroke='%233ce0a8' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/SpaceGrotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Relay Couriers is a fictional business. Portfolio sample only.</div>
+<header class="header">
+  <div class="wrap header__in">
+    <a class="logo" href="index.html"><svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#3a2bd8"/><path d="M8 20h10l6-8" stroke="#3ce0a8" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>relay<span>.</span></a>
+    <nav class="nav" id="nav" aria-label="Main"><a href="index.html">Home</a><a href="services.html">Services</a><a href="track.html">Track</a><a href="business.html" aria-current=page>Business accounts</a></nav>
+    <a class="btn btn--ghost hide-s" href="tel:01214960374">0121 496 0374</a>
+    <a class="btn btn--primary" href="index.html#quote">Get a quote</a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+<main>
+
+<section class="page-head"><div class="wrap"><span class="over">Business accounts</span><h1>Open a business account</h1><p>30-day invoicing, discounted rates and a named account manager. Approval usually within one working day.</p></div></section>
+<section class="section">
+  <div class="wrap biz">
+    <form class="bform" id="bf" novalidate>
+      <div class="steps" aria-hidden="true"><span class="on">1 Company</span><span>2 Delivery needs</span><span>3 Contact</span></div>
+      <fieldset data-s="0"><legend class="sr">Company</legend>
+        <label>Company name<input name="co" required></label>
+        <label>Company number <small>(optional)</small><input name="crn" inputmode="numeric"></label>
+        <label>Sector<select name="sector"><option>Manufacturing &amp; engineering</option><option>Healthcare &amp; labs</option><option>Legal &amp; financial</option><option>E-commerce &amp; retail</option><option>Construction</option><option>Other</option></select></label>
+      </fieldset>
+      <fieldset data-s="1" hidden><legend class="sr">Delivery needs</legend>
+        <label>Deliveries per month<select name="vol"><option>1–10</option><option>11–50</option><option>51–200</option><option>200+</option></select></label>
+        <p class="lbl">Services you need</p>
+        <div class="checks"><label><input type="checkbox" checked> Same-day</label><label><input type="checkbox"> Next-day timed</label><label><input type="checkbox"> Regular routes</label><label><input type="checkbox"> Pallets</label></div>
+      </fieldset>
+      <fieldset data-s="2" hidden><legend class="sr">Contact</legend>
+        <label>Your name<input name="fullname" autocomplete="name" required></label>
+        <label>Work email<input name="email" type="email" autocomplete="email" required></label>
+        <label>Phone<input name="tel" type="tel" autocomplete="tel"></label>
+      </fieldset>
+      <div class="bnav"><button class="btn btn--ghost" type="button" id="bBack" hidden>Back</button><button class="btn btn--primary" type="button" id="bNext">Continue</button><button class="btn btn--primary" type="submit" id="bSend" hidden>Submit application</button></div>
+      <p class="msg" role="status" aria-live="polite"></p>
+    </form>
+    <aside class="perks">
+      <h2>Account benefits</h2>
+      <ul class="ticks"><li>Up to 20% off standard rates</li><li>30-day invoicing, no card needed</li><li>Online booking portal with saved addresses</li><li>Monthly delivery reports</li><li>Named account manager</li></ul>
+      <p class="fine">Sample offer for this concept site.</p>
+    </aside>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div><a class="logo logo--light" href="index.html">relay<span>.</span></a><p>Same-day and scheduled courier services from Birmingham to anywhere in mainland UK, 24/7.</p></div>
+      <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="track.html">Track</a></li><li><a href="business.html">Business accounts</a></li></ul></div>
+      <div><h3>Contact</h3><p>Unit 7, Tyseley Trade Park, Birmingham B11 2AA <em>(fictional)</em><br><a href="tel:01214960374">0121 496 0374</a><br><a href="mailto:bookings@example.com">bookings@example.com</a></p></div>
+    </div>
+    <div class="disclaimer"><p>This is a <b>concept website</b> designed and built by MBDEV to demonstrate our work. Relay Couriers is fictional; prices, figures, clients and reviews are illustrative, and tracking uses sample data. The phone number is from Ofcom's range reserved for fiction.</p><a href="../">← Back to MBDEV samples</a></div>
+  </div>
+</footer>
+<script>
+const mb = document.getElementById('menuBtn'), nv = document.getElementById('nav');
+mb.addEventListener('click', () => { const o = nv.classList.toggle('open'); mb.setAttribute('aria-expanded', o); });
+
+const bf = document.getElementById('bf'), fs = [...bf.querySelectorAll('fieldset')], tabs = bf.querySelectorAll('.steps span');
+let st = 0;
+const go = n => { st = n; fs.forEach((f, i) => f.hidden = i !== n); tabs.forEach((t, i) => t.classList.toggle('on', i <= n));
+  document.getElementById('bBack').hidden = !n; document.getElementById('bNext').hidden = n === 2; document.getElementById('bSend').hidden = n !== 2; };
+document.getElementById('bNext').onclick = () => { if (st === 0 && !bf.co.value.trim()) { bf.querySelector('.msg').textContent = 'Please add your company name.'; return; } bf.querySelector('.msg').textContent = ''; go(st + 1); };
+document.getElementById('bBack').onclick = () => go(st - 1);
+bf.addEventListener('submit', e => { e.preventDefault();
+  bf.querySelector('.msg').textContent = bf.elements.fullname.value && bf.email.checkValidity() && bf.email.value ? 'Thanks! This is a concept site, so nothing was sent. On a live site the account team would be in touch within one working day.' : 'Please add your name and a valid work email.'; });
+
+</script>
+</body>
+</html>

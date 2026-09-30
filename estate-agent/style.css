@@ -201,3 +201,4 @@ p { margin: 0 0 1em; }
   .count { margin-left: 0; width: 100%; }
 }
 @media (max-width: 400px) { .logo { font-size: 1rem; } .logo svg { width: 28px; } .tel { font-size: .75rem; padding: 7px 9px; } .header .wrap { gap: 10px; } }
+[hidden] { display: none !important; }

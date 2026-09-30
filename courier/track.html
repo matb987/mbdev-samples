@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track a delivery — Relay Couriers, Birmingham (concept site)</title>
+<meta name="description" content="Concept website by MBDEV for a fictional same-day courier and logistics firm in Birmingham. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233a2bd8'/%3E%3Cpath d='M8 20h10l6-8' stroke='%233ce0a8' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/SpaceGrotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Relay Couriers is a fictional business. Portfolio sample only.</div>
+<header class="header">
+  <div class="wrap header__in">
+    <a class="logo" href="index.html"><svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#3a2bd8"/><path d="M8 20h10l6-8" stroke="#3ce0a8" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>relay<span>.</span></a>
+    <nav class="nav" id="nav" aria-label="Main"><a href="index.html">Home</a><a href="services.html">Services</a><a href="track.html" aria-current=page>Track</a><a href="business.html">Business accounts</a></nav>
+    <a class="btn btn--ghost hide-s" href="tel:01214960374">0121 496 0374</a>
+    <a class="btn btn--primary" href="index.html#quote">Get a quote</a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+<main>
+
+<section class="page-head page-head--dark"><div class="wrap"><span class="over">Tracking</span><h1>Track a delivery</h1><p>Enter your Relay reference. Try the sample reference <b>RLY-48213</b>.</p>
+  <form class="trackform" id="tf"><label class="sr" for="ref">Reference</label><input id="ref" name="ref" placeholder="RLY-00000" value="RLY-48213" autocomplete="off"><button class="btn btn--primary" type="submit">Track</button></form></div></section>
+<section class="section">
+  <div class="wrap trk" id="trk" aria-live="polite">
+    <div class="trk__card">
+      <div class="trk__top"><div><small>Reference</small><b id="tRef">RLY-48213</b></div><div><small>Status</small><b class="status">Out for delivery</b></div><div><small>Estimated arrival</small><b id="tEta">14:20 – 14:40</b></div></div>
+      <ol class="timeline">
+        <li class="done"><b>Booked online</b><span>09:12 · Tyseley, Birmingham</span></li>
+        <li class="done"><b>Collected by Dan (small van)</b><span>09:58 · Photo taken, 3 boxes</span></li>
+        <li class="done"><b>On the M6 northbound</b><span>10:40 · Running on time</span></li>
+        <li class="now"><b>Out for delivery</b><span>13:55 · 8 miles away</span></li>
+        <li><b>Delivered</b><span>Photo + signature will appear here</span></li>
+      </ol>
+    </div>
+    <div class="map" role="img" aria-label="Illustrated route map from Birmingham to Manchester">
+      <svg viewBox="0 0 400 480" aria-hidden="true"><rect width="400" height="480" fill="#eef0fb"/>
+        <path d="M60 0 90 120 40 260 120 480M300 0 260 200 340 480M0 330 400 280" stroke="#fff" stroke-width="14" fill="none"/>
+        <path d="M200 420C180 330 250 280 210 190S170 90 190 60" stroke="#3a2bd8" stroke-width="6" fill="none" stroke-dasharray="2 12" stroke-linecap="round"/>
+        <path d="M200 420C180 330 250 280 210 190" stroke="#3a2bd8" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <circle cx="200" cy="420" r="10" fill="#3a2bd8"/><text x="218" y="426" font-size="14" font-family="sans-serif" fill="#14123a">Birmingham</text>
+        <circle cx="190" cy="60" r="10" fill="#3ce0a8" stroke="#14123a" stroke-width="3"/><text x="208" y="66" font-size="14" font-family="sans-serif" fill="#14123a">Manchester</text>
+        <g transform="translate(210 190)"><circle r="18" fill="#3ce0a8" opacity=".35"><animate attributeName="r" values="12;24;12" dur="2s" repeatCount="indefinite"/></circle><circle r="9" fill="#14123a"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div><a class="logo logo--light" href="index.html">relay<span>.</span></a><p>Same-day and scheduled courier services from Birmingham to anywhere in mainland UK, 24/7.</p></div>
+      <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="track.html">Track</a></li><li><a href="business.html">Business accounts</a></li></ul></div>
+      <div><h3>Contact</h3><p>Unit 7, Tyseley Trade Park, Birmingham B11 2AA <em>(fictional)</em><br><a href="tel:01214960374">0121 496 0374</a><br><a href="mailto:bookings@example.com">bookings@example.com</a></p></div>
+    </div>
+    <div class="disclaimer"><p>This is a <b>concept website</b> designed and built by MBDEV to demonstrate our work. Relay Couriers is fictional; prices, figures, clients and reviews are illustrative, and tracking uses sample data. The phone number is from Ofcom's range reserved for fiction.</p><a href="../">← Back to MBDEV samples</a></div>
+  </div>
+</footer>
+<script>
+const mb = document.getElementById('menuBtn'), nv = document.getElementById('nav');
+mb.addEventListener('click', () => { const o = nv.classList.toggle('open'); mb.setAttribute('aria-expanded', o); });
+
+document.getElementById('tf').addEventListener('submit', e => {
+  e.preventDefault();
+  const v = e.target.ref.value.trim().toUpperCase(), card = document.getElementById('trk');
+  if (v === 'RLY-48213') { card.hidden = false; document.getElementById('tRef').textContent = v; }
+  else { card.hidden = false; card.innerHTML = '<p class="notfound">We can\'t find <b>' + v.replace(/[<>&]/g, '') + '</b>. On this concept site only the sample reference RLY-48213 works.</p>'; }
+});
+
+</script>
+</body>
+</html>

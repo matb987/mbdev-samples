@@ -193,3 +193,4 @@ p { margin: 0 0 1em; }
   .quick { font-size: .7rem; padding: 9px 4px; }
   .usp .wrap { justify-content: center; font-size: .8rem; }
 }
+[hidden] { display: none !important; }

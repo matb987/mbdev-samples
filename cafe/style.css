@@ -152,3 +152,4 @@ address small, .perks { color: var(--muted); font-size: .9rem; }
 }
 @media (max-width: 420px) { .menu-grid { grid-template-columns: 1fr; } .logo { font-size: 1.3rem; } }
 @media (max-width: 400px) { .open-now { font-size: .68rem; padding: 5px 8px; } .open-now b { margin-right: 5px; } .logo { font-size: 1.12rem !important; } .header__in { gap: 6px; } .menu { padding: 6px 0 6px 4px; } }
+[hidden] { display: none !important; }

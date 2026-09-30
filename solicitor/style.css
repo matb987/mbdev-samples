@@ -185,3 +185,4 @@ p { margin: 0 0 1em; }
   .fees { font-size: .9rem; }
 }
 .quote-band p.fine { font: .82rem/1.5 "Source Sans 3", sans-serif; font-style: normal; color: var(--muted); }
+[hidden] { display: none !important; }
