@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop all — Fold &amp; Fern homeware (concept shop)</title>
+<meta name="description" content="Concept online shop by MBDEV for a fictional homeware and textiles boutique. Nothing is for sale. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23262421'/%3E%3Cpath d='M16 6c-6 6-6 14 0 20 6-6 6-14 0-20z' fill='%23c07a5c'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/Marcellus.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="concept">Concept shop designed &amp; built by <a href="../">MBDEV</a> — Fold &amp; Fern is a fictional brand. Nothing here is for sale.</div>
+<div class="announce">Free UK delivery over £60 · 30-day returns · <b>Sample shop, nothing ships</b></div>
+<header class="header">
+  <div class="wrap header__in">
+    <button class="icon menu" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.6"/></svg></button>
+    <nav class="nav" id="nav" aria-label="Main"><a href="index.html">Home</a><a href="collection.html">Shop all</a><a href="collection.html?c=Cushions">Cushions</a><a href="collection.html?c=Throws">Throws</a><a href="collection.html?c=Decor">Decor</a></nav>
+    <a class="logo" href="index.html">Fold <span>&amp;</span> Fern</a>
+    <div class="tools">
+      <a class="icon" href="collection.html" aria-label="Search"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      <button class="icon bagbtn" id="bagBtn" aria-label="Open bag"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span class="count" id="bagCount">0</span></button>
+    </div>
+  </div>
+</header>
+<main>
+
+<section class="page-head"><div class="wrap"><p class="crumbs"><a href="index.html">Home</a> / <span id="crumb">Shop all</span></p><h1 id="collTitle">Shop all</h1></div></section>
+<section class="section section--top0">
+  <div class="wrap coll">
+    <form class="side" id="filters" onsubmit="return false" aria-label="Filters">
+      <fieldset><legend>Category</legend><label><input type="checkbox" name="cat" value="Cushions"> Cushions</label><label><input type="checkbox" name="cat" value="Decor"> Decor</label><label><input type="checkbox" name="cat" value="Kitchen"> Kitchen</label><label><input type="checkbox" name="cat" value="Storage"> Storage</label><label><input type="checkbox" name="cat" value="Throws"> Throws</label></fieldset>
+      <fieldset><legend>Colour</legend><div class="swf"><label title="Cedar"><input type="checkbox" name="col" value="Cedar"><span>Cedar</span></label><label title="Chalk"><input type="checkbox" name="col" value="Chalk"><span>Chalk</span></label><label title="Charcoal"><input type="checkbox" name="col" value="Charcoal"><span>Charcoal</span></label><label title="Clay"><input type="checkbox" name="col" value="Clay"><span>Clay</span></label><label title="Cream"><input type="checkbox" name="col" value="Cream"><span>Cream</span></label><label title="Fig"><input type="checkbox" name="col" value="Fig"><span>Fig</span></label><label title="Ink"><input type="checkbox" name="col" value="Ink"><span>Ink</span></label><label title="Ivory"><input type="checkbox" name="col" value="Ivory"><span>Ivory</span></label><label title="Moss"><input type="checkbox" name="col" value="Moss"><span>Moss</span></label><label title="Mustard"><input type="checkbox" name="col" value="Mustard"><span>Mustard</span></label><label title="Natural"><input type="checkbox" name="col" value="Natural"><span>Natural</span></label><label title="Oat"><input type="checkbox" name="col" value="Oat"><span>Oat</span></label><label title="Rust"><input type="checkbox" name="col" value="Rust"><span>Rust</span></label><label title="Sage"><input type="checkbox" name="col" value="Sage"><span>Sage</span></label><label title="Sand"><input type="checkbox" name="col" value="Sand"><span>Sand</span></label><label title="Terracotta"><input type="checkbox" name="col" value="Terracotta"><span>Terracotta</span></label></div></fieldset>
+      <fieldset><legend>Max price: <output id="maxOut">£100</output></legend><input type="range" name="max" min="10" max="100" step="5" value="100" aria-label="Maximum price"></fieldset>
+      <button type="button" class="link" id="clear">Clear filters</button>
+    </form>
+    <div>
+      <div class="bar-top"><p id="resCount" aria-live="polite"></p><label>Sort <select id="sort"><option value="f">Featured</option><option value="lo">Price, low to high</option><option value="hi">Price, high to low</option></select></label></div>
+      <div class="pgrid pgrid--3" id="pgrid"><article class="pcard" data-cat="Cushions" data-price="38" data-colours="Clay Oat Moss"><a href="product.html?p=linen-cushion" class="pcard__img"><img src="p/linen-cushion-0.svg" width="600" height="750" alt="Washed linen cushion" loading=lazy><span class="badge">Bestseller</span></a><div class="pcard__body"><a href="product.html?p=linen-cushion"><h3>Washed linen cushion</h3></a><p class="price">£38</p><div class="sw" aria-label="3 colours"><i style="background:#c07a5c" title="Clay"></i><i style="background:#d9c9ad" title="Oat"></i><i style="background:#7d8a5e" title="Moss"></i></div><button class="quick" type="button" data-add="linen-cushion">Add to bag</button></div></article><article class="pcard" data-cat="Throws" data-price="89" data-colours="Rust Ink"><a href="product.html?p=stripe-throw" class="pcard__img"><img src="p/stripe-throw-0.svg" width="600" height="750" alt="Lambswool stripe throw" loading=lazy><span class="badge">New</span></a><div class="pcard__body"><a href="product.html?p=stripe-throw"><h3>Lambswool stripe throw</h3></a><p class="price">£89</p><div class="sw" aria-label="2 colours"><i style="background:#b86a45" title="Rust"></i><i style="background:#2f3a4f" title="Ink"></i></div><button class="quick" type="button" data-add="stripe-throw">Add to bag</button></div></article><article class="pcard" data-cat="Kitchen" data-price="18" data-colours="Cream Sage Charcoal"><a href="product.html?p=speckle-mug" class="pcard__img"><img src="p/speckle-mug-0.svg" width="600" height="750" alt="Speckled stoneware mug" loading=lazy></a><div class="pcard__body"><a href="product.html?p=speckle-mug"><h3>Speckled stoneware mug</h3></a><p class="price">£18</p><div class="sw" aria-label="3 colours"><i style="background:#e9e1d2" title="Cream"></i><i style="background:#a3b09a" title="Sage"></i><i style="background:#4a4744" title="Charcoal"></i></div><button class="quick" type="button" data-add="speckle-mug">Add to bag</button></div></article><article class="pcard" data-cat="Decor" data-price="32" data-colours="Chalk Terracotta"><a href="product.html?p=bud-vase" class="pcard__img"><img src="p/bud-vase-0.svg" width="600" height="750" alt="Hand-thrown bud vase" loading=lazy><span class="badge">Low stock</span></a><div class="pcard__body"><a href="product.html?p=bud-vase"><h3>Hand-thrown bud vase</h3></a><p class="price">£32</p><div class="sw" aria-label="2 colours"><i style="background:#ebe6dc" title="Chalk"></i><i style="background:#c46e4f" title="Terracotta"></i></div><button class="quick" type="button" data-add="bud-vase">Add to bag</button></div></article><article class="pcard" data-cat="Storage" data-price="45" data-colours="Natural"><a href="product.html?p=seagrass-basket" class="pcard__img"><img src="p/seagrass-basket-0.svg" width="600" height="750" alt="Seagrass storage basket" loading=lazy></a><div class="pcard__body"><a href="product.html?p=seagrass-basket"><h3>Seagrass storage basket</h3></a><p class="price">£45</p><div class="sw" aria-label="1 colours"><i style="background:#cfb57f" title="Natural"></i></div><button class="quick" type="button" data-add="seagrass-basket">Add to bag</button></div></article><article class="pcard" data-cat="Decor" data-price="26" data-colours="Fig Cedar"><a href="product.html?p=fig-candle" class="pcard__img"><img src="p/fig-candle-0.svg" width="600" height="750" alt="Fig & cedar candle" loading=lazy><span class="badge">Bestseller</span></a><div class="pcard__body"><a href="product.html?p=fig-candle"><h3>Fig & cedar candle</h3></a><p class="price">£26</p><div class="sw" aria-label="2 colours"><i style="background:#7a4b5c" title="Fig"></i><i style="background:#5b6b4a" title="Cedar"></i></div><button class="quick" type="button" data-add="fig-candle">Add to bag</button></div></article><article class="pcard" data-cat="Cushions" data-price="42" data-colours="Ivory Mustard"><a href="product.html?p=boucle-cushion" class="pcard__img"><img src="p/boucle-cushion-0.svg" width="600" height="750" alt="Bouclé round cushion" loading=lazy></a><div class="pcard__body"><a href="product.html?p=boucle-cushion"><h3>Bouclé round cushion</h3></a><p class="price">£42</p><div class="sw" aria-label="2 colours"><i style="background:#efe9de" title="Ivory"></i><i style="background:#d4a64a" title="Mustard"></i></div><button class="quick" type="button" data-add="boucle-cushion">Add to bag</button></div></article><article class="pcard" data-cat="Throws" data-price="64" data-colours="Sand Sage"><a href="product.html?p=waffle-throw" class="pcard__img"><img src="p/waffle-throw-0.svg" width="600" height="750" alt="Cotton waffle throw" loading=lazy></a><div class="pcard__body"><a href="product.html?p=waffle-throw"><h3>Cotton waffle throw</h3></a><p class="price">£64</p><div class="sw" aria-label="2 colours"><i style="background:#dccbb0" title="Sand"></i><i style="background:#9aa88f" title="Sage"></i></div><button class="quick" type="button" data-add="waffle-throw">Add to bag</button></div></article></div>
+      <p class="empty" id="empty" hidden>Nothing matches those filters.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<aside class="drawer" id="drawer" aria-label="Shopping bag" hidden>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="bagTitle">
+    <div class="drawer__head"><h2 id="bagTitle">Your bag</h2><button class="icon" id="bagClose" aria-label="Close bag"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6"/></svg></button></div>
+    <div class="ship"><p id="shipTxt"></p><div class="bar"><span id="shipBar"></span></div></div>
+    <ul class="lines" id="lines"></ul>
+    <div class="drawer__foot"><p class="sub"><span>Subtotal</span><b id="subtotal">£0</b></p><button class="btn btn--dark btn--block" id="checkout" type="button">Checkout</button><p class="fine" id="coMsg" role="status" aria-live="polite">Taxes and shipping calculated at checkout.</p></div>
+  </div>
+</aside>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div><p class="logo logo--foot">Fold <span>&amp;</span> Fern</p><p>Slow-made homeware and textiles from small UK and European makers.</p></div>
+      <div><h3>Help</h3><ul><li><a href="#">Delivery</a></li><li><a href="#">Returns</a></li><li><a href="#">Care guides</a></li></ul></div>
+      <div><h3>Visit</h3><p>Columbia Road, London E2 <em>(fictional)</em><br><a href="tel:02079460158">020 7946 0158</a><br><a href="mailto:hello@example.com">hello@example.com</a></p></div>
+      <form class="news" id="news" novalidate><h3>10% off your first order</h3><label class="sr" for="nE">Email</label><div><input id="nE" type="email" placeholder="Your email" required><button class="btn btn--dark" type="submit">Join</button></div><p class="fine" role="status" aria-live="polite"></p></form>
+    </div>
+    <div class="disclaimer"><p>This is a <b>concept online shop</b> designed and built by MBDEV to demonstrate our work. Fold &amp; Fern is fictional; products, prices and reviews are illustrative and nothing can be bought. Product images are original illustrations. The phone number is from Ofcom's range reserved for fiction. On a real project this design would be built on a Shopify theme.</p><a href="../">← Back to MBDEV samples</a></div>
+  </div>
+</footer>
+<script src="catalog.js"></script>
+<script src="store.js"></script>
+<script>
+const F = document.getElementById('filters'), grid = document.getElementById('pgrid'), cards = [...grid.children];
+const qc = new URLSearchParams(location.search).get('c');
+if (qc) { const b = F.querySelector(`[name=cat][value="${qc}"]`); if (b) b.checked = true; document.getElementById('collTitle').textContent = qc; document.getElementById('crumb').textContent = qc; }
+function run() {
+  const cs = [...F.querySelectorAll('[name=cat]:checked')].map(x => x.value), cols = [...F.querySelectorAll('[name=col]:checked')].map(x => x.value), max = +F.max.value, s = document.getElementById('sort').value;
+  document.getElementById('maxOut').textContent = '£' + max;
+  let vis = cards.filter(c => (!cs.length || cs.includes(c.dataset.cat)) && (!cols.length || cols.some(x => c.dataset.colours.split(' ').includes(x))) && +c.dataset.price <= max);
+  if (s !== 'f') vis.sort((a, b) => (s === 'lo' ? 1 : -1) * (a.dataset.price - b.dataset.price)); else vis.sort((a, b) => cards.indexOf(a) - cards.indexOf(b));
+  cards.forEach(c => c.hidden = !vis.includes(c)); vis.forEach(c => grid.append(c));
+  document.getElementById('resCount').textContent = vis.length + ' product' + (vis.length === 1 ? '' : 's');
+  document.getElementById('empty').hidden = !!vis.length;
+}
+F.addEventListener('input', run); document.getElementById('sort').addEventListener('change', run);
+document.getElementById('clear').onclick = () => { F.reset(); run(); };
+run();
+</script>
+</body>
+</html>
