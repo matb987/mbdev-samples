@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Isla Fern Photography — Relaxed wedding photography in the Lake District (concept site)</title>
+<meta name="description" content="Concept website by MBDEV for a fictional wedding photographer in the Lake District. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4efe7'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='18' fill='%232b2723' text-anchor='middle'%3EIF%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/Italiana.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Italiana"; src: url(../fonts/Italiana.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Figtree"; src: url(../fonts/Figtree.woff2) format("woff2"); font-weight: 400 700; font-display: swap; }
+:root { --cream: #f4efe7; --ink: #2b2723; --muted: #6c645b; --sage: #56684f; --line: #ddd4c7; --d: "Italiana", Georgia, serif; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font: 17px/1.7 Figtree, system-ui, sans-serif; color: var(--ink); background: var(--cream); }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+h1, h2, h3 { font-family: var(--d); font-weight: 400; line-height: 1.05; margin: 0 0 .4em; letter-spacing: .01em; }
+h2 { font-size: clamp(2.4rem, 5.4vw, 4rem); }
+p { margin: 0 0 1em; }
+.wrap { width: min(1240px, 100% - 40px); margin-inline: auto; }
+.concept { background: #111; color: #ddd; font-size: 13px; text-align: center; padding: 7px 12px; }
+.concept a { color: #fff; font-weight: 600; }
+.small { font-size: .74rem; letter-spacing: .28em; text-transform: uppercase; font-weight: 600; color: var(--sage); display: block; margin-bottom: 1.2em; }
+.fine { font-size: .8rem; color: var(--muted); }
+
+.header { position: absolute; left: 0; right: 0; z-index: 10; color: #fff; }
+.header .wrap { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+.logo { font-family: var(--d); font-size: 1.9rem; text-decoration: none; letter-spacing: .06em; }
+.nav { display: flex; gap: 30px; font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; }
+.nav a { text-decoration: none; }
+.nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
+
+.hero { position: relative; height: min(92vh, 860px); min-height: 560px; color: #fff; display: flex; align-items: flex-end; overflow: hidden; }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,16,12,.35), transparent 30%, transparent 55%, rgba(20,16,12,.55)); }
+.hero .wrap { position: relative; z-index: 1; padding-bottom: 70px; display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; }
+.hero h1 { font-size: clamp(3.2rem, 9vw, 7.4rem); max-width: 9em; margin: 0; text-shadow: 0 2px 30px rgba(0,0,0,.25); }
+.hero p { max-width: 22em; margin: 0; font-size: 1.05rem; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 15px 30px; font: 600 .8rem Figtree, sans-serif; letter-spacing: .22em; text-transform: uppercase; text-decoration: none; border: 1px solid currentColor; cursor: pointer; background: none; color: inherit; }
+.btn--solid { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.btn--solid:hover { background: var(--sage); border-color: var(--sage); }
+
+.intro { padding: 120px 0; }
+.intro .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: center; }
+.portrait { aspect-ratio: 4/5; background: url(art/fells.svg) center/cover; position: relative; }
+.portrait span { position: absolute; left: -20px; bottom: 30px; background: var(--cream); padding: 14px 20px; font-family: var(--d); font-size: 1.4rem; }
+.intro p { color: var(--muted); font-size: 1.08rem; }
+.sig { font-family: var(--d); font-size: 2.4rem; color: var(--ink); margin-top: 10px; }
+
+.work { padding: 0 0 120px; }
+.work__head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chips button { font: 600 .75rem Figtree, sans-serif; letter-spacing: .18em; text-transform: uppercase; padding: 10px 16px; border: 1px solid var(--line); background: none; cursor: pointer; color: var(--ink); }
+.chips button[aria-pressed=true] { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.masonry { columns: 3; column-gap: 16px; }
+.masonry figure { margin: 0 0 16px; break-inside: avoid; position: relative; overflow: hidden; cursor: zoom-in; }
+.masonry figure[hidden] { display: none; }
+.masonry img { width: 100%; height: auto; transition: transform .6s; }
+.masonry figure:hover img { transform: scale(1.04); }
+.masonry figcaption { position: absolute; left: 14px; bottom: 12px; color: #fff; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; text-shadow: 0 1px 8px rgba(0,0,0,.5); }
+.lb { position: fixed; inset: 0; background: rgba(20,16,12,.92); display: grid; place-items: center; z-index: 50; padding: 30px; }
+.lb[hidden] { display: none; }
+.lb img { max-height: 86vh; width: auto; }
+.lb button { position: absolute; top: 18px; right: 22px; background: none; border: 0; color: #fff; font-size: 2.4rem; cursor: pointer; line-height: 1; }
+
+.packages { background: #ebe4d8; padding: 120px 0; }
+.packages .top { text-align: center; max-width: 640px; margin: 0 auto 50px; }
+.packages .top p { color: var(--muted); }
+.pk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.pk article { background: var(--cream); padding: 40px 34px; text-align: center; display: flex; flex-direction: column; }
+.pk article.feat { background: var(--ink); color: var(--cream); }
+.pk h3 { font-size: 2.2rem; margin-bottom: .1em; }
+.pk .hrs { font-size: .75rem; letter-spacing: .22em; text-transform: uppercase; color: var(--sage); font-weight: 600; }
+.pk .feat .hrs { color: #b9c8b1; }
+.pk .pr { font-family: Figtree, sans-serif; font-weight: 300; font-size: 2.6rem; margin: 18px 0 10px; }
+.pk ul { list-style: none; padding: 0; margin: 0 0 30px; flex: 1; }
+.pk li { padding: 9px 0; border-top: 1px solid var(--line); font-size: .95rem; }
+.pk .feat li { border-color: #4a443e; }
+.pk .feat .btn { color: var(--cream); }
+
+.kind { padding: 120px 0; text-align: center; }
+.kind blockquote { margin: 0 auto; max-width: 860px; }
+.kind p { font-family: var(--d); font-size: clamp(1.7rem, 3.6vw, 2.8rem); line-height: 1.25; }
+.kind cite { font-style: normal; font-size: .78rem; letter-spacing: .24em; text-transform: uppercase; font-weight: 600; color: var(--sage); }
+.kind p.fine { font: .8rem/1.5 Figtree, sans-serif; }
+.dots { display: flex; justify-content: center; gap: 10px; margin-top: 30px; }
+.dots button { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--ink); background: none; padding: 0; cursor: pointer; }
+.dots button[aria-current=true] { background: var(--ink); }
+
+.enquire { display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; }
+.enquire__art { background: url(art/dusk.svg) center/cover; }
+.enquire__form { padding: 90px clamp(24px, 6vw, 90px); background: #fff; }
+.enquire label { display: block; font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; margin-bottom: 22px; }
+.enquire input, .enquire select, .enquire textarea { display: block; width: 100%; margin-top: 8px; padding: 10px 0; border: 0; border-bottom: 1px solid var(--line); font: 17px Figtree, sans-serif; background: none; color: var(--ink); border-radius: 0; }
+.enquire input:focus, .enquire textarea:focus { outline: none; border-color: var(--ink); }
+.avail { font-size: .95rem; margin: -10px 0 22px; min-height: 1.5em; font-weight: 600; }
+.avail.ok { color: var(--sage); }
+.avail.no { color: #9c3d2e; }
+.msg { font-weight: 600; color: var(--sage); margin: 14px 0 0; }
+
+footer { background: var(--ink); color: #b5ab9e; padding: 34px 0; font-size: .88rem; }
+footer .wrap { display: flex; gap: 30px; align-items: center; }
+footer p { margin: 0; flex: 1; }
+footer a { color: #fff; white-space: nowrap; }
+
+@media (max-width: 900px) {
+  .intro .wrap, .enquire { grid-template-columns: 1fr; gap: 50px; }
+  .enquire__art { min-height: 260px; }
+  .masonry { columns: 2; }
+  .pk { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+  .portrait { max-width: 440px; }
+  footer .wrap { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 640px) {
+  .nav a:not(:last-child) { display: none; }
+  .logo { font-size: 1.5rem; }
+  .hero { min-height: 520px; height: 80vh; }
+  .hero .wrap { padding-bottom: 44px; }
+  .intro, .packages, .kind { padding: 76px 0; }
+  .work { padding-bottom: 76px; }
+  .masonry { column-gap: 10px; }
+  .masonry figure { margin-bottom: 10px; }
+  .portrait span { left: 0; }
+}
+</style>
+</head>
+<body>
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Isla Fern is a fictional photographer. Portfolio sample only.</div>
+
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="#top">Isla Fern</a>
+    <nav class="nav" aria-label="Main"><a href="#about">About</a><a href="#work">Weddings</a><a href="#packages">Collections</a><a href="#enquire">Enquire</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <img src="art/hero.svg" alt="" width="1200" height="800" fetchpriority="high">
+    <div class="wrap">
+      <h1>Honest, joyful wedding photography</h1>
+      <div><p>For relaxed couples marrying in the Lake District, Cumbria and anywhere with a good view.</p><p style="margin-top:22px"><a class="btn" href="#enquire">Check my date</a></p></div>
+    </div>
+  </section>
+
+  <section class="intro" id="about">
+    <div class="wrap">
+      <div class="portrait" role="img" aria-label="Placeholder artwork of the fells"><span>Hello, I'm Isla</span></div>
+      <div>
+        <span class="small">About</span>
+        <h2>I'll hardly ask you to pose.</h2>
+        <p>I photograph weddings the way they really feel: the nervous laughs, the rain that didn't matter, and your gran on the dance floor at midnight. Most of my couples tell me they forgot I was there.</p>
+        <p>I'm based in Keswick and have shot 150+ weddings in barns, fell-top chapels and lakeside gardens. I'll help plan your timeline so you get great light and time to enjoy your day.</p>
+        <p class="sig">Isla x</p>
+        <p class="fine">Fictional photographer and figures for this concept site.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="wrap">
+      <div class="work__head">
+        <div><span class="small">Recent weddings</span><h2 style="margin:0">The good bits</h2></div>
+        <div class="chips" role="group" aria-label="Filter gallery">
+          <button type="button" aria-pressed="true" data-f="all">All</button>
+          <button type="button" aria-pressed="false" data-f="land">Places</button>
+          <button type="button" aria-pressed="false" data-f="detail">Details</button>
+          <button type="button" aria-pressed="false" data-f="party">Evening</button>
+        </div>
+      </div>
+      <div class="masonry" id="gallery">
+        <figure data-c="land"><img src="art/lake.svg" width="1200" height="800" alt="Placeholder artwork: lake at morning"><figcaption>Derwentwater</figcaption></figure>
+        <figure data-c="detail"><img src="art/bouquet.svg" width="800" height="1000" alt="Placeholder artwork: pink bouquet"><figcaption>The bouquet</figcaption></figure>
+        <figure data-c="detail"><img src="art/rings.svg" width="800" height="1000" alt="Placeholder artwork: wedding rings"><figcaption>Rings</figcaption></figure>
+        <figure data-c="party"><img src="art/barn.svg" width="1200" height="800" alt="Placeholder artwork: barn lit with fairy lights"><figcaption>Barn party</figcaption></figure>
+        <figure data-c="land"><img src="art/dusk.svg" width="1200" height="800" alt="Placeholder artwork: purple dusk over the fells"><figcaption>Golden hour</figcaption></figure>
+        <figure data-c="detail"><img src="art/bouquet2.svg" width="800" height="1000" alt="Placeholder artwork: white and green bouquet"><figcaption>Table flowers</figcaption></figure>
+        <figure data-c="land"><img src="art/fells.svg" width="1200" height="800" alt="Placeholder artwork: green fells"><figcaption>Borrowdale</figcaption></figure>
+        <figure data-c="land"><img src="art/hero.svg" width="1200" height="800" alt="Placeholder artwork: sunset over the lake"><figcaption>Sunset portraits</figcaption></figure>
+      </div>
+      <p class="fine">On a live site these are the photographer's own images. Original illustrations stand in for photos on this concept.</p>
+    </div>
+  </section>
+
+  <section class="packages" id="packages">
+    <div class="wrap">
+      <div class="top"><span class="small">Collections</span><h2>Simple, all-inclusive</h2><p>Every collection includes an online gallery, high-resolution downloads, printing rights and a second shooter on request.</p></div>
+      <div class="pk">
+        <article><h3>Elopement</h3><span class="hrs">Up to 3 hours</span><p class="pr">£950</p><ul><li>Ceremony &amp; portraits</li><li>200+ edited images</li><li>Location scouting help</li></ul><a class="btn" href="#enquire">Enquire</a></article>
+        <article class="feat"><h3>The Day</h3><span class="hrs">8 hours</span><p class="pr">£1,850</p><ul><li>Prep to first dance</li><li>600+ edited images</li><li>Engagement shoot</li><li>Sneak peek in 48 hours</li></ul><a class="btn" href="#enquire">Enquire</a></article>
+        <article><h3>All In</h3><span class="hrs">Full day + second shooter</span><p class="pr">£2,450</p><ul><li>Everything in The Day</li><li>Two photographers</li><li>Handmade linen album</li></ul><a class="btn" href="#enquire">Enquire</a></article>
+      </div>
+      <p class="fine" style="text-align:center;margin-top:20px">Sample prices for this concept site.</p>
+    </div>
+  </section>
+
+  <section class="kind">
+    <div class="wrap">
+      <span class="small">Kind words</span>
+      <blockquote id="q"><p>“Isla made us feel so at ease. The photos are exactly how the day felt, and she even got a shot of the sheep crashing our ceremony.”</p><cite>Beth &amp; Arjun · Buttermere</cite></blockquote>
+      <div class="dots" role="group" aria-label="Choose a review"><button type="button" aria-current="true" aria-label="Review 1"></button><button type="button" aria-label="Review 2"></button><button type="button" aria-label="Review 3"></button></div>
+      <p class="fine" style="margin-top:18px">Example reviews written for this concept site.</p>
+    </div>
+  </section>
+
+  <section class="enquire" id="enquire">
+    <div class="enquire__art" role="img" aria-label="Placeholder artwork of dusk over the fells"></div>
+    <form class="enquire__form" id="ef" novalidate>
+      <span class="small">Enquire</span>
+      <h2>Tell me about your day</h2>
+      <label>Wedding date<input type="date" name="date" required></label>
+      <p class="avail" id="avail" aria-live="polite"></p>
+      <label>Your names<input name="names" autocomplete="name" required></label>
+      <label>Email<input type="email" name="email" autocomplete="email" required></label>
+      <label>Venue<input name="venue" placeholder="Or 'still looking!'"></label>
+      <button class="btn btn--solid" type="submit">Send enquiry</button>
+      <p class="msg" role="status" aria-live="polite"></p>
+      <p class="fine" style="margin-top:20px"><a href="tel:07700900418">07700 900418</a> · <a href="mailto:hello@example.com">hello@example.com</a></p>
+    </form>
+  </section>
+</main>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer"><button type="button" aria-label="Close">×</button><img alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <p>This is a <b>concept website</b> designed and built by MBDEV to demonstrate our work. Isla Fern Photography is fictional; names, prices, reviews and figures are illustrative, and the images are original placeholder artwork. The phone number is from Ofcom's range reserved for fiction.</p>
+    <a href="../">← Back to MBDEV samples</a>
+  </div>
+</footer>
+<script>
+// gallery filter + lightbox
+const chips = document.querySelectorAll('.chips button'), figs = document.querySelectorAll('#gallery figure');
+chips.forEach(c => c.onclick = () => { chips.forEach(x => x.setAttribute('aria-pressed', x === c)); figs.forEach(f => f.hidden = c.dataset.f !== 'all' && f.dataset.c !== c.dataset.f); });
+const lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbBtn = lb.querySelector('button');
+let last;
+figs.forEach(f => { f.tabIndex = 0; const open = () => { last = f; lbImg.src = f.querySelector('img').src; lbImg.alt = f.querySelector('img').alt; lb.hidden = false; lbBtn.focus(); };
+  f.onclick = open; f.onkeydown = e => { if (e.key === 'Enter') open(); }; });
+const close = () => { lb.hidden = true; last && last.focus(); };
+lb.onclick = e => { if (e.target !== lbImg) close(); };
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) close(); });
+// reviews
+const Q = [["“Isla made us feel so at ease. The photos are exactly how the day felt, and she even got a shot of the sheep crashing our ceremony.”", "Beth & Arjun · Buttermere"],
+  ["“We cried looking through the gallery. Every guest, every little moment. Worth every penny.”", "Ellie & Tom · Grasmere"],
+  ["“Rain all day and the photos are still magical. She knew exactly where to take us.”", "Ruth & Mo · Ambleside"]];
+const dots = document.querySelectorAll('.dots button'), q = document.getElementById('q');
+dots.forEach((d, i) => d.onclick = () => { dots.forEach(x => x.setAttribute('aria-current', x === d)); q.querySelector('p').textContent = Q[i][0]; q.querySelector('cite').textContent = Q[i][1]; });
+// date availability (sample: every 3rd Saturday is booked)
+const ef = document.getElementById('ef'), av = document.getElementById('avail');
+ef.date.addEventListener('change', () => {
+  const d = new Date(ef.date.value); if (isNaN(d)) return av.textContent = '';
+  const booked = d.getDay() === 6 && d.getDate() % 3 === 0;
+  av.className = 'avail ' + (booked ? 'no' : 'ok');
+  av.textContent = booked ? 'Sorry, that date is booked. Ask about my associate photographer.' : 'Good news, that date is currently free!';
+});
+ef.addEventListener('submit', e => { e.preventDefault(); ef.querySelector('.msg').textContent = ef.checkValidity() ? 'Thank you! This is a concept site, so nothing was sent. On a live site Isla would reply within 24 hours.' : 'Please add your date, names and email.'; });
+</script>
+</body>
+</html>

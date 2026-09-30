@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free online valuation — Quayside Homes, Newcastle (concept site)</title>
+<meta name="description" content="Instant online valuation. Concept website by MBDEV for a fictional estate and letting agent. Portfolio sample only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b2545'/%3E%3Cpath d='M7 17 16 9l9 8v7H7z' fill='%23f4a259'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/Sora.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="concept">Concept site designed &amp; built by <a href="../">MBDEV</a> — Quayside Homes is a fictional agent and these properties are not real. Portfolio sample only.</div>
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0b2545"/><path d="M7 17 16 9l9 8v7H7z" fill="#f4a259"/><path d="M4 26c4-2 8-2 12 0s8 2 12 0" stroke="#8ecae6" stroke-width="2" fill="none"/></svg><span>Quayside<b>Homes</b></span></a>
+    <nav class="nav" id="nav" aria-label="Main"><a href="index.html">Home</a><a href="properties.html">Properties</a><a href="valuation.html" aria-current=page>Free valuation</a></nav>
+    <a class="tel" href="tel:01914980725">0191 498 0725</a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main>
+
+<section class="page-head page-head--dark"><div class="wrap"><h1>Free online valuation</h1><p>Three quick questions for an instant estimate. Then book a free visit from a local valuer for an accurate figure.</p></div></section>
+<section class="section section--tight">
+  <div class="wrap valwrap">
+    <form class="val" id="val" novalidate>
+      <div class="progress"><span id="bar" style="width:33%"></span></div>
+      <fieldset data-step="1"><legend>What type of property is it?</legend>
+        <div class="opts"><label><input type="radio" name="ptype" value="1.0" checked><span>Terraced</span></label><label><input type="radio" name="ptype" value="1.18"><span>Semi-detached</span></label><label><input type="radio" name="ptype" value="1.55"><span>Detached</span></label><label><input type="radio" name="ptype" value="0.85"><span>Flat</span></label><label><input type="radio" name="ptype" value="1.1"><span>Bungalow</span></label></div>
+      </fieldset>
+      <fieldset data-step="2" hidden><legend>How many bedrooms?</legend>
+        <div class="opts"><label><input type="radio" name="beds" value="0.8"><span>1</span></label><label><input type="radio" name="beds" value="1" checked><span>2</span></label><label><input type="radio" name="beds" value="1.25"><span>3</span></label><label><input type="radio" name="beds" value="1.5"><span>4</span></label><label><input type="radio" name="beds" value="1.8"><span>5+</span></label></div>
+      </fieldset>
+      <fieldset data-step="3" hidden><legend>Which area?</legend>
+        <div class="opts"><label><input type="radio" name="area" value="1.35" checked><span>Jesmond</span></label><label><input type="radio" name="area" value="1.25"><span>Gosforth</span></label><label><input type="radio" name="area" value="0.9"><span>Heaton</span></label><label><input type="radio" name="area" value="1.15"><span>Tynemouth</span></label><label><input type="radio" name="area" value="0.95"><span>Whitley Bay</span></label></div>
+      </fieldset>
+      <div class="result" id="result" hidden>
+        <p>Your estimated value</p>
+        <p class="range" id="range">£0</p>
+        <p class="fine">Illustrative estimate from sample data for this concept site.</p>
+        <label>Email for your full report<input type="email" name="email" autocomplete="email" placeholder="you@example.com"></label>
+        <button class="btn btn--amber" type="button" id="bookVal">Book a free home visit</button>
+        <p class="msg" id="valMsg" role="status" aria-live="polite"></p>
+      </div>
+      <div class="nav-btns"><button class="btn btn--line" type="button" id="back" hidden>Back</button><button class="btn btn--navy" type="button" id="next">Next</button></div>
+    </form>
+    <aside class="why-val">
+      <h2>Why sell with us?</h2>
+      <ul><li><b>0.9% + VAT</b> no sale, no fee</li><li><b>Professional photos</b> and floorplans</li><li><b>Accompanied viewings</b> 7 days a week</li><li><b>Sales progression</b> through to completion</li></ul>
+      <p class="fine">Sample fees for this concept site.</p>
+    </aside>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div><a class="logo logo--light" href="index.html"><span>Quayside<b>Homes</b></span></a><p>Sales and lettings across Newcastle, North Tyneside and the coast.</p></div>
+      <div><h3>Branch</h3><p>12 Sandhill, Newcastle upon Tyne NE1 3AF <em>(fictional)</em><br><a href="tel:01914980725">0191 498 0725</a><br><a href="mailto:move@example.com">move@example.com</a></p></div>
+      <div><h3>Explore</h3><ul><li><a href="index.html">Home</a></li><li><a href="properties.html">Properties</a></li><li><a href="valuation.html">Free valuation</a></li></ul></div>
+    </div>
+    <div class="disclaimer"><p>This is a <b>concept website</b> designed and built by MBDEV to demonstrate our work. Quayside Homes is fictional. The properties, prices, reviews and figures are illustrative and are not real listings. The illustrations are original artwork. The phone number is from Ofcom's range reserved for fiction.</p><a href="../">← Back to MBDEV samples</a></div>
+  </div>
+</footer>
+<script>
+const mb = document.getElementById('menuBtn'), nv = document.getElementById('nav');
+mb.addEventListener('click', () => { const o = nv.classList.toggle('open'); mb.setAttribute('aria-expanded', o); });
+
+const v = document.getElementById('val'), steps = [...v.querySelectorAll('fieldset')], res = document.getElementById('result');
+let s = 0;
+const next = document.getElementById('next'), back = document.getElementById('back');
+function show() {
+  steps.forEach((f, i) => f.hidden = i !== s); res.hidden = s < 3; back.hidden = s === 0; next.hidden = s === 3;
+  document.getElementById('bar').style.width = Math.min(100, (s + 1) * 33.4) + '%';
+  if (s === 3) {
+    const g = k => +v.querySelector(`[name=${k}]:checked`).value, est = 165000 * g('ptype') * g('beds') * g('area');
+    const r = x => '£' + (Math.round(x / 5000) * 5000).toLocaleString('en-GB');
+    document.getElementById('range').textContent = r(est * .95) + ' – ' + r(est * 1.05);
+  }
+}
+next.onclick = () => { s++; show(); }; back.onclick = () => { s--; show(); };
+document.getElementById('bookVal').onclick = () => { document.getElementById('valMsg').textContent = 'This is a concept site, so nothing was booked. On a live site this opens the valuer\'s diary.'; };
+
+</script>
+</body>
+</html>
